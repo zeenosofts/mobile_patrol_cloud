@@ -127,7 +127,8 @@ class GuardController extends Controller
                     $driving_license_image = $guard->original_driving_license_image;
                 }
                 if ($photo_id_image != 'error' && $driving_license_image != 'error') {
-                        $this->update_as_guard($guard->id, $request->guard_name, $request->guard_email, $request->guard_license_id, $request->guard_phone,
+                    $this->update_account_in_user($guard->user_id,$request->guard_name, $request->guard_email);
+                    $this->update_as_guard($guard->id, $request->guard_name, $request->guard_email, $request->guard_license_id, $request->guard_phone,
                         $request->guard_type, $request->per_hour, $request->work_availability, $request->available_start_date,
                         $request->guard_license_expiry, $driving_license_image, $photo_id_image, $request->driving_license,
                         $request->driving_license_id, $request->driving_license_expiry);

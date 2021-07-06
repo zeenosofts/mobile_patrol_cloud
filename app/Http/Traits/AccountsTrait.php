@@ -19,6 +19,13 @@ trait AccountsTrait {
         return $save;
     }
 
+    public function update_account_in_user($user_id,$name,$email) {
+        $update = User::where('id',$user_id)->update([
+            'name' => $name,
+            'email' => $email
+        ]);
+    }
+
     public function check_email_duplication_for_save_in_user_table($email){
         $userCheckEmail = User::where('email',$email)->get();
         if(count($userCheckEmail) > 0){

@@ -42,7 +42,7 @@
                             <div class="card-header border-0  py-5">
                                 <h3 class="card-title font-weight-bolder">{{$title}}</h3>
                                 <div class="card-toolbar">
-                                    <a class="btn btn-primary" href="{{route('create_guard')}}">Add Guard</a>
+                                    <a class="btn btn-primary" href="{{route('create_client')}}">Add Clients</a>
                                 </div>
                             </div>
                             <!--end::Header-->
@@ -53,28 +53,25 @@
                                         <table class="table table-separate table-head-custom kt_datatable">
                                             <thead>
                                             <tr>
-                                                <th>Guard Name</th>
-                                                <th>Guard Email</th>
+                                                <th>Client Name</th>
+                                                <th>Client Email</th>
                                                 <th>Phone </th>
-                                                <th>License ID</th>
-                                                <th>Guard Type</th>
-                                                <th>Per Hour</th>
+                                                <th>Address</th>
                                                 <th>Account</th>
                                                 <th>Action</th>
                                             </tr>
                                             </thead>
                                             <tbody>
-                                               @foreach($guards as $g)
+                                               @foreach($clients as $g)
                                                    <tr>
-                                                       <td>{{$g->guard_name}}</td>
-                                                       <td>{{$g->guard_email}}</td>
-                                                       <td>{{$g->guard_phone}}</td>
-                                                       <td>{{$g->guard_license_id}}</td>
-                                                       <td>{{$g->type_of_guard}}</td>
-                                                       <td>{{$g->per_hour}}</td>
+                                                       <td>{{$g->client_name}}</td>
+                                                       <td>{{$g->client_email}}</td>
+                                                       <td>{{$g->client_phone}}</td>
+                                                       <td>{{$g->client_address}}</td>
                                                        <td><input {{$g->user->status == 1 ? "checked" : ""}} data-handle-width="70" data-switch="true" onchange="accountStatus('{{$g->user_id}}',event)" type="checkbox" data-on-text="Activated"  data-off-text="Disabled" data-on-color="primary" /></td>
                                                        <td>
-                                                           <a href="{{route('edit_guard',['guard_id' => $g->id,'hash' => md5($g->id)])}}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
+                                                           <a href="{{route('edit_client',['client_id' => $g->id,'hash' => md5($g->id)])}}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
+                                                           <a href="{{route('client_checkpoints',['client_id' => $g->id,'hash' => md5($g->id)])}}" class="btn btn-primary btn-sm">Checkpoints</a>
                                                        </td>
                                                    </tr>
                                                    @endforeach
@@ -84,7 +81,7 @@
                                 </div>
                                 <div class="card-footer">
                                     <div class="float-right">
-                                        {{$guards->links('vendor.pagination.bootstrap-4')}}
+                                        {{$clients->links('vendor.pagination.bootstrap-4')}}
                                     </div>
                                 </div>
 

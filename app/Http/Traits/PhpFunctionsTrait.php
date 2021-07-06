@@ -3,6 +3,7 @@
 namespace App\Http\Traits;
 
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 trait PhpFunctionsTrait {
@@ -21,5 +22,9 @@ trait PhpFunctionsTrait {
         }else{
             return false;
         }
+    }
+
+    public function convertDateTimeToDbFormat($datetime){
+        return Carbon::parse($datetime)->format('Y-m-d H:i');
     }
 }

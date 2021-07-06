@@ -51,4 +51,8 @@ class Guard extends Model
     public function getTypeOfGuardAttribute(){
         return $this->guard_type == 1 ? "Regular Guard" : "Dispatch Guard";
     }
+
+    public function schedule(){
+        return $this->hasMany(Schedule::class);
+    }
 }

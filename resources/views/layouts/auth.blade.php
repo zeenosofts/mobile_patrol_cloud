@@ -9,8 +9,7 @@
 
     <title>{{$title}} | Mobile Patrol</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -137,7 +136,7 @@
                      data-menu-dropdown-timeout="500">
                     <!--begin::Menu Nav-->
                     <ul class="menu-nav">
-                        <li class="menu-item menu-item-active" aria-haspopup="true">
+                        <li class="menu-item " aria-haspopup="true">
                             <a href="{{route('home')}}" class="menu-link">
 										<span class="svg-icon menu-icon">
 											<!--begin::Svg Icon | path:assets/media/svg/icons/Design/Layers.svg-->
@@ -161,7 +160,7 @@
                             <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
                         </li>
 
-                        <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                        <li class="menu-item menu-item-submenu {{\Request::is('*accounts*') ? 'menu-item-open' : ''}}" aria-haspopup="true" data-menu-toggle="hover">
                             <a href="javascript:;" class="menu-link menu-toggle">
 										<span class="svg-icon menu-icon">
 											<!--begin::Svg Icon | path:assets/media/svg/icons/Design/Bucket.svg-->
@@ -179,7 +178,7 @@
 													<span class="menu-text">Accounts</span>
 												</span>
                                     </li>
-                                    <li class="menu-item" aria-haspopup="true">
+                                    <li class="menu-item {{Route::currentRouteName() == 'create_manager_account' ? 'menu-item-active' : ''}}" aria-haspopup="true">
                                         <a href="{{route('create_manager_account')}}" class="menu-link">
                                             <i class="menu-bullet menu-bullet-dot">
                                                 <span></span>
@@ -187,7 +186,7 @@
                                             <span class="menu-text">Add Manager</span>
                                         </a>
                                     </li>
-                                    <li class="menu-item" aria-haspopup="true">
+                                    <li class="menu-item {{Route::currentRouteName() == 'manage_manager_account' ? 'menu-item-active' : ''}}" aria-haspopup="true">
                                         <a href="{{route('manage_manager_account')}}" class="menu-link">
                                             <i class="menu-bullet menu-bullet-dot">
                                                 <span></span>
@@ -198,7 +197,7 @@
                                 </ul>
                             </div>
                         </li>
-                        <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                        <li class="menu-item menu-item-submenu {{\Request::is('*guard*') ? 'menu-item-open' : ''}}" aria-haspopup="true" data-menu-toggle="hover">
                             <a href="javascript:;" class="menu-link menu-toggle">
 										<span class="svg-icon menu-icon">
 											<!--begin::Svg Icon | path:assets/media/svg/icons/Design/Bucket.svg-->
@@ -216,7 +215,7 @@
 													<span class="menu-text">Guards</span>
 												</span>
                                     </li>
-                                    <li class="menu-item" aria-haspopup="true">
+                                    <li class="menu-item {{Route::currentRouteName() == 'create_guard' ? 'menu-item-active' : ''}}" aria-haspopup="true">
                                         <a href="{{route('create_guard')}}" class="menu-link">
                                             <i class="menu-bullet menu-bullet-dot">
                                                 <span></span>
@@ -224,7 +223,7 @@
                                             <span class="menu-text">Add Guards</span>
                                         </a>
                                     </li>
-                                    <li class="menu-item" aria-haspopup="true">
+                                    <li class="menu-item {{Route::currentRouteName() == 'manage_guard' ? 'menu-item-active' : ''}}" aria-haspopup="true">
                                         <a href="{{route('manage_guard')}}" class="menu-link">
                                             <i class="menu-bullet menu-bullet-dot">
                                                 <span></span>
@@ -235,11 +234,77 @@
                                 </ul>
                             </div>
                         </li>
+                        <li class="menu-item menu-item-submenu {{\Request::is('*client*') ? 'menu-item-open' : ''}}" aria-haspopup="true" data-menu-toggle="hover">
+                            <a href="javascript:;" class="menu-link menu-toggle">
+										<span class="svg-icon menu-icon">
+											<!--begin::Svg Icon | path:assets/media/svg/icons/Design/Bucket.svg-->
+											<i class="fa fa-user"></i>
+                                            <!--end::Svg Icon-->
+										</span>
+                                <span class="menu-text">Clients</span>
+                                <i class="menu-arrow"></i>
+                            </a>
+                            <div class="menu-submenu">
+                                <i class="menu-arrow"></i>
+                                <ul class="menu-subnav">
+                                    <li class="menu-item menu-item-parent" aria-haspopup="true">
+												<span class="menu-link">
+													<span class="menu-text">Clients</span>
+												</span>
+                                    </li>
+                                    <li class="menu-item {{Route::currentRouteName() == 'create_client' ? 'menu-item-active' : ''}}" aria-haspopup="true">
+                                        <a  href="{{route('create_client')}}" class="menu-link">
+                                            <i class="menu-bullet menu-bullet-dot">
+                                                <span></span>
+                                            </i>
+                                            <span class="menu-text">Add Client</span>
+                                        </a>
+                                    </li>
+                                    <li class="menu-item {{Route::currentRouteName() == 'manage_clients' ? 'menu-item-active' : ''}}" aria-haspopup="true">
+                                        <a href="{{route('manage_clients')}}" class="menu-link">
+                                            <i class="menu-bullet menu-bullet-dot">
+                                                <span></span>
+                                            </i>
+                                            <span class="menu-text">Manage Clients</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="menu-item menu-item-submenu {{\Request::is('*schedule*') ? 'menu-item-open' : ''}}" aria-haspopup="true" data-menu-toggle="hover">
+                            <a href="javascript:;" class="menu-link menu-toggle">
+										<span class="svg-icon menu-icon">
+											<!--begin::Svg Icon | path:assets/media/svg/icons/Design/Bucket.svg-->
+											<i class="fa fa-clock"></i>
+                                            <!--end::Svg Icon-->
+										</span>
+                                <span class="menu-text">Schedules</span>
+                                <i class="menu-arrow"></i>
+                            </a>
+                            <div class="menu-submenu">
+                                <i class="menu-arrow"></i>
+                                <ul class="menu-subnav">
+                                    <li class="menu-item menu-item-parent" aria-haspopup="true">
+												<span class="menu-link">
+													<span class="menu-text">Schedules</span>
+												</span>
+                                    </li>
+                                    <li class="menu-item {{Route::currentRouteName() == 'schedule' ? 'menu-item-active' : ''}}" aria-haspopup="true">
+                                        <a href="{{route('schedule')}}" class="menu-link">
+                                            <i class="menu-bullet menu-bullet-dot">
+                                                <span></span>
+                                            </i>
+                                            <span class="menu-text">Schedules by client</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
                         <li class="menu-section">
                             <h4 class="menu-text">Settings</h4>
                             <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
                         </li>
-                        <li class="menu-item menu-item-active" aria-haspopup="true">
+                        <li class="menu-item {{Route::currentRouteName() == 'manager_company_setting' ? 'menu-item-active' : ''}}" aria-haspopup="true">
                             <a href="{{route('manager_company_setting')}}" class="menu-link">
 										<span class="svg-icon menu-icon">
 											<i class="fa fa-cogs"></i>
@@ -704,7 +769,7 @@
 
 
 <!--end::Body-->
-
+@yield('app.js')
 <script>var HOST_URL = "https://keenthemes.com/metronic/tools/preview";</script>
 <!--begin::Global Config(global config for global JS scripts)-->
 <script>var KTAppSettings = {"breakpoints": {"sm": 576, "md": 768, "lg": 992, "xl": 1200, "xxl": 1200},
@@ -787,7 +852,7 @@
 <!--end::Page Vendors-->
 <!--begin::Page Scripts(used by this page)-->
 <script src="{{URL::asset('assets/js/pages/features/calendar/basic.js?v=7.0.3')}}"></script>
-<script src="{{URL::asset('assets/js/pages/crud/forms/widgets/bootstrap-timepicker.js?v=7.0.3')}}"></script>
+{{--<script src="{{URL::asset('assets/js/pages/crud/forms/widgets/bootstrap-timepicker.js?v=7.0.3')}}"></script>--}}
 <script src="{{URL::asset('assets/js/pages/crud/forms/widgets/bootstrap-switch.js?v=7.0.3')}}"></script>
 
 <script>

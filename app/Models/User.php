@@ -51,4 +51,7 @@ class User extends Authenticatable
     public function isGuard(){
         return $this->hasOne(Guard::class);
     }
+    public function isClient(){
+        return $this->hasOne(Client::class);
+    }
 }

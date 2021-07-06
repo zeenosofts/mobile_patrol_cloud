@@ -32,7 +32,7 @@ var KTBootstrapDatetimepicker = function () {
         });
 
         // today button
-        $('#kt_datetimepicker_3').datetimepicker({
+        $('#kt_datetimepicker_3,.kt_datetimepicker').datetimepicker({
             todayHighlight: true,
             autoclose: true,
             pickerPosition: 'bottom-left',
