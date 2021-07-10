@@ -14,7 +14,7 @@ class CompanySetting extends Model
 
     public function getCompanyLogoAttribute($value)
     {
-        return env("IMAGE_PATH").$value;
+        return $value != null ? env("IMAGE_PATH").$value : '';
         //return $value;
     }
 }

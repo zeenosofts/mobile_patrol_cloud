@@ -1,5 +1,5 @@
 <template>
-    <div class="card">
+    <div class="card mb-10">
         <div class="card-header"><b>Create Schedule</b></div>
 
         <div class="card-body">
@@ -71,6 +71,11 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-lg-6" v-for="err in error_array">
+                    <b class="text-danger">{{err}}</b>
+                </div>
+            </div>
         </div>
         <div class="card-footer">
             <button @click="saveSchedule" class="btn btn-primary">{{btn_text}}</button>
@@ -95,6 +100,7 @@
                 min_date_time:new Date().toISOString(),
                 instructions:'',
                 guard_id:'0',
+                error_array:[]
             }
         },
         watch:{
@@ -107,7 +113,7 @@
             }
         },
         mounted() {
-            console.log('Component mounted.')
+            console.log('Component mounted.' + new Date().toISOString())
             var dt = new Date();
             dt.setHours( dt.getHours() + 6 );
             this.to_date_time = dt.toISOString();
@@ -124,7 +130,7 @@
                     Vue.$toast.warning('Please choose a Guard');
                     return false;
                 }
-
+                this.btn_text = 'Creating...';
 //                Saving Schedule
                 var params = {
                     from_date_time:this.from_date_time,
@@ -134,17 +140,37 @@
                     instructions:this.instructions,
                     days:this.days,
                     repeat:this.days.length > 1 ? true : false,
+                    date_limit:this.date_limit
                 }
                 Promise.resolve(HelperController.sendPOSTRequest('save_schedule',params)).then( response => {
-                    console.log('response+ '+response)
+                    console.log('response+ '+JSON.stringify(response.data))
+                    if(response.data.message == 'success' && this.days.length == 1){
+                        Vue.$toast.success(response.data.data.response);
+                    }
+                    if(response.data.message == 'warning' && this.days.length == 1){
+                        Vue.$toast.warning(response.data.data.response);
+                    }
+                    if(response.data.message == 'success' && this.days.length > 1){
+                        Vue.$toast.success(response.data.data.response);
+                        if(response.data.data.issues.length > 0){
+                            this.error_array = response.data.data.issues;
+                            Vue.$toast.warning('Some shifts cannot be created. They are explained below');
+                        }
+                    }
+
+                    this.$emit('methodcreateScheduleButtonClicked')
+
                 }).catch(function(error){
                     console.log(error);
                 });
+                this.btn_text = 'Created';
+                setTimeout(function(){  this.btn_text = 'Created Schedule'; }, 1000);
             }
         }
     }
 </script>
 <style>
+
     .vue__time-picker input.display-time, .vdatetime-input {
         width: 100% !important;
         height: calc(1.5em + 1.3rem + 2px);

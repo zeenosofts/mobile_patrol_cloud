@@ -68,4 +68,8 @@ Route::group(['middleware' => 'auth'], function () {
         ->name('schedule')->where('any', '[\/\w\.-]*')->middleware('role:manager');
     Route::post('save_schedule', [App\Http\Controllers\Manager\ScheduleController::class, 'save_schedule'])
         ->name('save_schedule')->middleware('role:manager');
+    Route::post('get_schedules_for_guard', [App\Http\Controllers\Manager\ScheduleController::class, 'get_schedules_for_guard'])
+        ->name('get_schedules_for_guard')->middleware('role:manager');
+    Route::post('update_schedule', [App\Http\Controllers\Manager\ScheduleController::class, 'update_schedule'])
+        ->name('update_schedule')->middleware('role:manager');
 });

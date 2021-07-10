@@ -41,6 +41,7 @@ trait CompanySettingTrait {
             $save->save();
         }else{
             $save = new CompanySetting();
+            $save->admin_id = $admin_id;
             $save->company_clock_in_message = $clock_in_message;
             $save->company_clock_out_message = $clock_out_message;
             $save->save();
@@ -54,6 +55,7 @@ trait CompanySettingTrait {
             $save->save();
         }else{
             $save = new CompanySetting();
+            $save->admin_id = $admin_id;
             $save->company_time_zone = $company_time_zone;
             $save->save();
         }
@@ -66,6 +68,7 @@ trait CompanySettingTrait {
             $save->save();
         }else{
             $save = new CompanySetting();
+            $save->admin_id = $admin_id;
             $save->company_phone_number_for_sms = $company_phone_number_for_sms;
             $save->save();
         }
@@ -78,6 +81,7 @@ trait CompanySettingTrait {
             $save->save();
         }else{
             $save = new CompanySetting();
+            $save->admin_id = $admin_id;
             $save->company_logo = $company_logo;
             $save->save();
         }

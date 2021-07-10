@@ -29,7 +29,7 @@ class CompanySettingController extends Controller
 
     public function save_company_details(Request $request)
     {
-        $admin_id = $this->returnAuthUserAdminID(Auth::user()->id);
+        $admin_id = $this->getAdminID(Auth::user()->id);
         //Saving Company Information Block
         if ($request->form_type == "company_details_saved") {
             $this->validate($request, [

@@ -36,6 +36,7 @@
                 <!--begin::Row-->
                 <div class="row">
                     <div class="col-lg-4">
+
                         <!--begin::Mixed Widget 1-->
                         <div class="row">
                             <div class="col-lg-12">
@@ -163,9 +164,11 @@
                                                     </span>
                                                     @enderror
                                                 </div>
+                                                @if($company_details && $company_details->company_logo)
                                                 <div>
                                                     <img src="{{$company_details->company_logo}}" width="150">
                                                 </div>
+                                                    @endif
                                             </div>
                                         </div>
                                         <div class="card-footer">

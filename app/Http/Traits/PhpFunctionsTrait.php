@@ -27,4 +27,18 @@ trait PhpFunctionsTrait {
     public function convertDateTimeToDbFormat($datetime){
         return Carbon::parse($datetime)->format('Y-m-d H:i');
     }
+    public function convertDateTimeToDbFormatPlus1($datetime){
+        return Carbon::parse($datetime)->addMinute(1)->format('Y-m-d H:i');
+    }
+
+    public function makeTitleForCalender($from_time,$to_time,$status){
+        $title  = Carbon::parse($from_time)->format('H:i')." - ".Carbon::parse($to_time)->format('H:i');
+        return $status == 0 ? $title." (Deleted)" :$title;
+    }
+    public function convertAndParseToISOString($date){
+        $dateC = Carbon::parse($date)->toDateString();
+        $time = Carbon::parse($date)->format('H:i');
+        return $dateC.'T'.$time;
+    }
+
 }

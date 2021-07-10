@@ -28,7 +28,11 @@
             <!--begin::Container-->
             <div class="container">
                 <!--begin::Dashboard-->
-
+                @if (session('message'))
+                    <div class="alert alert-{{session('message')['class']}}" role="alert">
+                        <span  class="alert-text"><strong>{{strtoupper(session('message')['class'])}}!</strong> {{session('message')['result']}}</span>
+                    </div>
+                @endif
                 <form method="post" action="{{route('update_guard')}}" enctype="multipart/form-data">
                     @csrf
                 <!--begin::Row-->

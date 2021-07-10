@@ -51,9 +51,9 @@ Vue.component('schedule-component', require('./components/schedule/ScheduleCompo
  */
 
 //Axios URL
-axios.defaults.baseURL="http://localhost:8000";
+//axios.defaults.baseURL="http://localhost:8000";
 //Production AXios URL
-//axios.defaults.baseURL="https://dev.tapnact.com";
+axios.defaults.baseURL="https://guard.cybermeteors.com/";
 
 
 //Routes
