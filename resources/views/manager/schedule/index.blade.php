@@ -39,7 +39,8 @@
                         <schedule-component :clients="{{$clients}}"/>
                     </div>
                     <div class="col-lg-9 col-md-9">
-                        <router-view :time_zone="{{$company_details->company_time_zone ?? "America/Edmonton"}}" :guards="{{$guards}}" :key="$route.params.id"></router-view>
+
+                        <router-view time_zone="{{$company_details->company_time_zone ?? "America/Edmonton"}}" :guards="{{$guards}}" :key="$route.params.id"></router-view>
                     </div>
                 </div>
                 <!--end::Row-->

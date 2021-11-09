@@ -26,7 +26,9 @@ class Schedule extends Model
         'title',
         'start',
         'end',
-        'class_name'];
+        'class_name',
+        'only_date',
+        'only_hours'];
 
     public function guards(){
         return $this->belongsTo(Guard::class,'guard_id','id');
@@ -71,5 +73,14 @@ class Schedule extends Model
 
     public function getClassNameAttribute(){
         return $this->makeCalenderClassColors($this->getLocalFromDateTimeAttribute(),$this->getLocalToDateTimeAttribute(),$this->status);
+    }
+
+    public function getOnlyDateAttribute(){
+        return Carbon::parse($this->getIsoLocalFromDateTimeAttribute())->toFormattedDateString();
+    }
+
+    public function getOnlyHoursAttribute(){
+        $total_duration = $this->getIsoLocalToDateTimeAttribute()->diffInSeconds($this->getIsoLocalFromDateTimeAttribute());
+        return gmdate('H:i:s', $total_duration);
     }
 }

@@ -109,11 +109,12 @@
                 self.showSlider = true;
                 console.log('EVENT - '+JSON.stringify(clickInfo.event))
                 self.view_schedule = clickInfo.event;
-                self.$refs.view_schedule.view_schedule_method(clickInfo.event);
+                self.$refs.view_schedule.view_schedule_method(clickInfo.event,'calender');
             },
             get_schedules_for_guard(month){
                 console.log("Month "+ month);
                 let self = this;
+                self.calendarOptions.events = [];
                 var params = {
                     client_id : this.$route.params.id,
                     month:month

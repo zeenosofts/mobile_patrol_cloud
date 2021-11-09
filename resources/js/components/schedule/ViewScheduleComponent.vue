@@ -83,15 +83,25 @@
             closeSlider(){
                 this.$emit('closeSlider',false);
             },
-            view_schedule_method(data){
+            view_schedule_method(data,method){
                 //console.log(JSON.stringify(data))
-                this.from_date_time = data.extendedProps.local_from_date_time;
-                this.to_date_time = data.extendedProps.local_to_date_time;
-                this.instructions = data.extendedProps.instructions;
-                this.client = data.extendedProps.client;
-                this.guard = data.extendedProps.guard;
-                this.id = data.id;
-                this.show_button = moment(this.to_date_time).isAfter(moment())
+                if(method == 'action') {
+                    this.from_date_time = data.iso_local_from_date_time;
+                    this.to_date_time = data.iso_local_to_date_time;
+                    this.instructions = data.instructions;
+                    this.client = data.client;
+                    this.guard = data.guards;
+                    this.id = data.id;
+                    this.show_button = moment(this.to_date_time).isAfter(moment())
+                }else{
+                    this.from_date_time = data.extendedProps.local_from_date_time;
+                    this.to_date_time = data.extendedProps.local_to_date_time;
+                    this.instructions = data.extendedProps.instructions;
+                    this.client = data.extendedProps.client;
+                    this.guard = data.extendedProps.guard;
+                    this.id = data.id;
+                    this.show_button = moment(this.to_date_time).isAfter(moment())
+                }
             },
             saveSchedule(){
                 console.log('from_time --' + this.from_date_time);

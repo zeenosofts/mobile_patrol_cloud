@@ -51,10 +51,14 @@ Vue.component('schedule-component', require('./components/schedule/ScheduleCompo
  */
 
 //Axios URL
-//axios.defaults.baseURL="http://localhost:8000";
+axios.defaults.baseURL="http://localhost:8000";
 //Production AXios URL
-axios.defaults.baseURL="https://guard.cybermeteors.com/";
+//axios.defaults.baseURL="https://guard.cybermeteors.com/";
+//Data Table
 
+import { VuejsDatatableFactory} from 'vuejs-datatable';
+import 'vuejs-datatable/dist/themes/bootstrap-4.esm'
+Vue.use(VuejsDatatableFactory);
 
 //Routes
 const routes = [ ///

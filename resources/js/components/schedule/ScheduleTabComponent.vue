@@ -25,7 +25,7 @@
                         <div class="card-body">
                             <div class="tab-content">
                                 <div class="tab-pane fade show active" id="calender" role="tabpanel">
-                                    <component :guards="guards" :is="component_name"></component>
+                                    <component :guards="guards" :time_zone="time_zone" :is="component_name"></component>
                                 </div>
                             </div>
                         </div>
@@ -43,7 +43,7 @@
     import CalenderTable from './CalenderComponent.vue'
     import AllSchedulesComponent from './AllScheduleComponent.vue'
     export default {
-        props:['guards'],
+        props:['guards','time_zone'],
         components:{CalenderTable,AllSchedulesComponent},
         data()
         {
