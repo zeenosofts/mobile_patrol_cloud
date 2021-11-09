@@ -23,7 +23,7 @@
                             <label v-if="row.status == 0" class="label label-default label-lg label-inline">Deleted</label>
                         </td>
                         <td>
-                            <a @click="actions(index)" class="label label-primary label-lg label-inline">Action</a>
+                            <a @click="actions(row.id)" class="label label-primary label-lg label-inline">Action</a>
                         </td>
                     </tr>
                 </template>
@@ -96,8 +96,12 @@
             actions(index){
                 let self = this;
                 self.showSlider = true;
-                self.view_schedule = self.schedules[index];
-                self.$refs.view_schedule.view_schedule_method(self.schedules[index],'action');
+                var schedule = self.schedules.filter(item => item.id == index);
+                if(schedule.length > 0) {
+                    console.log(schedule, 'scccccc');
+                    self.view_schedule = schedule[0];
+                    self.$refs.view_schedule.view_schedule_method(schedule[0], 'action');
+                }
             },
             closeSlider(){
                 this.showSlider = false;

@@ -17302,8 +17302,15 @@ __webpack_require__.r(__webpack_exports__);
     actions: function actions(index) {
       var self = this;
       self.showSlider = true;
-      self.view_schedule = self.schedules[index];
-      self.$refs.view_schedule.view_schedule_method(self.schedules[index], 'action');
+      var schedule = self.schedules.filter(function (item) {
+        return item.id == index;
+      });
+
+      if (schedule.length > 0) {
+        console.log(schedule, 'scccccc');
+        self.view_schedule = schedule[0];
+        self.$refs.view_schedule.view_schedule_method(schedule[0], 'action');
+      }
     },
     closeSlider: function closeSlider() {
       this.showSlider = false;
@@ -88453,7 +88460,7 @@ var render = function() {
                               "label label-primary label-lg label-inline",
                             on: {
                               click: function($event) {
-                                return _vm.actions(index)
+                                return _vm.actions(row.id)
                               }
                             }
                           },
