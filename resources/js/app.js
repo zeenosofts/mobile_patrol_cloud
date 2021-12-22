@@ -43,6 +43,7 @@ Vue.use(VueToast, {
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('schedule-component', require('./components/schedule/ScheduleComponent.vue').default);
+Vue.component('form-component', require('./components/form/AddFormComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -51,7 +52,7 @@ Vue.component('schedule-component', require('./components/schedule/ScheduleCompo
  */
 
 //Axios URL
-axios.defaults.baseURL="http://localhost:8000";
+axios.defaults.baseURL="http://127.0.0.1:8000/";
 //Production AXios URL
 //axios.defaults.baseURL="https://guard.cybermeteors.com/";
 //Data Table

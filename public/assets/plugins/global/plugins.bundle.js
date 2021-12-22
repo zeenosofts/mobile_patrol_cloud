@@ -18010,7 +18010,7 @@ $.fn.timepicker.defaults = $.extend(true, {}, $.fn.timepicker.defaults, {
           appendToParent: false, // append the indicator to the input field's parent instead of body
           twoCharLinebreak: true, // count linebreak as 2 characters to match IE/Chrome textarea validation. As well as DB storage.
           customMaxAttribute: null, // null = use maxlength attribute and browser functionality, string = use specified attribute instead.
-          allowOverMax: false, // Form submit validation is handled on your own.  when maxlength has been exceeded 'overmax' class added to element
+          allowOverMax: false, // form submit validation is handled on your own.  when maxlength has been exceeded 'overmax' class added to element
           zIndex: 1099
         };
 

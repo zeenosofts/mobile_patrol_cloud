@@ -300,6 +300,35 @@
                                 </ul>
                             </div>
                         </li>
+                        <li class="menu-item menu-item-submenu {{\Request::is('*form*') ? 'menu-item-open' : ''}}" aria-haspopup="true" data-menu-toggle="hover">
+                            <a href="javascript:;" class="menu-link menu-toggle">
+										<span class="svg-icon menu-icon">
+											<!--begin::Svg Icon | path:assets/media/svg/icons/Design/Bucket.svg-->
+											<i class="fa fa-clock"></i>
+                                            <!--end::Svg Icon-->
+										</span>
+                                <span class="menu-text">Form</span>
+                                <i class="menu-arrow"></i>
+                            </a>
+                            <div class="menu-submenu">
+                                <i class="menu-arrow"></i>
+                                <ul class="menu-subnav">
+                                    <li class="menu-item menu-item-parent" aria-haspopup="true">
+												<span class="menu-link">
+													<span class="menu-text">Form</span>
+												</span>
+                                    </li>
+                                    <li class="menu-item {{Route::currentRouteName() == 'form' ? 'menu-item-active' : ''}}" aria-haspopup="true">
+                                        <a href="{{route('form')}}" class="menu-link">
+                                            <i class="menu-bullet menu-bullet-dot">
+                                                <span></span>
+                                            </i>
+                                            <span class="menu-text">Create Form</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
                         <li class="menu-section">
                             <h4 class="menu-text">Settings</h4>
                             <i class="menu-icon ki ki-bold-more-hor icon-md"></i>

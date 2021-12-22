@@ -98,7 +98,6 @@
                 self.showSlider = true;
                 var schedule = self.schedules.filter(item => item.id == index);
                 if(schedule.length > 0) {
-                    console.log(schedule, 'scccccc');
                     self.view_schedule = schedule[0];
                     self.$refs.view_schedule.view_schedule_method(schedule[0], 'action');
                 }
