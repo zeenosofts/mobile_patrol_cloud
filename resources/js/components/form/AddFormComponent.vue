@@ -1,12 +1,24 @@
 <template>
-    <div class="row">
-        <div class="col-8">
+    <div class="row ">
+        <div class="col-8 p-5" style="background-color: white" >
             <!--<h3>Create Form</h3>-->
-            <div class="form-group">
-                <label>Form Name</label>
-                <input type="text" class="form-control"/>
-                <label>Form Description</label>
-                <input type="text" class="form-control"/>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Form Name</label>
+                        <input type="text" v-model="form_name" class="form-control"/>
+                        <span v-show="errors.form_name"
+                              class="help-block">Please enter a form name</span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Form Description</label>
+                        <input type="text" v-model="description" class="form-control"/>
+                        <span v-show="errors.description"
+                              class="help-block">Please enter a description</span>
+                    </div>
+                </div>
             </div>
 
             <label>Dynamic Form</label>
@@ -56,7 +68,9 @@
                     </div>
                 </div>
             </draggable>
-            <button class="btn btn-success"> Create Form</button>
+            <span v-show="errors.form_element"
+                  class="help-block">Please add atleast one element</span>
+            <button class="btn btn-success mt-5" @click="created_at"> Create Form</button>
         </div>
         <div class="col-4">
             <h3>Fixed Input</h3>
@@ -75,6 +89,7 @@
 <script>
     import draggable from "vuedraggable";
     import EditElementComponent from "./EditElementComponent.vue";
+    import HelperController from './../../controller/HelperController';
 
     export default {
         name: "clone",
@@ -85,6 +100,9 @@
         },
         data() {
             return {
+                form_name : '',
+                description : '',
+                errors : {form_name:false,description:false,form_element:false},
                 showSlider:false,
                 element_list: [
                     {name: "text", id: 1, label : "Enter Text" , required : "true" , placeholder : "Enter Text" },
@@ -97,6 +115,36 @@
             };
         },
         methods: {
+            created_at(){
+                let self=this;
+                if (self.form_name.trim() == ''){self.errors.form_name = true;return false;}else {self.errors.form_name = false}
+                if (self.description.trim() == ''){self.errors.description = true;return false;}else {self.errors.description = false}
+                if (self.form_element_list.length == '0'){self.errors.form_element = true;return false;}else {self.errors.form_element = false}
+
+                var params = {
+                    form_name:self.form_name,
+                    description:self.description,
+                    form_element:self.form_element_list,
+                }
+                Promise.resolve(HelperController.sendPOSTRequest('save_form',params)).then( response => {
+                    console.log("@");
+                    if(response.data.message == 'success'){
+                        Vue.$toast.success(response.data.data.response);
+                    }
+                    if(response.data.message == 'warning'){
+                        Vue.$toast.warning(response.data.data.response);
+                    }
+
+
+                    this.$emit('methodcreateScheduleButtonClicked')
+
+                }).catch(function(error){
+                    console.log(error);
+                });
+
+
+
+            },
             removeAt(idx) {
                 let self = this;
                 self.form_element_list.splice(idx, 1);
@@ -125,4 +173,9 @@
         }
     };
 </script>
-<style scoped></style>
+<style scoped>
+    .help-block{
+        color:red !important;
+        text-align: left !important;
+    }
+</style>

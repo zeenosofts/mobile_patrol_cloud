@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Traits\FormTrait;
+use App\Http\Traits\ResponseTrait;
 use App\Models\Client;
 use Illuminate\Http\Request;
 
 class FormController extends Controller
 {
+    use FormTrait,ResponseTrait;
     /**
      * Display a listing of the resource.
      *
@@ -23,9 +26,22 @@ class FormController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function save_form(Request $request)
     {
-        //
+    try{
+        $form_element_array = array();
+        for ($i=0;$i<count($request->form_element);$i++){
+            $decode_data=json_decode($request->form_element[$i]);
+            array_push($form_element_array,$decode_data);
+        }
+        this
+
+        return $this->returnApiResponse(200, 'success', array('response' => 'Shifts Created Successfully'));
+            }catch (\Exception $e){
+    return $this->returnApiResponse(404, 'error', array());
+    }
+
+
     }
 
     /**

@@ -76,8 +76,8 @@ Route::group(['middleware' => 'auth'], function () {
     #------------------------Manager Accounts ----------Create Dynamic formbuilder----------------#
     Route::get('manager/form/{any?}', [App\Http\Controllers\FormController::class, 'index'])
         ->name('form')->where('any', '[\/\w\.-]*')->middleware('role:manager');
-//    Route::post('save_schedule', [App\Http\Controllers\Manager\ScheduleController::class, 'save_schedule'])
-//        ->name('save_schedule')->middleware('role:manager');
+    Route::post('save_form', [App\Http\Controllers\FormController::class, 'save_form'])
+        ->name('save_form')->middleware('role:manager');
 //    Route::post('get_schedules_for_guard', [App\Http\Controllers\Manager\ScheduleController::class, 'get_schedules_for_guard'])
 //        ->name('get_schedules_for_guard')->middleware('role:manager');
 //    Route::post('update_schedule', [App\Http\Controllers\Manager\ScheduleController::class, 'update_schedule'])
