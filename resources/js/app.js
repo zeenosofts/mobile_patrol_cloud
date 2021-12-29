@@ -71,6 +71,14 @@ const routes = [ ///
         name:'schedule-tab',
         component: require('./components/schedule/ScheduleTabComponent.vue').default
     },
+    { path: '/manager/form',
+        name:'manager-add-form',
+        component: require('./components/form/AddFormComponent.vue').default
+    },
+    { path: '/manager/form/edit/:id/:hash',
+        name:'manager-edit-form',
+        component: require('./components/form/EditFormComponent.vue').default
+    },
 ];
 const router = new VueRouter({
     mode: 'history',

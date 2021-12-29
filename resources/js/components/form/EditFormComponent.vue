@@ -70,7 +70,7 @@
             </draggable>
             <span v-show="errors.form_element"
                   class="help-block">Please add atleast one element</span>
-            <button class="btn btn-success mt-5" @click="created_at"> Create Form</button>
+            <button class="btn btn-success mt-5" @click="updated_at"> Update Form</button>
         </div>
         <div class="col-4">
             <h3>Elements</h3>
@@ -78,13 +78,11 @@
                        style="background-color: gainsboro; padding: 20px" @change="log">
                 <div class="list-group-item mb-2" v-for="element in element_list" :key="element.name">
                     {{ element.name }}
-                    <!--<label>Enter {{element.name}} Field</label>-->
-                    <!--<input :type="element.name" class="form-control"/>-->
                 </div>
             </draggable>
         </div>
 
-     <EditElementComponent @closeSlider="closeSlider" ref="edit_element" :showSlider="showSlider" @editElement="editElement"></EditElementComponent>
+        <EditElementComponent @closeSlider="closeSlider" ref="edit_element" :showSlider="showSlider" @editElement="editElement"></EditElementComponent>
     </div>
 </template>
 
@@ -104,6 +102,7 @@
             return {
                 form_name : '',
                 description : '',
+                id : '',
                 errors : {form_name:false,description:false,form_element:false},
                 showSlider:false,
                 element_list: [
@@ -116,8 +115,33 @@
                 form_element_list: []
             };
         },
+        mounted(){
+            let self=this;
+            self.get_value();
+        },
         methods: {
-            created_at(){
+            get_value(){
+                let self=this;
+                let id=self.$route.params.id
+
+                Promise.resolve(HelperController.sendGetRequest('manager/get/form/'+id)).then( response => {
+                    if(response.data != ''){
+                        self.form_name=response.data.name;
+                        self.description=response.data.description;
+                        self.id=response.data.id;
+                        self.form_element_list=JSON.parse(response.data.form_element);
+
+                    }
+                    if(response.data.message == 'warning'){
+                        Vue.$toast.warning(response.data.data.response);
+                    }
+                }).catch(function(error){
+                    console.log(error);
+                });
+
+
+            },
+            updated_at(){
                 let self=this;
                 if (self.form_name.trim() == ''){self.errors.form_name = true;return false;}else {self.errors.form_name = false}
                 if (self.description.trim() == ''){self.errors.description = true;return false;}else {self.errors.description = false}
@@ -127,17 +151,17 @@
                     form_name:self.form_name,
                     description:self.description,
                     form_element:self.form_element_list,
+                    id:self.id,
                 }
-                Promise.resolve(HelperController.sendPOSTRequest('save_form',params)).then( response => {
+                console.log(params);
+                Promise.resolve(HelperController.sendPOSTRequest('update_form',params)).then( response => {
+
                     if(response.data.message == 'success'){
                         Vue.$toast.success(response.data.data.response);
                     }
                     if(response.data.message == 'warning'){
                         Vue.$toast.warning(response.data.data.response);
                     }
-
-
-                    this.$emit('methodcreateScheduleButtonClicked')
 
                 }).catch(function(error){
                     console.log(error);

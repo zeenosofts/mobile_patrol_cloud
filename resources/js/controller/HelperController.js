@@ -38,11 +38,11 @@ export default {
         var ReturnResponse;
         await axios.get(request)
             .then((response) => {
-                console.log(response.data);
-                console.log(response.status);
-                console.log(response.statusText);
-                console.log(response.headers);
-                console.log(response.config);
+                // console.log(response.data);
+                // console.log(response.status);
+                // console.log(response.statusText);
+                // console.log(response.headers);
+                // console.log(response.config);
                 ReturnResponse =  response;
             }).catch(function (response) {
                 // handle error

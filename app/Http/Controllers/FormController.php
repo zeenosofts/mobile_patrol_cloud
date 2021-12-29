@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Traits\FormTrait;
 use App\Http\Traits\ResponseTrait;
 use App\Models\Client;
+use App\Models\Form;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FormController extends Controller
 {
@@ -17,6 +19,7 @@ class FormController extends Controller
      */
     public function index()
     {
+        //dd("2");
         $clients=Client::all();
         return view('manager.form.index')->with('title','Create form');
     }
@@ -28,20 +31,23 @@ class FormController extends Controller
      */
     public function save_form(Request $request)
     {
-    try{
-        $form_element_array = array();
-        for ($i=0;$i<count($request->form_element);$i++){
-            $decode_data=json_decode($request->form_element[$i]);
-            array_push($form_element_array,$decode_data);
+        try {
+            $form_element_array = array();
+            for ($i = 0; $i < count($request->form_element); $i++) {
+                $decode_data = json_decode($request->form_element[$i]);
+                array_push($form_element_array, $decode_data);
+            }
+
+            $checkDuplication = $this->checkIfFormNameExists(Auth::user()->id,$request->form_name);
+            if($checkDuplication == true) {
+            $this->create_form(Auth::user()->id, $request->form_name, $request->description, $form_element_array);
+            return $this->returnApiResponse(200, 'success', array('response' => 'Form Created Successfully'));
+            }else{
+                return $this->returnApiResponse(200, 'warning', array('response' => 'Form Name Alrready Presenet.'));
+            }
+        } catch (\Exception $e) {
+            return $this->returnApiResponse(404, 'error', array());
         }
-        this
-
-        return $this->returnApiResponse(200, 'success', array('response' => 'Shifts Created Successfully'));
-            }catch (\Exception $e){
-    return $this->returnApiResponse(404, 'error', array());
-    }
-
-
     }
 
     /**
@@ -50,9 +56,10 @@ class FormController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function manage_form()
     {
-        //
+        $form=Form::where('user_id',Auth::user()->id)->paginate(2);
+        return view('manager.form.manage',compact('form'))->with('title','Manage Form');
     }
 
     /**
@@ -61,9 +68,11 @@ class FormController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function get_form($id)
     {
-        //
+        $form=Form::where('id',$id)->first();
+        return $form;
+
     }
 
     /**
@@ -72,9 +81,20 @@ class FormController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function update_form(Request $request)
     {
-        //
+        try {
+            $form_element_array = array();
+            for ($i = 0; $i < count($request->form_element); $i++) {
+                $decode_data = json_decode($request->form_element[$i]);
+                array_push($form_element_array, $decode_data);
+            }
+            $this->update_forms($request->id, $request->form_name, $request->description, $form_element_array);
+            return $this->returnApiResponse(200, 'success', array('response' => 'Form Updated Successfully'));
+        } catch (\Exception $e) {
+            return $this->returnApiResponse(404, 'error', array());
+        }
+
     }
 
     /**

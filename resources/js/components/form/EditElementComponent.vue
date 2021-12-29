@@ -33,7 +33,7 @@
                                 <span></span></label></span>
                         </div>
                         <br>
-                        <div class="form-group" v-if="name == 'radio' || 'select' ">
+                        <div class="form-group" v-if="name == 'radio' || name == 'select' ">
                             <label class="text-primary">Element Options</label><br>
                             <div class="form-group"  v-for="elementOption in option">
                                 <input type="text" v-model="elementOption.name" class="form-control" />

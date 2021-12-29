@@ -36,7 +36,7 @@
             <!--begin::Row-->
                 <div class="row" id="app">
                     <div class="col-lg-12 col-md-12">
-                        <form-component/>
+                       <router-view></router-view>
                     </div>
                 </div>
             </div>

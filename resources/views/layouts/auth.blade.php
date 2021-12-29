@@ -323,7 +323,15 @@
                                             <i class="menu-bullet menu-bullet-dot">
                                                 <span></span>
                                             </i>
-                                            <span class="menu-text">Create Form</span>
+                                            <span class="menu-text">Add Form</span>
+                                        </a>
+                                    </li>
+                                    <li class="menu-item {{Route::currentRouteName() == 'manage_form' ? 'menu-item-active' : ''}}" aria-haspopup="true">
+                                        <a href="{{route('manage_form')}}" class="menu-link">
+                                            <i class="menu-bullet menu-bullet-dot">
+                                                <span></span>
+                                            </i>
+                                            <span class="menu-text">Manage Form</span>
                                         </a>
                                     </li>
                                 </ul>

@@ -17084,6 +17084,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 
@@ -17186,8 +17188,6 @@ __webpack_require__.r(__webpack_exports__);
         form_element: self.form_element_list
       };
       Promise.resolve(_controller_HelperController__WEBPACK_IMPORTED_MODULE_2__.default.sendPOSTRequest('save_form', params)).then(function (response) {
-        console.log("@");
-
         if (response.data.message == 'success') {
           Vue.$toast.success(response.data.data.response);
         }
@@ -17350,6 +17350,275 @@ __webpack_require__.r(__webpack_exports__);
         id: add_value,
         name: "option " + add_value
       });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form/EditFormComponent.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form/EditFormComponent.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var vuedraggable__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuedraggable */ "./node_modules/vuedraggable/dist/vuedraggable.umd.js");
+/* harmony import */ var vuedraggable__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vuedraggable__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _EditElementComponent_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EditElementComponent.vue */ "./resources/js/components/form/EditElementComponent.vue");
+/* harmony import */ var _controller_HelperController__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../../controller/HelperController */ "./resources/js/controller/HelperController.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: "clone",
+  display: "Clone",
+  order: 2,
+  components: {
+    draggable: (vuedraggable__WEBPACK_IMPORTED_MODULE_0___default()),
+    EditElementComponent: _EditElementComponent_vue__WEBPACK_IMPORTED_MODULE_1__.default
+  },
+  data: function data() {
+    return {
+      form_name: '',
+      description: '',
+      id: '',
+      errors: {
+        form_name: false,
+        description: false,
+        form_element: false
+      },
+      showSlider: false,
+      element_list: [{
+        name: "text",
+        id: 1,
+        label: "Enter Text",
+        required: "true",
+        placeholder: "Enter Text"
+      }, {
+        name: "number",
+        id: 2,
+        label: "Enter Number",
+        required: "true",
+        placeholder: "Enter Number"
+      }, {
+        name: "date",
+        id: 3,
+        label: "Enter Date",
+        required: "true",
+        placeholder: "Enter Date"
+      }, {
+        name: "radio",
+        id: 4,
+        label: "Enter Text",
+        required: "true",
+        placeholder: "Enter Text",
+        option: [{
+          id: 1,
+          name: "option 1"
+        }, {
+          id: 2,
+          name: "option 2"
+        }]
+      }, {
+        name: "select",
+        id: 5,
+        label: "Enter Text",
+        required: "true",
+        placeholder: "Enter Text",
+        option: [{
+          id: 1,
+          name: "option 1"
+        }, {
+          id: 2,
+          name: "option 2"
+        }]
+      }],
+      form_element_list: []
+    };
+  },
+  mounted: function mounted() {
+    var self = this;
+    self.get_value();
+  },
+  methods: {
+    get_value: function get_value() {
+      var self = this;
+      var id = self.$route.params.id;
+      Promise.resolve(_controller_HelperController__WEBPACK_IMPORTED_MODULE_2__.default.sendGetRequest('manager/get/form/' + id)).then(function (response) {
+        if (response.data != '') {
+          self.form_name = response.data.name;
+          self.description = response.data.description;
+          self.id = response.data.id;
+          self.form_element_list = JSON.parse(response.data.form_element);
+        }
+
+        if (response.data.message == 'warning') {
+          Vue.$toast.warning(response.data.data.response);
+        }
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    updated_at: function updated_at() {
+      var self = this;
+
+      if (self.form_name.trim() == '') {
+        self.errors.form_name = true;
+        return false;
+      } else {
+        self.errors.form_name = false;
+      }
+
+      if (self.description.trim() == '') {
+        self.errors.description = true;
+        return false;
+      } else {
+        self.errors.description = false;
+      }
+
+      if (self.form_element_list.length == '0') {
+        self.errors.form_element = true;
+        return false;
+      } else {
+        self.errors.form_element = false;
+      }
+
+      var params = {
+        form_name: self.form_name,
+        description: self.description,
+        form_element: self.form_element_list,
+        id: self.id
+      };
+      console.log(params);
+      Promise.resolve(_controller_HelperController__WEBPACK_IMPORTED_MODULE_2__.default.sendPOSTRequest('update_form', params)).then(function (response) {
+        if (response.data.message == 'success') {
+          Vue.$toast.success(response.data.data.response);
+        }
+
+        if (response.data.message == 'warning') {
+          Vue.$toast.warning(response.data.data.response);
+        }
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    removeAt: function removeAt(idx) {
+      var self = this;
+      self.form_element_list.splice(idx, 1);
+    },
+    editElement: function editElement(data) {
+      var index_id = data.id;
+      var form_element_list = this.form_element_list[index_id];
+      form_element_list.label = data.label;
+      form_element_list.placeholder = data.placeholder;
+      form_element_list.required = data.required;
+      console.log('child data', data);
+    },
+    editAt: function editAt(idx) {
+      var self = this;
+      self.showSlider = true;
+      var object = self.form_element_list[idx];
+      console.log(object);
+      self.$refs.edit_element.view_edit_element(object, idx);
+    },
+    closeSlider: function closeSlider() {
+      this.showSlider = false;
+    },
+    log: function log(evt) {
+      window.console.log(evt);
     }
   }
 });
@@ -18361,6 +18630,14 @@ var routes = [///
   path: '/manager/schedule/:id/:name',
   name: 'schedule-tab',
   component: __webpack_require__(/*! ./components/schedule/ScheduleTabComponent.vue */ "./resources/js/components/schedule/ScheduleTabComponent.vue").default
+}, {
+  path: '/manager/form',
+  name: 'manager-add-form',
+  component: __webpack_require__(/*! ./components/form/AddFormComponent.vue */ "./resources/js/components/form/AddFormComponent.vue").default
+}, {
+  path: '/manager/form/edit/:id/:hash',
+  name: 'manager-edit-form',
+  component: __webpack_require__(/*! ./components/form/EditFormComponent.vue */ "./resources/js/components/form/EditFormComponent.vue").default
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__.default({
   mode: 'history',
@@ -18497,11 +18774,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             case 0:
               _context2.next = 2;
               return axios.get(request).then(function (response) {
-                console.log(response.data);
-                console.log(response.status);
-                console.log(response.statusText);
-                console.log(response.headers);
-                console.log(response.config);
+                // console.log(response.data);
+                // console.log(response.status);
+                // console.log(response.statusText);
+                // console.log(response.headers);
+                // console.log(response.config);
                 ReturnResponse = response;
               })["catch"](function (response) {
                 // handle error
@@ -23129,6 +23406,30 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, "\nlabel[data-v-d7228d4a]{\n    margin-bottom: 0;\n}\n", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form/EditFormComponent.vue?vue&type=style&index=0&id=1b437fe2&scoped=true&lang=css&":
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form/EditFormComponent.vue?vue&type=style&index=0&id=1b437fe2&scoped=true&lang=css& ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "\n.help-block[data-v-1b437fe2]{\n    color:red !important;\n    text-align: left !important;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -89314,6 +89615,36 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form/EditFormComponent.vue?vue&type=style&index=0&id=1b437fe2&scoped=true&lang=css&":
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form/EditFormComponent.vue?vue&type=style&index=0&id=1b437fe2&scoped=true&lang=css& ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_EditFormComponent_vue_vue_type_style_index_0_id_1b437fe2_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./EditFormComponent.vue?vue&type=style&index=0&id=1b437fe2&scoped=true&lang=css& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form/EditFormComponent.vue?vue&type=style&index=0&id=1b437fe2&scoped=true&lang=css&");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_EditFormComponent_vue_vue_type_style_index_0_id_1b437fe2_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__.default, options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_EditFormComponent_vue_vue_type_style_index_0_id_1b437fe2_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/schedule/AddScheduleComponent.vue?vue&type=style&index=0&lang=css&":
 /*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/schedule/AddScheduleComponent.vue?vue&type=style&index=0&lang=css& ***!
@@ -91415,6 +91746,47 @@ component.options.__file = "resources/js/components/form/EditElementComponent.vu
 
 /***/ }),
 
+/***/ "./resources/js/components/form/EditFormComponent.vue":
+/*!************************************************************!*\
+  !*** ./resources/js/components/form/EditFormComponent.vue ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _EditFormComponent_vue_vue_type_template_id_1b437fe2_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EditFormComponent.vue?vue&type=template&id=1b437fe2&scoped=true& */ "./resources/js/components/form/EditFormComponent.vue?vue&type=template&id=1b437fe2&scoped=true&");
+/* harmony import */ var _EditFormComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EditFormComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/form/EditFormComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var _EditFormComponent_vue_vue_type_style_index_0_id_1b437fe2_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./EditFormComponent.vue?vue&type=style&index=0&id=1b437fe2&scoped=true&lang=css& */ "./resources/js/components/form/EditFormComponent.vue?vue&type=style&index=0&id=1b437fe2&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+;
+
+
+/* normalize component */
+
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__.default)(
+  _EditFormComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _EditFormComponent_vue_vue_type_template_id_1b437fe2_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
+  _EditFormComponent_vue_vue_type_template_id_1b437fe2_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  "1b437fe2",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/form/EditFormComponent.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/schedule/AddScheduleComponent.vue":
 /*!*******************************************************************!*\
   !*** ./resources/js/components/schedule/AddScheduleComponent.vue ***!
@@ -91746,6 +92118,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/form/EditFormComponent.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/components/form/EditFormComponent.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EditFormComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./EditFormComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form/EditFormComponent.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EditFormComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
 /***/ "./resources/js/components/schedule/AddScheduleComponent.vue?vue&type=script&lang=js&":
 /*!********************************************************************************************!*\
   !*** ./resources/js/components/schedule/AddScheduleComponent.vue?vue&type=script&lang=js& ***!
@@ -91884,6 +92272,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/form/EditFormComponent.vue?vue&type=style&index=0&id=1b437fe2&scoped=true&lang=css&":
+/*!*********************************************************************************************************************!*\
+  !*** ./resources/js/components/form/EditFormComponent.vue?vue&type=style&index=0&id=1b437fe2&scoped=true&lang=css& ***!
+  \*********************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_EditFormComponent_vue_vue_type_style_index_0_id_1b437fe2_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader/dist/cjs.js!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./EditFormComponent.vue?vue&type=style&index=0&id=1b437fe2&scoped=true&lang=css& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form/EditFormComponent.vue?vue&type=style&index=0&id=1b437fe2&scoped=true&lang=css&");
+
+
+/***/ }),
+
 /***/ "./resources/js/components/schedule/AddScheduleComponent.vue?vue&type=style&index=0&lang=css&":
 /*!****************************************************************************************************!*\
   !*** ./resources/js/components/schedule/AddScheduleComponent.vue?vue&type=style&index=0&lang=css& ***!
@@ -91996,6 +92397,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditElementComponent_vue_vue_type_template_id_d7228d4a_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditElementComponent_vue_vue_type_template_id_d7228d4a_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./EditElementComponent.vue?vue&type=template&id=d7228d4a&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form/EditElementComponent.vue?vue&type=template&id=d7228d4a&scoped=true&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/form/EditFormComponent.vue?vue&type=template&id=1b437fe2&scoped=true&":
+/*!*******************************************************************************************************!*\
+  !*** ./resources/js/components/form/EditFormComponent.vue?vue&type=template&id=1b437fe2&scoped=true& ***!
+  \*******************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditFormComponent_vue_vue_type_template_id_1b437fe2_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditFormComponent_vue_vue_type_template_id_1b437fe2_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditFormComponent_vue_vue_type_template_id_1b437fe2_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./EditFormComponent.vue?vue&type=template&id=1b437fe2&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form/EditFormComponent.vue?vue&type=template&id=1b437fe2&scoped=true&");
 
 
 /***/ }),
@@ -92464,7 +92882,7 @@ var render = function() {
         "div",
         { staticClass: "col-4" },
         [
-          _c("h3", [_vm._v("Fixed Input")]),
+          _c("h3", [_vm._v("Elements")]),
           _vm._v(" "),
           _c(
             "draggable",
@@ -92485,7 +92903,7 @@ var render = function() {
                   _vm._v(
                     "\n                " +
                       _vm._s(element.name) +
-                      "\n            "
+                      "\n                "
                   )
                 ]
               )
@@ -92687,7 +93105,7 @@ var render = function() {
                   _vm._v(" "),
                   _c("br"),
                   _vm._v(" "),
-                  _vm.name == "radio" || "select"
+                  _vm.name == "radio" || _vm.name == "select"
                     ? _c(
                         "div",
                         { staticClass: "form-group" },
@@ -92772,6 +93190,351 @@ var staticRenderFns = [
     ])
   }
 ]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form/EditFormComponent.vue?vue&type=template&id=1b437fe2&scoped=true&":
+/*!**********************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form/EditFormComponent.vue?vue&type=template&id=1b437fe2&scoped=true& ***!
+  \**********************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "row " },
+    [
+      _c(
+        "div",
+        {
+          staticClass: "col-8 p-5",
+          staticStyle: { "background-color": "white" }
+        },
+        [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-md-6" }, [
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", [_vm._v("Form Name")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.form_name,
+                      expression: "form_name"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text" },
+                  domProps: { value: _vm.form_name },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.form_name = $event.target.value
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.errors.form_name,
+                        expression: "errors.form_name"
+                      }
+                    ],
+                    staticClass: "help-block"
+                  },
+                  [_vm._v("Please enter a form name")]
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-6" }, [
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", [_vm._v("Form Description")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.description,
+                      expression: "description"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text" },
+                  domProps: { value: _vm.description },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.description = $event.target.value
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.errors.description,
+                        expression: "errors.description"
+                      }
+                    ],
+                    staticClass: "help-block"
+                  },
+                  [_vm._v("Please enter a description")]
+                )
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("label", [_vm._v("Dynamic Form")]),
+          _vm._v(" "),
+          _c(
+            "draggable",
+            {
+              staticClass: "dragArea list-group",
+              staticStyle: { "background-color": "gainsboro", padding: "20px" },
+              attrs: { list: _vm.form_element_list, group: "people" },
+              on: { change: _vm.log }
+            },
+            [
+              _vm.form_element_list == ""
+                ? _c("div", [_c("p", [_vm._v("Drag over here")])])
+                : _vm._l(_vm.form_element_list, function(element, idx) {
+                    return _c(
+                      "div",
+                      {
+                        key: element.name,
+                        staticClass: "list-group-item mb-2"
+                      },
+                      [
+                        _c("div", { staticClass: "row" }, [
+                          element.name == "text"
+                            ? _c("div", { staticClass: "col-md-11" }, [
+                                _c("label", [_vm._v(_vm._s(element.label))]),
+                                _vm._v(" "),
+                                _c("input", {
+                                  staticClass: "form-control",
+                                  attrs: {
+                                    type: "text",
+                                    placeholder: element.placeholder
+                                  }
+                                })
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          element.name == "number"
+                            ? _c("div", { staticClass: "col-md-11" }, [
+                                _c("label", [_vm._v(_vm._s(element.label))]),
+                                _vm._v(" "),
+                                _c("input", {
+                                  staticClass: "form-control",
+                                  attrs: {
+                                    type: "number",
+                                    placeholder: "Enter Number"
+                                  }
+                                })
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          element.name == "date"
+                            ? _c("div", { staticClass: "col-md-11" }, [
+                                _c("label", [_vm._v(_vm._s(element.label))]),
+                                _vm._v(" "),
+                                _c("input", {
+                                  staticClass: "form-control",
+                                  attrs: {
+                                    type: "date",
+                                    placeholder: "Enter Date"
+                                  }
+                                })
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          element.name == "radio"
+                            ? _c("div", { staticClass: "col-md-11" }, [
+                                _c("div", { staticClass: "form-group" }, [
+                                  _c("label", [_vm._v(_vm._s(element.label))]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "radio-inline" },
+                                    _vm._l(element.option, function(option) {
+                                      return _c(
+                                        "label",
+                                        { staticClass: "radio" },
+                                        [
+                                          _c("input", {
+                                            attrs: {
+                                              type: "radio",
+                                              name: "gender"
+                                            }
+                                          }),
+                                          _vm._v(
+                                            _vm._s(option.name) +
+                                              "\n                                    "
+                                          ),
+                                          _c("span")
+                                        ]
+                                      )
+                                    }),
+                                    0
+                                  )
+                                ])
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          element.name == "select"
+                            ? _c("div", { staticClass: "col-md-11" }, [
+                                _c("div", { staticClass: "form-group" }, [
+                                  _c("label", [_vm._v(_vm._s(element.label))]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "select",
+                                    {
+                                      staticClass: "form-control",
+                                      attrs: { id: "exampleSelect1" }
+                                    },
+                                    _vm._l(element.option, function(option) {
+                                      return _c("option", [
+                                        _vm._v(_vm._s(option.name))
+                                      ])
+                                    }),
+                                    0
+                                  )
+                                ])
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-md-1 " }, [
+                            _c("i", {
+                              staticClass: "fa fa-pencil-alt mt-12",
+                              on: {
+                                click: function($event) {
+                                  return _vm.editAt(idx)
+                                }
+                              }
+                            }),
+                            _vm._v(
+                              "\n                           \n                        "
+                            ),
+                            _c("i", {
+                              staticClass: "fa fa-times mt-9",
+                              on: {
+                                click: function($event) {
+                                  return _vm.removeAt(idx)
+                                }
+                              }
+                            })
+                          ])
+                        ])
+                      ]
+                    )
+                  })
+            ],
+            2
+          ),
+          _vm._v(" "),
+          _c(
+            "span",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.errors.form_element,
+                  expression: "errors.form_element"
+                }
+              ],
+              staticClass: "help-block"
+            },
+            [_vm._v("Please add atleast one element")]
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-success mt-5",
+              on: { click: _vm.updated_at }
+            },
+            [_vm._v(" Update Form")]
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "col-4" },
+        [
+          _c("h3", [_vm._v("Elements")]),
+          _vm._v(" "),
+          _c(
+            "draggable",
+            {
+              staticClass: "dragArea list-group",
+              staticStyle: { "background-color": "gainsboro", padding: "20px" },
+              attrs: {
+                list: _vm.element_list,
+                group: { name: "people", pull: "clone", put: false }
+              },
+              on: { change: _vm.log }
+            },
+            _vm._l(_vm.element_list, function(element) {
+              return _c(
+                "div",
+                { key: element.name, staticClass: "list-group-item mb-2" },
+                [
+                  _vm._v(
+                    "\n                " +
+                      _vm._s(element.name) +
+                      "\n            "
+                  )
+                ]
+              )
+            }),
+            0
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("EditElementComponent", {
+        ref: "edit_element",
+        attrs: { showSlider: _vm.showSlider },
+        on: { closeSlider: _vm.closeSlider, editElement: _vm.editElement }
+      })
+    ],
+    1
+  )
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
