@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::get('/test', function () {
+   dd("2");
+});
+
+Route::get('/login', [App\Http\Controllers\Api\LoginController::class, 'index'])->name('login');
+Route::middleware('auth:api', function () {
 });
