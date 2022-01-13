@@ -12,6 +12,7 @@ trait FormTrait {
         $save = new Form();
         $save->user_id = $user_id;
         $save->name = $form_name;
+        $save->slug = \Str::slug($form_name);
         $save->description = $description;
         $save->form_element = json_encode($form_element);
         $save->save();

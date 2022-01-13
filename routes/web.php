@@ -86,8 +86,23 @@ Route::group(['middleware' => 'auth'], function () {
         ->name('get_form')->middleware('role:manager');
     Route::post('update_form', [App\Http\Controllers\FormController::class, 'update_form'])
         ->name('update_form')->middleware('role:manager');
-//    Route::post('get_schedules_for_guard', [App\Http\Controllers\Manager\ScheduleController::class, 'get_schedules_for_guard'])
-//        ->name('get_schedules_for_guard')->middleware('role:manager');
-//    Route::post('update_schedule', [App\Http\Controllers\Manager\ScheduleController::class, 'update_schedule'])
-//        ->name('update_schedule')->middleware('role:manager');
+
+
+    #--------------------Manager Accounts --------------- Manage Attendance Guard --------------------#
+    Route::get('manager/manage/attendance/guard', [App\Http\Controllers\Manager\AttendanceController::class, 'index'])
+        ->name('manage_attendance')->where('any', '[\/\w\.-]*')->middleware('role:manager');
+    Route::get('manager/attendance/guard/{id}/{hash}', [App\Http\Controllers\Manager\AttendanceController::class, 'view_attendance'])
+        ->name('view_attendance')->where('any', '[\/\w\.-]*')->middleware('role:manager');
+    Route::get('manager/attendance/guard/time/{id}/{date}/{hash}', [App\Http\Controllers\Manager\AttendanceController::class, 'view_timing'])
+        ->name('view_timing')->where('any', '[\/\w\.-]*')->middleware('role:manager');
+    Route::get('manager/edit/attendance/guard/time/{id}/{hash}', [App\Http\Controllers\Manager\AttendanceController::class, 'edit_timing'])
+        ->name('edit_timing')->where('any', '[\/\w\.-]*')->middleware('role:manager');
+    Route::get('manager/create/attendance/guard/{id}', [App\Http\Controllers\Manager\AttendanceController::class, 'attendance'])
+        ->name('attendance')->where('any', '[\/\w\.-]*')->middleware('role:manager');
+    Route::post('manager/save/attendance/guard', [App\Http\Controllers\Manager\AttendanceController::class, 'save_guard_attendance'])
+        ->name('save_guard_attendance')->middleware('role:manager');
+
+
+
+
 });

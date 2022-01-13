@@ -37,8 +37,8 @@ class ComposerStaticInit98ae86f1bb53d1b671014e94cab28b46
         '8825ede83f2f289127722d4e842cf7e8' => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme/bootstrap.php',
         '9cdd7b9056abc3081735233ba9dd9c7f' => __DIR__ . '/..' . '/facade/flare-client-php/src/helpers.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
-        'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
         'decc78cc4436b1292c6c0d151b19445c' => __DIR__ . '/..' . '/phpseclib/phpseclib/phpseclib/bootstrap.php',
+        'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
         'ed962a97bd972bc82007176b647d4e36' => __DIR__ . '/..' . '/facade/ignition/src/helpers.php',
         '377b22b161c09ed6e5152de788ca020a' => __DIR__ . '/..' . '/spatie/laravel-permission/src/helpers.php',
     );
@@ -188,7 +188,9 @@ class ComposerStaticInit98ae86f1bb53d1b671014e94cab28b46
         ),
         'C' => 
         array (
+            'Cviebrock\\EloquentSluggable\\' => 28,
             'Cron\\' => 5,
+            'Cocur\\Slugify\\' => 14,
             'Carbon\\' => 7,
         ),
         'B' => 
@@ -572,9 +574,17 @@ class ComposerStaticInit98ae86f1bb53d1b671014e94cab28b46
         array (
             0 => __DIR__ . '/..' . '/dasprid/enum/src',
         ),
+        'Cviebrock\\EloquentSluggable\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/cviebrock/eloquent-sluggable/src',
+        ),
         'Cron\\' => 
         array (
             0 => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron',
+        ),
+        'Cocur\\Slugify\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/cocur/slugify/src',
         ),
         'Carbon\\' => 
         array (
@@ -612,6 +622,7 @@ class ComposerStaticInit98ae86f1bb53d1b671014e94cab28b46
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\AccountsController' => __DIR__ . '/../..' . '/app/Http/Controllers/AccountsController.php',
+        'App\\Http\\Controllers\\Api\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/LoginController.php',
         'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
@@ -621,6 +632,7 @@ class ComposerStaticInit98ae86f1bb53d1b671014e94cab28b46
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\FormController' => __DIR__ . '/../..' . '/app/Http/Controllers/FormController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
+        'App\\Http\\Controllers\\Manager\\AttendanceController' => __DIR__ . '/../..' . '/app/Http/Controllers/Manager/AttendanceController.php',
         'App\\Http\\Controllers\\Manager\\CheckpointController' => __DIR__ . '/../..' . '/app/Http/Controllers/Manager/CheckpointController.php',
         'App\\Http\\Controllers\\Manager\\ClientController' => __DIR__ . '/../..' . '/app/Http/Controllers/Manager/ClientController.php',
         'App\\Http\\Controllers\\Manager\\GuardController' => __DIR__ . '/../..' . '/app/Http/Controllers/Manager/GuardController.php',
@@ -648,6 +660,7 @@ class ComposerStaticInit98ae86f1bb53d1b671014e94cab28b46
         'App\\Http\\Traits\\ScheduleTrait' => __DIR__ . '/../..' . '/app/Http/Traits/ScheduleTrait.php',
         'App\\Http\\Traits\\TimeFormatsTrait' => __DIR__ . '/../..' . '/app/Http/Traits/TimeFormatsTrait.php',
         'App\\Models\\Admin' => __DIR__ . '/../..' . '/app/Models/Admin.php',
+        'App\\Models\\Attendance' => __DIR__ . '/../..' . '/app/Models/Attendance.php',
         'App\\Models\\Checkpoint' => __DIR__ . '/../..' . '/app/Models/Checkpoint.php',
         'App\\Models\\Client' => __DIR__ . '/../..' . '/app/Models/Client.php',
         'App\\Models\\CompanySetting' => __DIR__ . '/../..' . '/app/Models/CompanySetting.php',
@@ -812,6 +825,25 @@ class ComposerStaticInit98ae86f1bb53d1b671014e94cab28b46
         'Carbon\\Traits\\Units' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Traits/Units.php',
         'Carbon\\Traits\\Week' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Traits/Week.php',
         'Carbon\\Translator' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Translator.php',
+        'Cocur\\Slugify\\Bridge\\Laravel\\SlugifyFacade' => __DIR__ . '/..' . '/cocur/slugify/src/Bridge/Laravel/SlugifyFacade.php',
+        'Cocur\\Slugify\\Bridge\\Laravel\\SlugifyServiceProvider' => __DIR__ . '/..' . '/cocur/slugify/src/Bridge/Laravel/SlugifyServiceProvider.php',
+        'Cocur\\Slugify\\Bridge\\Latte\\SlugifyHelper' => __DIR__ . '/..' . '/cocur/slugify/src/Bridge/Latte/SlugifyHelper.php',
+        'Cocur\\Slugify\\Bridge\\League\\SlugifyServiceProvider' => __DIR__ . '/..' . '/cocur/slugify/src/Bridge/League/SlugifyServiceProvider.php',
+        'Cocur\\Slugify\\Bridge\\Nette\\SlugifyExtension' => __DIR__ . '/..' . '/cocur/slugify/src/Bridge/Nette/SlugifyExtension.php',
+        'Cocur\\Slugify\\Bridge\\Plum\\SlugifyConverter' => __DIR__ . '/..' . '/cocur/slugify/src/Bridge/Plum/SlugifyConverter.php',
+        'Cocur\\Slugify\\Bridge\\Symfony\\CocurSlugifyBundle' => __DIR__ . '/..' . '/cocur/slugify/src/Bridge/Symfony/CocurSlugifyBundle.php',
+        'Cocur\\Slugify\\Bridge\\Symfony\\CocurSlugifyExtension' => __DIR__ . '/..' . '/cocur/slugify/src/Bridge/Symfony/CocurSlugifyExtension.php',
+        'Cocur\\Slugify\\Bridge\\Symfony\\Configuration' => __DIR__ . '/..' . '/cocur/slugify/src/Bridge/Symfony/Configuration.php',
+        'Cocur\\Slugify\\Bridge\\Twig\\SlugifyExtension' => __DIR__ . '/..' . '/cocur/slugify/src/Bridge/Twig/SlugifyExtension.php',
+        'Cocur\\Slugify\\Bridge\\ZF2\\Module' => __DIR__ . '/..' . '/cocur/slugify/src/Bridge/ZF2/Module.php',
+        'Cocur\\Slugify\\Bridge\\ZF2\\SlugifyService' => __DIR__ . '/..' . '/cocur/slugify/src/Bridge/ZF2/SlugifyService.php',
+        'Cocur\\Slugify\\Bridge\\ZF2\\SlugifyViewHelper' => __DIR__ . '/..' . '/cocur/slugify/src/Bridge/ZF2/SlugifyViewHelper.php',
+        'Cocur\\Slugify\\Bridge\\ZF2\\SlugifyViewHelperFactory' => __DIR__ . '/..' . '/cocur/slugify/src/Bridge/ZF2/SlugifyViewHelperFactory.php',
+        'Cocur\\Slugify\\RuleProvider\\DefaultRuleProvider' => __DIR__ . '/..' . '/cocur/slugify/src/RuleProvider/DefaultRuleProvider.php',
+        'Cocur\\Slugify\\RuleProvider\\FileRuleProvider' => __DIR__ . '/..' . '/cocur/slugify/src/RuleProvider/FileRuleProvider.php',
+        'Cocur\\Slugify\\RuleProvider\\RuleProviderInterface' => __DIR__ . '/..' . '/cocur/slugify/src/RuleProvider/RuleProviderInterface.php',
+        'Cocur\\Slugify\\Slugify' => __DIR__ . '/..' . '/cocur/slugify/src/Slugify.php',
+        'Cocur\\Slugify\\SlugifyInterface' => __DIR__ . '/..' . '/cocur/slugify/src/SlugifyInterface.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'Cron\\AbstractField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/AbstractField.php',
         'Cron\\CronExpression' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/CronExpression.php',
@@ -823,6 +855,11 @@ class ComposerStaticInit98ae86f1bb53d1b671014e94cab28b46
         'Cron\\HoursField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/HoursField.php',
         'Cron\\MinutesField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/MinutesField.php',
         'Cron\\MonthField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/MonthField.php',
+        'Cviebrock\\EloquentSluggable\\ServiceProvider' => __DIR__ . '/..' . '/cviebrock/eloquent-sluggable/src/ServiceProvider.php',
+        'Cviebrock\\EloquentSluggable\\Services\\SlugService' => __DIR__ . '/..' . '/cviebrock/eloquent-sluggable/src/Services/SlugService.php',
+        'Cviebrock\\EloquentSluggable\\Sluggable' => __DIR__ . '/..' . '/cviebrock/eloquent-sluggable/src/Sluggable.php',
+        'Cviebrock\\EloquentSluggable\\SluggableObserver' => __DIR__ . '/..' . '/cviebrock/eloquent-sluggable/src/SluggableObserver.php',
+        'Cviebrock\\EloquentSluggable\\SluggableScopeHelpers' => __DIR__ . '/..' . '/cviebrock/eloquent-sluggable/src/SluggableScopeHelpers.php',
         'DASPRiD\\Enum\\AbstractEnum' => __DIR__ . '/..' . '/dasprid/enum/src/AbstractEnum.php',
         'DASPRiD\\Enum\\EnumMap' => __DIR__ . '/..' . '/dasprid/enum/src/EnumMap.php',
         'DASPRiD\\Enum\\Exception\\CloneNotSupportedException' => __DIR__ . '/..' . '/dasprid/enum/src/Exception/CloneNotSupportedException.php',

@@ -17,6 +17,7 @@ class CreateFormsTable extends Migration
             $table->id();
             $table->integer('user_id');
             $table->string('name');
+            $table->string('slug')->unique();
             $table->string('description');
             $table->json('form_element');
             $table->timestamps();

@@ -43,6 +43,7 @@ class ScheduleController extends Controller
         try{
             $admin_id = $this->getAdminID(Auth::user()->id);
             $from_date_time = $this->convertDateTimeToDbFormat($request->from_date_time);
+            dd($request->from_date_time."  ". $from_date_time);
             $to_date_time = $this->convertDateTimeToDbFormat($request->to_date_time);
             if($request->repeat == 'false'){
                 //Check 1 Same Date

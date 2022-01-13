@@ -7,7 +7,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 trait ScheduleTrait {
-    use PhpFunctionsTrait;
+    use PhpFunctionsTrait, CompanySettingTrait;
     public function create_schedule($admin_id,$client_id,$guard_id,$from_date_time,$to_date_time,$instructions){
         $save = new Schedule();
         $save->admin_id = $admin_id;

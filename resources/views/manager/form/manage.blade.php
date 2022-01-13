@@ -42,7 +42,7 @@
                             <div class="card-header border-0  py-5">
                                 <h3 class="card-title font-weight-bolder">{{$title}}</h3>
                                 <div class="card-toolbar">
-                                    <a class="btn btn-primary" href="{{route('create_guard')}}">Add Guard</a>
+                                    <a class="btn btn-primary" href="{{route('form')}}">Add Form</a>
                                 </div>
                             </div>
                             <!--end::Header-->

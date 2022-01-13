@@ -37,7 +37,6 @@ class FormController extends Controller
                 $decode_data = json_decode($request->form_element[$i]);
                 array_push($form_element_array, $decode_data);
             }
-
             $checkDuplication = $this->checkIfFormNameExists(Auth::user()->id,$request->form_name);
             if($checkDuplication == true) {
             $this->create_form(Auth::user()->id, $request->form_name, $request->description, $form_element_array);
