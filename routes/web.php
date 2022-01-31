@@ -101,6 +101,8 @@ Route::group(['middleware' => 'auth'], function () {
         ->name('attendance')->where('any', '[\/\w\.-]*')->middleware('role:manager');
     Route::post('manager/save/attendance/guard', [App\Http\Controllers\Manager\AttendanceController::class, 'save_guard_attendance'])
         ->name('save_guard_attendance')->middleware('role:manager');
+    Route::post('manager/edit/attendance/guard', [App\Http\Controllers\Manager\AttendanceController::class, 'edit_guard_attendance'])
+        ->name('edit_guard_attendance')->middleware('role:manager');
 
 
 

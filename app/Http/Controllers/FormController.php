@@ -42,7 +42,7 @@ class FormController extends Controller
             $this->create_form(Auth::user()->id, $request->form_name, $request->description, $form_element_array);
             return $this->returnApiResponse(200, 'success', array('response' => 'Form Created Successfully'));
             }else{
-                return $this->returnApiResponse(200, 'warning', array('response' => 'Form Name Alrready Presenet.'));
+            return $this->returnApiResponse(200, 'warning', array('response' => 'Form Name Alrready Presenet.'));
             }
         } catch (\Exception $e) {
             return $this->returnApiResponse(404, 'error', array());

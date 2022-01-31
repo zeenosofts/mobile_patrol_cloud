@@ -925,6 +925,8 @@
 {{--<script src="{{URL::asset('assets/js/pages/crud/forms/widgets/bootstrap-timepicker.js?v=7.0.3')}}"></script>--}}
 <script src="{{URL::asset('assets/js/pages/crud/forms/widgets/bootstrap-switch.js?v=7.0.3')}}"></script>
 
+<script src="{{URL::asset('assets/js/pages/crud/forms/widgets/bootstrap-datepicker.js?v=7.0.3')}}"></script>
+
 <script>
     $('.kt_datatable').dataTable({ "paging": false });
     var input = document.querySelector(".telephone");
@@ -941,8 +943,8 @@
     $('.datepicker_field').datepicker({
         startDate: '-0d'
     });
+    $.fn.datetimepicker.defaults.format = "yyyy-mm-dd hh:mm";
     $('.kt_datetimepicker_2').datetimepicker({
-//        defaultDate: localDatetime,
     });
 </script>
 @yield('script')

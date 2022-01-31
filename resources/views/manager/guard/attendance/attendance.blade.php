@@ -54,16 +54,19 @@
                                         <thead>
                                         <tr>
                                             <th>Date</th>
+                                            <th>Hours</th>
                                             <th>Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($attendance as $g)
+                                        @foreach($attendance as $a)
                                             <tr>
-                                                <td>{{$g->date}}</td>
+                                                <td>{{$a->date}}</td>
+                                                <td>{{$a->local_time}}</td>
                                                 <td>
-                                                    <a href="{{route('view_timing',['id' => $g->guard_id,'hash' => md5($g->guard_id),'date' => $g->date])}}" class="btn btn-warning btn-sm"><i class="fa fa-edit fa-1x"></i></a>
+                                                    <a href="{{route('view_timing',['id' => $a->guard_id,'hash' => md5($a->guard_id),'date' => $a->date])}}" class="btn btn-warning btn-sm"><i class="fa fa-edit fa-1x"></i></a>
                                                 </td>
+
                                             </tr>
                                         @endforeach
                                         </tbody>
@@ -72,7 +75,7 @@
                             </div>
                             <div class="card-footer">
                                 <div class="float-right">
-                                    {{$attendance->links('vendor.pagination.bootstrap-4')}}
+                                    {{--{{$attendance->links('vendor.pagination.bootstrap-4')}}--}}
                                 </div>
                             </div>
 

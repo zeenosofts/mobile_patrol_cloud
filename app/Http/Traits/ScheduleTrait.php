@@ -92,4 +92,8 @@ trait ScheduleTrait {
         $datetime->setTimezone($company_details->company_time_zone);
         return $datetime;
     }
+    public function convertDateToHtmlFormat($date){
+        $date=Carbon::parse($date)->format('m/d/Y');
+        return $date;
+    }
 }

@@ -17,7 +17,7 @@ class CreateAttendancesTable extends Migration
             $table->id();
             $table->integer('guard_id');
             $table->dateTime('time_in');
-            $table->dateTime('time_out');
+            $table->dateTime('time_out')->nullable();
             $table->date('date');
             $table->timestamps();
         });

@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Traits\CompanySettingTrait;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
 {
+    use CompanySettingTrait;
     /**
      * Create a new controller instance.
      *
@@ -23,6 +27,8 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $timezome=$this->getCompanyDetails(Auth::user()->id);
+        Session::put('timezone',$timezome->company_time_zone);
         return view('home')->with('title','Dashboard');
     }
 }

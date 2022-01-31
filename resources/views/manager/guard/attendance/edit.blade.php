@@ -34,10 +34,7 @@
                     </div>
                 @endif
                 @foreach($attendance as $a)
-                    <?php
-                        dd($a->id);
-                            ?>
-                <form method="post" action="{{route('save_guard_attendance')}}" enctype="multipart/form-data">
+                <form method="post" action="{{route('edit_guard_attendance')}}" enctype="multipart/form-data">
                     @csrf
                     <!--begin::Row-->
                     <div class="row">
@@ -60,11 +57,11 @@
                                                 <div class="col-lg-6">
                                                     <div class="form-group">
                                                         <label>Time In</label>
-                                                        <input type="datetime-local" name="time_in" required
-                                                               class="form-control @error('time_in') is-invalid @enderror"
-                                                               value="{{$a->id}}">
-                                                        <input value="{{request('id')}}" name="id" type="hidden">
-                                                        <input type="hidden" name="timezone" id="timezone">
+                                                        <input type="text" name="time_in" required
+                                                               class="form-control  @error('time_in') is-invalid @enderror"
+                                                               value="{{$a->local_time_in}}" id="kt_1">
+                                                        <input value="{{$a->id}}" name="id" type="hidden">
+                                                        <input type="hidden" name="timezone" id="timezone" value="{{$timezone}}">
                                                         @error('time_in')
                                                         <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -75,9 +72,9 @@
                                                 <div class="col-lg-6">
                                                     <div class="form-group">
                                                         <label>Time In</label>
-                                                        <input type="datetime-local" name="time_out" required
+                                                        <input type="text" name="time_out" required
                                                                class="form-control @error('time_out') is-invalid @enderror"
-                                                               value="{{old('time_out')}}">
+                                                               value="{{$a->local_time_out}}" id="kt">
                                                         @error('time_out')
                                                         <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -86,13 +83,14 @@
                                                     </div>
                                                 </div>
                                             </div>
+
                                             <div class="row">
                                                 <div class="col-lg-6">
                                                     <div class="form-group">
                                                         <label>Date</label>
-                                                        <input type="date" name="date" required
+                                                        <input type="text" name="date" required
                                                                class="form-control @error('date') is-invalid @enderror"
-                                                               value="{{old('date')}}">
+                                                               value="{{$a->local_date}}" id="kt_datepicker_4_3">
                                                         @error('date')
                                                         <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -105,7 +103,7 @@
                                         </div>
 
                                         <div class="card-footer">
-                                            <button type="submit" class="btn btn-primary">Create</button>
+                                            <button type="submit" class="btn btn-primary">Update</button>
                                         </div>
                                     </div>
                                     <!--end::Body-->
@@ -124,6 +122,17 @@
     </div>
 @endsection
 @section('script')
-    @include('timezone')
+    <script>
+        $(document).ready(function () {
+            var timezone=$('.timezone').val();
+            moment.tz.setDefault(timezone);
+            var setDate = moment();
+            $("#kt_1").datetimepicker({
+            });
+            $("#kt").datetimepicker({
+            });
+
+        });
+    </script>
 @endsection
 
