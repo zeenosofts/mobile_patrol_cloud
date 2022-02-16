@@ -21,6 +21,9 @@ class ScheduleController extends Controller
             $query->where('guard_id',$guard->id);
         })->with(array('client','guards'))->whereDate('from_date_time',$request->date)->get();
         return $this->returnApiResponse(200, 'success', array('response' => 'Schedule fetched Successfully','schedules' => $schedules));
+    }
+
+    public function index(){
 
     }
 }
