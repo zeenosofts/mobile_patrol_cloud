@@ -16,7 +16,7 @@ class ScheduleController extends Controller
 
     public function get_guard_schedules(Request $request){
         try{
-            dd(json_decode($request->date)."    ".$request->date);
+            return $request->date;
         $guard = $this->get_guard_table_row($request->user()->id);
         $schedules = Schedule::whereHas('guards',function ($query) use ($guard){
             $query->where('guard_id',$guard->id);
