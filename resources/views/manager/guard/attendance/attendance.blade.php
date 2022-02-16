@@ -42,7 +42,7 @@
                             <div class="card-header border-0  py-5">
                                 <h3 class="card-title font-weight-bolder">{{$title}}</h3>
                                 <div class="card-toolbar">
-                                    <a class="btn btn-primary" href="{{route('attendance',['id'=>$guard_id])}}">Add Attendance</a>
+                                    <a class="btn btn-primary" href="{{route('attendance',['id'=>$user_id])}}">Add Attendance</a>
                                 </div>
                             </div>
                             <!--end::Header-->
@@ -64,7 +64,7 @@
                                                 <td>{{$a->date}}</td>
                                                 <td>{{$a->local_time}}</td>
                                                 <td>
-                                                    <a href="{{route('view_timing',['id' => $a->guard_id,'hash' => md5($a->guard_id),'date' => $a->date])}}" class="btn btn-warning btn-sm"><i class="fa fa-edit fa-1x"></i></a>
+                                                    <a href="{{route('view_timing',['id' => $a->user_id,'hash' => md5($a->user_id),'date' => $a->date])}}" class="btn btn-warning btn-sm"><i class="fa fa-edit fa-1x"></i></a>
                                                 </td>
 
                                             </tr>

@@ -4,6 +4,7 @@ namespace App\Http\Traits;
 
 use App\Models\Admin;
 use App\Models\CompanySetting;
+use App\Models\Guard;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use function Symfony\Component\String\s;
@@ -66,5 +67,10 @@ trait AccountsTrait {
 
     public function attach_role_to_user($user,$role_name){
         $user->assignRole($role_name);
+    }
+
+    public function get_guard_table_row($user_id){
+        $guard = Guard::where('user_id',$user_id)->first();
+        return $guard;
     }
 }

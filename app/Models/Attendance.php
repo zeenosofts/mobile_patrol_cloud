@@ -13,6 +13,11 @@ class Attendance extends Model
 
     public $appends = ['local_time_in', 'local_time_out','local_time','local_date'];
 
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
+
     public function getLocalTimeInAttribute(){
         return $this->convertWithRespectToTimeZone($this->time_in);
     }
@@ -20,7 +25,7 @@ class Attendance extends Model
         return $this->convertWithRespectToTimeZone($this->time_out);
     }
     public function getLocalTimeAttribute(){
-        return $this->calculateTimeAttendance($this->guard_id,$this->date);
+        return $this->calculateTimeAttendance($this->user_id,$this->date);
     }
     public function getLocalDateAttribute(){
         return $this->convertDateToHtmlFormat($this->date);

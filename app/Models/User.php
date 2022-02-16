@@ -55,4 +55,7 @@ class User extends Authenticatable
     public function isClient(){
         return $this->hasOne(Client::class);
     }
+    public function isAttendance(){
+        return $this->hasMany(Attendance::class);
+    }
 }

@@ -27,8 +27,11 @@ class HomeController extends Controller
      */
     public function index()
     {
+
         $timezome=$this->getCompanyDetails(Auth::user()->id);
+        if ($timezome != ""){
         Session::put('timezone',$timezome->company_time_zone);
+        }
         return view('home')->with('title','Dashboard');
     }
 }

@@ -18,6 +18,11 @@ Route::get('/test', function () {
    dd("2");
 });
 
-Route::get('/login', [App\Http\Controllers\Api\LoginController::class, 'index'])->name('login');
-Route::middleware('auth:api', function () {
+Route::post('/login', [App\Http\Controllers\Api\LoginController::class, 'index'])->name('login');
+
+//Route::post('/form',[\App\Http\Controllers\Api\LoginController::class,'form'])->name('form')->middleware('auth:api');
+
+Route::middleware(['auth:api','cors'])->group(function () {
+   // Route::post('/form',[\App\Http\Controllers\Api\LoginController::class,'form'])->name('form');
+    Route::post('get_guard_schedules',[\App\Http\Controllers\Api\ScheduleController::class,'get_guard_schedules'])->name('get_guard_schedules');
 });

@@ -4,8 +4,11 @@ namespace App\Http\Traits;
 
 use App\Models\Guard;
 use App\Models\GuardAvailable;
+use Illuminate\Support\Facades\Auth;
 
 trait GuardTrait {
+
+    use CompanySettingTrait;
 
     public function save_as_guard($admin_id,$user_id,$guard_name,$guard_email,$guard_license_id,$guard_phone,
                                   $guard_type,$per_hour,$work_availability,$available_start_date,$guard_license_expiry,$driving_license_image,$photo_id_image, $driving_license,
@@ -89,5 +92,15 @@ trait GuardTrait {
     public function work_available(){
         $available = array('Full Time','Part Time','Temporary');
         return $available;
+    }
+
+    public function showAdminGuard(){
+        $admin_id = $this->getAdminID(Auth::user()->id);
+        $guards = Guard::whereHas('admin',function ($query) use ($admin_id){
+            $query->where('admin_id',$admin_id);
+        })->whereHas('user',function ($query) {
+            $query->where('status',1);
+        })->with(array('admin','user'))->paginate(15);
+        return $guards;
     }
 }

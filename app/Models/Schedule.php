@@ -44,19 +44,19 @@ class Schedule extends Model
     //Carbon::parse($request->ShootDateTime)->timezone('America/Los_Angeles');
 
     public function getLocalFromDateTimeAttribute(){
-        return $this->convertDateTimeToDbFormat($this->convertWithRespectToTimeZone($this->from_date_time));
+        return $this->convertDateTimeToDbFormat($this->convertWithRespectToTimeZone($this->from_date_time,$this->admin_id));
     }
 
     public function getLocalToDateTimeAttribute(){
-        return $this->convertDateTimeToDbFormat($this->convertWithRespectToTimeZone($this->to_date_time));
+        return $this->convertDateTimeToDbFormat($this->convertWithRespectToTimeZone($this->to_date_time,$this->admin_id));
     }
 
     public function getIsoLocalFromDateTimeAttribute(){
-        return $this->convertWithRespectToTimeZone($this->from_date_time);
+        return $this->convertWithRespectToTimeZone($this->from_date_time,$this->admin_id);
     }
 
     public function getIsoLocalToDateTimeAttribute(){
-        return $this->convertWithRespectToTimeZone($this->to_date_time);
+        return $this->convertWithRespectToTimeZone($this->to_date_time,$this->admin_id);
     }
 
     public function getTitleAttribute(){

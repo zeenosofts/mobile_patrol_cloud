@@ -89,20 +89,30 @@ Route::group(['middleware' => 'auth'], function () {
 
 
     #--------------------Manager Accounts --------------- Manage Attendance Guard --------------------#
-    Route::get('manager/manage/attendance/guard', [App\Http\Controllers\Manager\AttendanceController::class, 'index'])
+    Route::get('manager/manage/attendance', [App\Http\Controllers\Manager\AttendanceController::class, 'index'])
         ->name('manage_attendance')->where('any', '[\/\w\.-]*')->middleware('role:manager');
-    Route::get('manager/attendance/guard/{id}/{hash}', [App\Http\Controllers\Manager\AttendanceController::class, 'view_attendance'])
+    Route::get('manager/attendance/{id}/{hash}', [App\Http\Controllers\Manager\AttendanceController::class, 'view_attendance'])
         ->name('view_attendance')->where('any', '[\/\w\.-]*')->middleware('role:manager');
     Route::get('manager/attendance/guard/time/{id}/{date}/{hash}', [App\Http\Controllers\Manager\AttendanceController::class, 'view_timing'])
         ->name('view_timing')->where('any', '[\/\w\.-]*')->middleware('role:manager');
-    Route::get('manager/edit/attendance/guard/time/{id}/{hash}', [App\Http\Controllers\Manager\AttendanceController::class, 'edit_timing'])
+    Route::get('manager/edit/attendance/time/{id}/{hash}', [App\Http\Controllers\Manager\AttendanceController::class, 'edit_timing'])
         ->name('edit_timing')->where('any', '[\/\w\.-]*')->middleware('role:manager');
-    Route::get('manager/create/attendance/guard/{id}', [App\Http\Controllers\Manager\AttendanceController::class, 'attendance'])
+    Route::get('manager/delete/attendance/time/{id}/{hash}', [App\Http\Controllers\Manager\AttendanceController::class, 'delete_timing'])
+        ->name('delete_timing')->where('any', '[\/\w\.-]*')->middleware('role:manager');
+    Route::get('manager/create/attendance/{id}', [App\Http\Controllers\Manager\AttendanceController::class, 'attendance'])
         ->name('attendance')->where('any', '[\/\w\.-]*')->middleware('role:manager');
-    Route::post('manager/save/attendance/guard', [App\Http\Controllers\Manager\AttendanceController::class, 'save_guard_attendance'])
+    Route::post('manager/save/attendance', [App\Http\Controllers\Manager\AttendanceController::class, 'save_guard_attendance'])
         ->name('save_guard_attendance')->middleware('role:manager');
-    Route::post('manager/edit/attendance/guard', [App\Http\Controllers\Manager\AttendanceController::class, 'edit_guard_attendance'])
+    Route::post('manager/edit/attendance', [App\Http\Controllers\Manager\AttendanceController::class, 'edit_guard_attendance'])
         ->name('edit_guard_attendance')->middleware('role:manager');
+
+
+
+    #--------------------Manager Accounts --------------- Manage Reports ------------------------------#
+    Route::get('manager/manage/report', [App\Http\Controllers\Manager\ReportController::class, 'index'])
+        ->name('manage_report')->middleware('role:manager');
+    Route::get('generate/pdf', [\App\Http\Controllers\Manager\ReportController::class, 'generatePDF'])->name('generate_attendance_pdf');
+
 
 
 

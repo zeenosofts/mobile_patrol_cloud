@@ -23,29 +23,36 @@ class AttendanceController extends Controller
         $admin_id = $this->getAdminID(Auth::user()->id);
         $guards = Guard::whereHas('admin', function ($query) use ($admin_id) {
             $query->where('admin_id', $admin_id);
+        })->whereHas('user', function ($query) use ($admin_id) {
+            $query->where('status', 1);
         })->with(array('admin', 'user'))->paginate(5);
         return view('manager.guard.attendance.manage', compact('guards'))->with('title', 'Manage Attendance');
     }
 
     public function view_attendance(Request $request)
     {
-        $guard_id = $request->id;
-        $attendance = Attendance::where('guard_id', $guard_id)->groupBy('date')->paginate(5);
-        return view('manager.guard.attendance.attendance', ['attendance' => $attendance, 'guard_id' => $guard_id])->with('title', 'Guard Attendance');
+        $user_id = $request->id;
+        $attendance = Attendance::where('user_id', $user_id)->where('status',1)->groupBy('date')->paginate(5);
+        return view('manager.guard.attendance.attendance', ['attendance' => $attendance, 'user_id' => $user_id])->with('title', 'Guard Attendance');
     }
 
     public function view_timing(Request $request)
     {
-        $guard_id = $request->id;
-        $attendance = Attendance::where('guard_id', $guard_id)->where('date', $request->date)->paginate(5);
-        return view('manager.guard.attendance.timing', ['attendance' => $attendance, 'guard_id' => $guard_id])->with('title', 'Guard Attendance');
+        $user_id = $request->id;
+        $attendance = Attendance::where('user_id', $user_id)->where('status',1)->where('date', $request->date)->paginate(5);
+        return view('manager.guard.attendance.timing', ['attendance' => $attendance, 'user_id' => $user_id])->with('title', 'Guard Attendance');
+    }
+
+    public function delete_timing(Request $request){
+        Attendance::where('id',$request->id)->update(['status' => 0]);
+        return back();
     }
 
     public function attendance(Request $request)
     {
-        $guard_id = $request->id;
+        $user_id = $request->id;
         $time_zone = Session::get('timezone');
-        return view('manager.guard.attendance.create', ['guard_id' => $guard_id, 'timezone' => $time_zone])->with('title', 'Create Attendance');
+        return view('manager.guard.attendance.create', ['user_id' => $user_id, 'timezone' => $time_zone])->with('title', 'Create Attendance');
     }
 
 

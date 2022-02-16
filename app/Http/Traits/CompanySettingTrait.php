@@ -106,5 +106,8 @@ trait CompanySettingTrait {
         return CompanySetting::where('admin_id',$admin_id)->first();
     }
 
+    public function getAdminCompanyDetails($admin_id){
+        return CompanySetting::where('admin_id',$admin_id)->first();
+    }
 
 }

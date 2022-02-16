@@ -42,7 +42,7 @@ $config = [
     'include_completed_languages' => true,
     // the reference files all the other translations are compared to
     'original_files' => [
-        'src/Symfony/Component/form/Resources/translations/validators.en.xlf',
+        'src/Symfony/Component/Form/Resources/translations/validators.en.xlf',
         'src/Symfony/Component/Security/Core/Resources/translations/security.en.xlf',
         'src/Symfony/Component/Validator/Resources/translations/validators.en.xlf',
     ],
