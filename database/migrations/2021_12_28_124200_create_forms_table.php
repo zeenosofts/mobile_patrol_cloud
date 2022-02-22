@@ -20,6 +20,7 @@ class CreateFormsTable extends Migration
             $table->string('slug')->unique();
             $table->string('description');
             $table->json('form_element');
+            $table->tinyInteger('status')->default(1);
             $table->timestamps();
         });
     }

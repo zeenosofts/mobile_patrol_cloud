@@ -22,7 +22,7 @@ class ScheduleController extends Controller
         })->with(array('client','guards'))->whereDate('from_date_time',$request->date)->get();
         return $this->returnApiResponse(200, 'success', array('response' => 'Schedule fetched Successfully','schedules' => $schedules));
         }catch(\Exception $e){
-            return $this->returnApiResponse($e->getMessage(),'danger');
+            return $this->returnApiResponse('301','danger',array('error'=>$e->getMessage()));
         }
     }
 

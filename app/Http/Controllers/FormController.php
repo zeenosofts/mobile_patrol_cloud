@@ -103,9 +103,13 @@ class FormController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function change_status(Request $request){
+        try {
+            $response = $this->change_form_status($request->form_id, $request->status);
+            return $this->returnApiResponse('200','Form Status Changed Successfully',$response);
+        }catch(\Exception $e){
+            return $this->returnApiResponse('404',$e->getMessage(),'');
+        }
     }
 
     /**

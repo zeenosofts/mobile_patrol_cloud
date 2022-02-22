@@ -86,6 +86,8 @@ Route::group(['middleware' => 'auth'], function () {
         ->name('get_form')->middleware('role:manager');
     Route::post('update_form', [App\Http\Controllers\FormController::class, 'update_form'])
         ->name('update_form')->middleware('role:manager');
+    Route::post('change/form/status', [App\Http\Controllers\FormController::class, 'change_status'])
+        ->name('change_form_status')->middleware('role:manager');
 
 
     #--------------------Manager Accounts --------------- Manage Attendance Guard --------------------#

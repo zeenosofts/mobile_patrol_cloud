@@ -55,6 +55,7 @@
                                         <tr>
                                             <th>Form Name</th>
                                             <th>Description</th>
+                                            <th>Activated</th>
                                             <th>Action</th>
                                         </tr>
                                         </thead>
@@ -63,9 +64,9 @@
                                             <tr>
                                                 <td>{{$g->name}}</td>
                                                 <td>{{$g->description}}</td>
+                                                <td><input {{$g->status == 1 ? "checked" : ""}} data-handle-width="70" data-switch="true" onchange="accountStatus('{{$g->id}}',event)" type="checkbox" data-on-text="Activated"  data-off-text="Disabled" data-on-color="primary" /></td>
                                                 <td>
                                                     <a href="{{route('edit_form',['id' => $g->id,'hash' => md5($g->id)])}}" class="btn btn-warning btn-sm"><i class="fa fa-edit fa-1x"></i></a>
-                                                    <a href="{{route('edit_guard',['guard_id' => $g->id,'hash' => md5($g->id)])}}" class="btn btn-danger btn-sm"><i class="fa fa-trash fa-1x"></i></a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -98,14 +99,14 @@
 @endsection
 @section('script')
     <script>
-        function accountStatus(user_id,event){
+        function accountStatus(form_id,event){
             var status = event.target.checked;
             console.log('status '+status);
             $.ajax({
                 type: "POST",
                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
-                url: "{{route('change_status')}}",
-                data: {'user_id':user_id,'status':status},
+                url: "{{route('change_form_status')}}",
+                data: {'form_id':form_id,'status':status},
                 dataType: "json",
                 success: function (data) {
                     //alert(data.message);

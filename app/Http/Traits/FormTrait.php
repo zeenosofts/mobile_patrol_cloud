@@ -37,6 +37,19 @@ trait FormTrait {
         return $update;
     }
 
+    public function change_form_status($form_id,$status){
+            if($status == "false"){
+                $statuss = 0;
+            }
+            if($status == "true"){
+                $statuss = 1;
+            }
+            $update = Form::where('id',$form_id)->update(['status' => $statuss]);
+            return $status;
+
+
+    }
+
 
 
 }

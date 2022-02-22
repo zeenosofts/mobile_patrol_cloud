@@ -68,7 +68,7 @@
                                                        <td>{{$g->client_email}}</td>
                                                        <td>{{$g->client_phone}}</td>
                                                        <td>{{$g->client_address}}</td>
-                                                       <td><input {{$g->user->status == 1 ? "checked" : ""}} data-handle-width="70" data-switch="true" onchange="accountStatus('{{$g->user_id}}',event)" type="checkbox" data-on-text="Activated"  data-off-text="Disabled" data-on-color="primary" /></td>
+                                                       <td><input {{$g->user->status == 1 ? "checked" : ""}} data-handle-width="70" data-switch="true" onchange="formStatus('{{$g->user_id}}',event)" type="checkbox" data-on-text="Activated"  data-off-text="Disabled" data-on-color="primary" /></td>
                                                        <td>
                                                            <a href="{{route('edit_client',['client_id' => $g->id,'hash' => md5($g->id)])}}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
                                                            <a href="{{route('client_checkpoints',['client_id' => $g->id,'hash' => md5($g->id)])}}" class="btn btn-primary btn-sm">Checkpoints</a>
@@ -104,14 +104,14 @@
 @endsection
 @section('script')
     <script>
-        function accountStatus(user_id,event){
+        function formStatus(form_id,event){
             var status = event.target.checked;
             console.log('status '+status);
             $.ajax({
                 type: "POST",
                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
-                url: "{{route('change_status')}}",
-                data: {'user_id':user_id,'status':status},
+                url: "{{route('change_form_status')}}",
+                data: {'form_id':form_id,'status':status},
                 dataType: "json",
                 success: function (data) {
                     //alert(data.message);
