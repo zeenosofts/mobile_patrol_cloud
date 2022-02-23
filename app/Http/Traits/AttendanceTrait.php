@@ -3,11 +3,12 @@
 namespace App\Http\Traits;
 
 use App\Models\Attendance;
+use App\Models\Guard;
 use Illuminate\Support\Facades\DB;
 
 trait AttendanceTrait{
 
-    use PhpFunctionsTrait;
+    use PhpFunctionsTrait,CompanySettingTrait;
     public function create_guard_attendance($user_id,$time_in,$time_out,$date,$timezone){
         $attendance=new Attendance();
         $attendance->user_id=$user_id;
@@ -42,6 +43,18 @@ trait AttendanceTrait{
             $query->where('status', 1);
         })->with(array('user'))->paginate(5);
         return $attendance;
+    }
+
+
+    // Function for the Api
+    public function check_time_out($user_id,$date){
+        $attendance = Attendance::where('user_id',$user_id)->whereDate('date',$date)->where('time_out','')->get();
+        if (count($attendance) > 0){
+            return true;
+        }else{
+            return false;
+        }
+
     }
 
 }
