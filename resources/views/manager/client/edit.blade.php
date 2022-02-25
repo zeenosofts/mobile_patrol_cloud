@@ -105,7 +105,7 @@
                                                     <label>Client Address</label>
                                                     <input type="text" name="client_address" required
                                                            class="form-control @error('client_address') is-invalid @enderror"
-                                                           placeholder="Client Address" value="{{$client->client_address ??old('client_address')}}">
+                                                           placeholder="Client Address" value="{{$client->client_address ?? old('client_address')}}">
                                                     @error('client_address')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>

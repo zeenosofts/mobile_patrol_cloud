@@ -19,15 +19,27 @@ class Attendance extends Model
 
 
     public function getLocalTimeInAttribute(){
-        return $this->convertWithRespectToTimeZone($this->time_in);
+        return $this->convertWithRespectToTimeZone($this->time_in,$this->admin_id);
     }
     public function getLocalTimeOutAttribute(){
-        return $this->convertWithRespectToTimeZone($this->time_out);
+        return $this->convertWithRespectToTimeZone($this->time_out,$this->admin_id);
     }
     public function getLocalTimeAttribute(){
-        return $this->calculateTimeAttendance($this->user_id,$this->date);
+        return $this->calculateTimeAttendance($this->guard_id,$this->date);
     }
     public function getLocalDateAttribute(){
         return $this->convertDateToHtmlFormat($this->date);
+    }
+
+    public function guards(){
+        return $this->belongsTo(Guard::class,'guard_id','id');
+    }
+
+    public function client(){
+        return $this->belongsTo(Client::class);
+    }
+
+    public function admin(){
+        return $this->belongsTo(Admin::class);
     }
 }

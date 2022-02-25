@@ -66,7 +66,7 @@
                                                 <td>{{$g->guard_email}}</td>
                                                 <td>{{$g->guard_phone}}</td>
                                                 <td>
-                                                    <a href="{{route('view_attendance',['id' => $g->user_id,'hash' => md5($g->user_id)])}}" class="btn btn-warning btn-sm"><i class="fa fa-eye fa-1x"></i></a>
+                                                    <a href="{{route('view_attendance',['id' => $g->id,'hash' => md5($g->id)])}}" class="btn btn-warning btn-sm"><i class="fa fa-eye fa-1x"></i></a>
                                                 </td>
                                             </tr>
                                         @endforeach

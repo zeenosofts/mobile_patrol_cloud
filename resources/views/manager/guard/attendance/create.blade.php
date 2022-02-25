@@ -59,7 +59,7 @@
                                                         <input type="text" name="time_in" required
                                                                class="form-control  @error('time_in') is-invalid @enderror"
                                                                value="{{old('time_in')}}" id="kt_1">
-                                                        <input value="{{request('id')}}" name="id" type="hidden">
+                                                        <input value="{{request('id')}}" name="guard_id" type="hidden">
                                                         <input type="hidden" name="timezone" id="timezone" value="{{$timezone}}">
                                                         @error('time_in')
                                                         <span class="invalid-feedback" role="alert">
@@ -94,6 +94,16 @@
                                                         <strong>{{ $message }}</strong>
                                                     </span>
                                                         @enderror
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Client</label>
+                                                        <select class="form-control" name="client_id" required>
+                                                           @foreach($client as $c)
+                                                            <option value="{{$c->id}}">{{$c->client_name}}</option>
+                                                               @endforeach
+                                                        </select>
                                                     </div>
                                                 </div>
                                             </div>

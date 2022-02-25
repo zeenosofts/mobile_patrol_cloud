@@ -64,7 +64,7 @@
                                                 <td>{{$a->date}}</td>
                                                 <td>{{$a->local_time}}</td>
                                                 <td>
-                                                    <a href="{{route('view_timing',['id' => $a->user_id,'hash' => md5($a->user_id),'date' => $a->date])}}" class="btn btn-warning btn-sm"><i class="fa fa-edit fa-1x"></i></a>
+                                                    <a href="{{route('view_timing',['id' => $a->guard_id,'hash' => md5($a->guard_id),'date' => $a->date])}}" class="btn btn-warning btn-sm"><i class="fa fa-edit fa-1x"></i></a>
                                                 </td>
 
                                             </tr>

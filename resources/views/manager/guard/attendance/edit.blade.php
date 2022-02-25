@@ -98,6 +98,17 @@
                                                         @enderror
                                                     </div>
                                                 </div>
+
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Client</label>
+                                                        <select class="form-control" name="client_id" required>
+                                                            @foreach($client as $c)
+                                                                <option value="{{$c->id}}"  >{{$c->client_name}}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
                                             </div>
 
                                         </div>

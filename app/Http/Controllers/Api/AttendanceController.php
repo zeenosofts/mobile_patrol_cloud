@@ -15,7 +15,7 @@ class AttendanceController extends Controller
 
     public function save_guard_attendance(Request $request){
         try{
-        $this->create_guard_attendance($request->user()->id,$request->time_in,$request->time_out,$request->date,$request->timezone);
+        $this->create_guard_attendance($request->guard_id,$request->client_id,$request->schedule_id,$request->admin_id,$request->time_in,$request->time_out,$request->date,$request->timezone);
         return $this->returnApiResponse(200, 'success', array('response' => 'Guard Attendance create Successfully'));
         }catch(\Exception $e){
             return $this->returnApiResponse('401','danger',array('error'=>$e->getMessage()));
