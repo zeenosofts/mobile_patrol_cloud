@@ -17,11 +17,12 @@ class AttendanceController extends Controller
         try{
             $attendance=$this->check_time_out($request->schedule_id);
             if (count($attendance) > 0){
-                $this->create_guard_attendance_api($request->schedule_id);
-                return $this->returnApiResponse(200, 'success', array('response' => 'Guard Time In Successfully'));
-            }else{
                 $this->edit_guard_attendance_api($request->attendance_id);
                 return $this->returnApiResponse(200, 'success', array('response' => 'Guard Time Out Successfully'));
+            }else{
+                $this->create_guard_attendance_api($request->schedule_id);
+                return $this->returnApiResponse(200, 'success', array('response' => 'Guard Time In Successfully'));
+
             }
         }catch(\Exception $e){
             return $this->returnApiResponse('401','danger',array('error'=>$e->getMessage()));
