@@ -4,6 +4,8 @@ namespace App\Http\Traits;
 
 use App\Models\Attendance;
 use App\Models\Guard;
+use App\Models\Schedule;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -45,29 +47,41 @@ trait AttendanceTrait{
     }
     public function showAllGuardAttendance(){
         $admin_id = $this->getAdminID(Auth::user()->id);
-        $guards = Attendance::whereHas('admin',function ($query) use ($admin_id){
+        $attendance = Attendance::whereHas('admin',function ($query) use ($admin_id){
             $query->where('admin_id',$admin_id);
         })->whereHas('user',function ($query) {
             $query->where('status',1);
         })->with(array('admin','user'))->paginate(15);
-        dd($guards);
-
-
-            Attendance::whereHas('guard', function ($query) {
-        })->with(array('guard'))->paginate(5);
         return $attendance;
     }
 
 
     // Function for the Api
     public function check_time_out($user_id,$date){
-        $attendance = Attendance::where('user_id',$user_id)->whereDate('date',$date)->where('time_out','')->get();
-        if (count($attendance) > 0){
-            return true;
-        }else{
-            return false;
-        }
+        $attendance = Attendance::where('guard_id',$user_id)->whereDate('date',Carbon::now()->toDateString())->where('time_out','')->get();
+       return $attendance;
+    }
+
+    public function create_guard_attendance_api($schedule_id){
+        $schedule= Schedule::where('id',$schedule_id)->first();
+        $attendance=new Attendance();
+        $attendance->guard_id=$schedule->guard_id;
+        $attendance->client_id=$schedule->client_id;
+        $attendance->schedule_id=$schedule->id;
+        $attendance->admin_id=$schedule->admin_id;
+        $attendance->time_in=$this->convertHtmlDateTimeToDbFormat(Carbon::now(),Carbon::now()->timezone);
+        $attendance->date=$this->convertDateToDbFormat(Carbon::now());
+        $attendance->save();
+        return back();
 
     }
+
+    public function edit_guard_attendance_api($attendance_id){
+        Attendance::where('id',$attendance_id)->update([
+            "time_out"=>$this->convertHtmlDateTimeToDbFormat(Carbon::now(),Carbon::now()->timezone),
+        ]);
+        return back();
+    }
+
 
 }

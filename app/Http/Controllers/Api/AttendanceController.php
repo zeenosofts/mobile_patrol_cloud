@@ -15,16 +15,31 @@ class AttendanceController extends Controller
 
     public function save_guard_attendance(Request $request){
         try{
-        $this->create_guard_attendance($request->guard_id,$request->client_id,$request->schedule_id,$request->admin_id,$request->time_in,$request->time_out,$request->date,$request->timezone);
+        $this->create_guard_attendance_api($request->schedule_id);
         return $this->returnApiResponse(200, 'success', array('response' => 'Guard Attendance create Successfully'));
         }catch(\Exception $e){
             return $this->returnApiResponse('401','danger',array('error'=>$e->getMessage()));
         }
     }
+
+    public function update_guard_attendance(Request $request){
+        try{
+            $this->edit_guard_attendance_api($request->attendance_id);
+            return $this->returnApiResponse(200, 'success', array('response' => 'Guard Attendance Time Out Successfully'));
+        }catch(\Exception $e){
+            return $this->returnApiResponse('401','danger',array('error'=>$e->getMessage()));
+        }
+    }
+
+
     public function check_guard_time_out(Request $request){
         try{
-            $check_time_out=$this->check_time_out($request->user()->id,$request->date);
-            return $this->returnApiResponse(200, 'success', array('check_time_out' => $check_time_out));
+            $attendance=$this->check_time_out($request->user()->id,$request->date);
+            if (count($attendance) > 0){
+                return $this->returnApiResponse(200, 'success', array('check_time_out' => true,'attendance'=>$attendance));
+            }else{
+                return $this->returnApiResponse(200, 'success', array('check_time_out' => false));
+            }
         }catch(\Exception $e){
             return $this->returnApiResponse('401','danger',array('error'=>$e->getMessage()));
         }
