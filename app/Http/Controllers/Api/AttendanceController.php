@@ -15,28 +15,24 @@ class AttendanceController extends Controller
 
     public function save_guard_attendance(Request $request){
         try{
-        $this->create_guard_attendance_api($request->schedule_id);
-        return $this->returnApiResponse(200, 'success', array('response' => 'Guard Attendance create Successfully'));
+            $attendance=$this->check_time_out($request->schedule_id);
+            if (count($attendance) > 0){
+                $this->create_guard_attendance_api($request->schedule_id);
+                return $this->returnApiResponse(200, 'success', array('response' => 'Guard Time In Successfully'));
+            }else{
+                $this->edit_guard_attendance_api($request->attendance_id);
+                return $this->returnApiResponse(200, 'success', array('response' => 'Guard Time Out Successfully'));
+            }
         }catch(\Exception $e){
             return $this->returnApiResponse('401','danger',array('error'=>$e->getMessage()));
         }
     }
-
-    public function update_guard_attendance(Request $request){
-        try{
-            $this->edit_guard_attendance_api($request->attendance_id);
-            return $this->returnApiResponse(200, 'success', array('response' => 'Guard Attendance Time Out Successfully'));
-        }catch(\Exception $e){
-            return $this->returnApiResponse('401','danger',array('error'=>$e->getMessage()));
-        }
-    }
-
 
     public function check_guard_time_out(Request $request){
         try{
-            $attendance=$this->check_time_out($request->user()->id,$request->date);
+            $attendance=$this->check_time_out($request->schedule_id);
             if (count($attendance) > 0){
-                return $this->returnApiResponse(200, 'success', array('check_time_out' => true,'attendance'=>$attendance));
+                return $this->returnApiResponse(200, 'success', array('check_time_out' => true));
             }else{
                 return $this->returnApiResponse(200, 'success', array('check_time_out' => false));
             }
