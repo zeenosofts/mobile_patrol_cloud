@@ -58,7 +58,7 @@ trait AttendanceTrait{
 
     // Function for the Api
     public function check_time_out($schedule_id){
-       $attendance = Attendance::where('schedule_id',$schedule_id)->whereDate('date',Carbon::now()->toDateString())->where('time_out','')->get();
+        $attendance = Attendance::where('schedule_id',$schedule_id)->whereDate('date',Carbon::now()->toDateString())->where('time_out',null)->get();
        return $attendance;
     }
 
