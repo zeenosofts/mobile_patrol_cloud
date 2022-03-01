@@ -7,6 +7,7 @@ use App\Http\Traits\AttendanceTrait;
 
 use App\Http\Traits\PhpFunctionsTrait;
 use App\Http\Traits\ResponseTrait;
+use App\Models\Attendance;
 use Illuminate\Http\Request;
 
 class AttendanceController extends Controller
@@ -17,7 +18,8 @@ class AttendanceController extends Controller
         try{
             $attendance=$this->check_time_out($request->schedule_id);
             if (count($attendance) > 0){
-                $this->edit_guard_attendance_api($request->attendance_id);
+                $attendance_id=$this->get_attendance_id($request->schedule_id);
+                $this->edit_guard_attendance_api($attendance_id);
                 return $this->returnApiResponse(201, 'success', array('response' => 'Guard Time Out Successfully'));
             }else{
                 $this->create_guard_attendance_api($request->schedule_id);
