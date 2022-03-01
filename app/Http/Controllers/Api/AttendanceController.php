@@ -9,6 +9,7 @@ use App\Http\Traits\AttendanceTrait;
 use App\Http\Traits\PhpFunctionsTrait;
 use App\Http\Traits\ResponseTrait;
 use App\Models\Attendance;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class AttendanceController extends Controller
@@ -46,8 +47,10 @@ class AttendanceController extends Controller
 
     public function get_guard_attendance(Request $request){
         try{
+            $date = Carbon::parse($request->date)->toDateString();
             $guard=$this->get_guard_table_row($request->user()->id);
-            $attendance=$this->guard_attendance($guard->id,$request->date);
+            $attendance=$this->guard_attendance($guard->id,$date);
+            //return $this->returnApiResponse(200, 'success', array('attendance' => $guard));
             return $this->returnApiResponse(200, 'success', array('attendance' => $attendance));
         }catch(\Exception $e){
             return $this->returnApiResponse('401','danger',array('error'=>$e->getMessage()));
