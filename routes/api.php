@@ -28,4 +28,5 @@ Route::middleware(['auth:api','cors'])->group(function () {
    // Route::post('/form',[\App\Http\Controllers\Api\LoginController::class,'form'])->name('form');
     Route::post('get_guard_schedules',[\App\Http\Controllers\Api\ScheduleController::class,'get_guard_schedules'])->name('get_guard_schedules');
     Route::post('create_guard_attendance',[\App\Http\Controllers\Api\AttendanceController::class,'save_guard_attendance'])->name('create_guard_attendance');
+    Route::post('get_guard_attendance',[\App\Http\Controllers\Api\AttendanceController::class,'get_guard_attendance'])->name('get_guard_attendance');
 });

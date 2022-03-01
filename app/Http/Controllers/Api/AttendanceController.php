@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Traits\AccountsTrait;
 use App\Http\Traits\AttendanceTrait;
 
 use App\Http\Traits\PhpFunctionsTrait;
@@ -12,7 +13,7 @@ use Illuminate\Http\Request;
 
 class AttendanceController extends Controller
 {
-    use AttendanceTrait,ResponseTrait;
+    use AttendanceTrait,ResponseTrait,AccountsTrait;
 
     public function save_guard_attendance(Request $request){
         try{
@@ -24,7 +25,6 @@ class AttendanceController extends Controller
             }else{
                 $this->create_guard_attendance_api($request->schedule_id);
                 return $this->returnApiResponse(200, 'success', array('response' => 'Guard Time In Successfully'));
-
             }
         }catch(\Exception $e){
             return $this->returnApiResponse('401','danger',array('error'=>$e->getMessage()));
@@ -39,6 +39,16 @@ class AttendanceController extends Controller
             }else{
                 return $this->returnApiResponse(200, 'success', array('check_time_out' => false));
             }
+        }catch(\Exception $e){
+            return $this->returnApiResponse('401','danger',array('error'=>$e->getMessage()));
+        }
+    }
+
+    public function get_guard_attendance(Request $request){
+        try{
+            $guard=$this->get_guard_table_row($request->user()->id);
+            $attendance=$this->guard_attendance($guard->id);
+            return $this->returnApiResponse(200, 'success', array('attendance' => $attendance));
         }catch(\Exception $e){
             return $this->returnApiResponse('401','danger',array('error'=>$e->getMessage()));
         }

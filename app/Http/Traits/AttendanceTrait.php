@@ -86,4 +86,10 @@ trait AttendanceTrait{
         ]);
         return back();
     }
+
+    public function guard_attendance($guard_id){
+        $attendance=Attendance::where('guard_id',$guard_id)->get();
+        return $attendance;
+
+    }
 }
