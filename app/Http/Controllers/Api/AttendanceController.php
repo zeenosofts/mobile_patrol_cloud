@@ -18,7 +18,7 @@ class AttendanceController extends Controller
             $attendance=$this->check_time_out($request->schedule_id);
             if (count($attendance) > 0){
                 $this->edit_guard_attendance_api($request->attendance_id);
-                return $this->returnApiResponse(200, 'success', array('response' => 'Guard Time Out Successfully'));
+                return $this->returnApiResponse(201, 'success', array('response' => 'Guard Time Out Successfully'));
             }else{
                 $this->create_guard_attendance_api($request->schedule_id);
                 return $this->returnApiResponse(200, 'success', array('response' => 'Guard Time In Successfully'));
