@@ -62,10 +62,9 @@ trait AttendanceTrait{
        return $attendance;
     }
     public function get_attendance_id($schedule_id){
-        $attendance = Attendance::where('schedule_id',$schedule_id)->whereDate('date',Carbon::now()->toDateString())->where('time_out',null)->get();
+       $attendance = Attendance::where('schedule_id',$schedule_id)->whereDate('date',Carbon::now()->toDateString())->where('time_out',null)->first();
        return $attendance->id;
     }
-
 
     public function create_guard_attendance_api($schedule_id){
         $schedule= Schedule::where('id',$schedule_id)->first();
@@ -87,6 +86,4 @@ trait AttendanceTrait{
         ]);
         return back();
     }
-
-
 }
