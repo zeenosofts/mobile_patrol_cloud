@@ -47,7 +47,7 @@ class AttendanceController extends Controller
 
     public function get_guard_attendance(Request $request){
         try{
-            $date = Carbon::parse($request->date)->toDateString();
+            $date = Carbon::parse($request->date1)->toDateString();
             $guard=$this->get_guard_table_row($request->user()->id);
             $attendance=$this->guard_attendance($guard->id,$date);
             //return $this->returnApiResponse(200, 'success', array('attendance' => $guard));
