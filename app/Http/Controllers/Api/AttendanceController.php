@@ -47,7 +47,7 @@ class AttendanceController extends Controller
     public function get_guard_attendance(Request $request){
         try{
             $guard=$this->get_guard_table_row($request->user()->id);
-            $attendance=$this->guard_attendance($guard->id);
+            $attendance=$this->guard_attendance($guard->id,$request->date);
             return $this->returnApiResponse(200, 'success', array('attendance' => $attendance));
         }catch(\Exception $e){
             return $this->returnApiResponse('401','danger',array('error'=>$e->getMessage()));

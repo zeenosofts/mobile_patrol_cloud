@@ -87,8 +87,8 @@ trait AttendanceTrait{
         return back();
     }
 
-    public function guard_attendance($guard_id){
-        $attendance=Attendance::where('guard_id',$guard_id)->get();
+    public function guard_attendance($guard_id,$date){
+        $attendance=Attendance::where('guard_id',$guard_id)->whereDate('date',$date)->get();
         return $attendance;
 
     }
