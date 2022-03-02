@@ -12,4 +12,8 @@ class Checkpoint extends Model
     public function client(){
         return $this->belongsTo(Client::class);
     }
+
+    public function checkpoint_history(){
+        return $this->hasMany(CheckpointHistory::class);
+    }
 }
