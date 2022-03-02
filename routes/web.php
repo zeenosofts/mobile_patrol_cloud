@@ -59,10 +59,13 @@ Route::group(['middleware' => 'auth'], function () {
         ->name('update_client')->middleware('role:manager');
 
     #------------------------ Manager Accounts---Client Checkpoints Methods----------------#
+
     Route::get('manager/client/checkpoint/{client_id}/{hash}', [App\Http\Controllers\Manager\CheckpointController::class, 'client_checkpoints'])
         ->name('client_checkpoints')->middleware('role:manager');
     Route::post('manager/create/checkpoint/qr', [App\Http\Controllers\Manager\CheckpointController::class, 'create_qr_checkpoint'])
         ->name('create_qr_checkpoint')->middleware('role:manager');
+    Route::get('manager/print/qr/code/single', [App\Http\Controllers\Manager\CheckpointController::class, 'print_qr_single'])
+        ->name('print.qrcode.single')->middleware('role:manager');
     #------------------------ Manager Accounts---Client Schedule Methods----------------#
     Route::get('manager/schedule/{any?}', [App\Http\Controllers\Manager\ScheduleController::class, 'index'])
         ->name('schedule')->where('any', '[\/\w\.-]*')->middleware('role:manager');

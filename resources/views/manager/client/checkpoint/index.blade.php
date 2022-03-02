@@ -114,7 +114,7 @@
                                                         <td>{{$g->checkpoint_name}}</td>
                                                         <td>{{$g->qr_code}}</td>
                                                       <td>
-                                                            <a href="{{route('edit_client',['client_id' => $g->id,'hash' => md5($g->id)])}}" class="btn btn-warning btn-sm">Print</a>
+                                                            <a href="{{route('print.qrcode.single',['id' => $g->id,'hash' => md5($g->id)])}}" class="btn btn-warning btn-sm">Print</a>
                                                         </td>
                                                     </tr>
                                                 @endforeach

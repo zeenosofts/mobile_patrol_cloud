@@ -8,6 +8,7 @@ use App\Http\Traits\CompanySettingTrait;
 use App\Http\Traits\ResponseTrait;
 use App\Models\Checkpoint;
 use App\Models\Client;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -32,5 +33,14 @@ class CheckpointController extends Controller
         }catch (\Exception $e) {
             return $this->returnWebResponse($e->getMessage(), 'danger');
         }
+    }
+
+    public function print_qr_single(Request $request){
+        $checkpoint= Checkpoint::where('id','=',$request->id)->first();
+
+        $fileName=$checkpoint->checkpoint_name;
+
+        $pdf = PDF::loadView('manager.client.QR.single_qr_print', compact('checkpoint'));
+        return $pdf->download($fileName.'.pdf');
     }
 }
