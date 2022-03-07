@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use App\Http\Traits\PhpFunctionsTrait;
+use App\Http\Traits\ScheduleTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class CheckpointHistory extends Model
 {
-    use HasFactory;
+    use HasFactory, PhpFunctionsTrait, ScheduleTrait;
     public function guards(){
         return $this->belongsTo(Guard::class,'guard_id','id');
     }
@@ -26,5 +28,13 @@ class CheckpointHistory extends Model
 
     public function checkpoint(){
         return $this->belongsTo(Checkpoint::class);
+    }
+
+    public function convertDateTimeToReadableDayTimeFormat(){
+        if($this->created_at != null) {
+            return $this->convertDateTimeToDbFormat($this->convertWithRespectToTimeZone($this->created_at, $this->admin_id));
+        }else{
+            return NULL;
+        }
     }
 }

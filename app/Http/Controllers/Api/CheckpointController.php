@@ -32,7 +32,8 @@ class CheckpointController extends Controller
 
     public function get_qrcode_history(Request $request){
         $guard=$this->get_guard_table_row($request->user()->id);
-        $checkpointHistory = CheckpointHistory::with('checkpoint')->where('schedule_id',$request->schedule_id)
+        $checkpointHistory = CheckpointHistory::with('checkpoint','client')
+            ->where('schedule_id',$request->schedule_id)
             ->where('guard_id',$guard->id)
             ->get();
         return $this->returnApiResponse(200, 'success',

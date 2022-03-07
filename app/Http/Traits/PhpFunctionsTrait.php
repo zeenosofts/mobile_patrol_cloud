@@ -47,4 +47,11 @@ trait PhpFunctionsTrait {
         return $dateC.'T'.$time;
     }
 
+    public function convertDateTimeToReadableDayTimeFormat($datetime){
+        $readableDay =  Carbon::parse($datetime)->toFormattedDateString();
+        $readabletime =  Carbon::parse($datetime)->format('H:i');
+
+        return $readableDay." ".$readabletime;
+    }
+
 }
