@@ -10,6 +10,9 @@ use Illuminate\Database\Eloquent\Model;
 class CheckpointHistory extends Model
 {
     use HasFactory, PhpFunctionsTrait, ScheduleTrait;
+
+    public $appends = ['local_time'];
+
     public function guards(){
         return $this->belongsTo(Guard::class,'guard_id','id');
     }
@@ -30,9 +33,9 @@ class CheckpointHistory extends Model
         return $this->belongsTo(Checkpoint::class);
     }
 
-    public function convertDateTimeToReadableDayTimeFormat(){
+    public function getLocalTimeAttribute(){
         if($this->created_at != null) {
-            return $this->convertDateTimeToDbFormat($this->convertWithRespectToTimeZone($this->created_at, $this->admin_id));
+            return $this->convertDateTimeToReadableDayTimeFormat($this->convertWithRespectToTimeZone($this->created_at, $this->admin_id));
         }else{
             return NULL;
         }
