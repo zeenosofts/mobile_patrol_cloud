@@ -13,10 +13,6 @@ class Attendance extends Model
 
     public $appends = ['local_time_in', 'local_time_out','local_time','local_date'];
 
-    public function user(){
-        return $this->belongsTo(User::class);
-    }
-
 
     public function getLocalTimeInAttribute(){
         if($this->time_in != null) {

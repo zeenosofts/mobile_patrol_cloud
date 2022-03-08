@@ -116,8 +116,8 @@
                                         <tbody>
                                         @foreach($attendance as $g)
                                             <tr>
-                                                <td>{{$g->user->name}}</td>
-                                                <td>{{$g->user->email}}</td>
+                                                <td>{{$g->guards->guard_name}}</td>
+                                                <td>{{$g->guards->guard_email}}</td>
                                                 <td>{{$g->local_time_in}}</td>
                                                 <td>{{$g->local_time_out}}</td>
                                                 <td>{{$g->local_date}}</td>

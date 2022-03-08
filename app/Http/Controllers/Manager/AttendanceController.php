@@ -23,9 +23,7 @@ class AttendanceController extends Controller
         $admin_id = $this->getAdminID(Auth::user()->id);
         $guards = Guard::whereHas('admin', function ($query) use ($admin_id) {
             $query->where('admin_id', $admin_id);
-        })->whereHas('user', function ($query) use ($admin_id) {
-            $query->where('status', 1);
-        })->with(array('admin', 'user'))->paginate(5);
+        })->with(array('admin'))->paginate(5);
         return view('manager.guard.attendance.manage', compact('guards'))->with('title', 'Manage Attendance');
     }
 

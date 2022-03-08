@@ -45,13 +45,11 @@ trait AttendanceTrait{
         })->with(array('user'))->whereBetween('date', [$from, $to])->paginate(5);
         return $attendance;
     }
-    public function showAllGuardAttendance(){
+    public function showAllGuardAttendance($user_id){
         $admin_id = $this->getAdminID(Auth::user()->id);
         $attendance = Attendance::whereHas('admin',function ($query) use ($admin_id){
             $query->where('admin_id',$admin_id);
-        })->whereHas('user',function ($query) {
-            $query->where('status',1);
-        })->with(array('admin','user'))->paginate(15);
+        })->with(array('admin','guards'))->paginate(15);
         return $attendance;
     }
 
