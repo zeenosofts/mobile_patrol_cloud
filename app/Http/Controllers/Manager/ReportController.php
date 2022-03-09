@@ -22,11 +22,11 @@ class ReportController extends Controller
      */
     public function index(Request $request)
     {
-        $user_id = $request->guard_id;
-        if ($user_id != null){
-            $attendance=$this->showGuardAttendance($user_id,$request->from,$request->to);
+        $guard_id = $request->guard_id;
+        if ($guard_id != null){
+            $attendance=$this->showGuardAttendance($guard_id,$request->from,$request->to);
         }else{
-            $attendance=$this->showAllGuardAttendance($user_id);
+            $attendance=$this->showAllGuardAttendance();
         }
         $guard = $this->showAdminGuard();
         return view('manager.report.attendance', ['attendance'=>$attendance,'guard' =>$guard])->with('title', 'Manage Reports');

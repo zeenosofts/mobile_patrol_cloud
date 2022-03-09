@@ -40,11 +40,6 @@
                     <div class="col-lg-8 ">
                         <!--begin::Mixed Widget 1-->
                         <div class="card card-custom card-stretch gutter-b">
-                            {{--<div class="card-header border-0  py-5">--}}
-                                {{--<h3 class="card-title font-weight-bolder">{{$title}}</h3>--}}
-                                {{--<div class="card-toolbar">--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
                             <div class="card-body p-5">
                                 <form method="get"  action="{{route('manage_report')}}" >
                                 <div class="row">
@@ -54,7 +49,7 @@
                                             <select class="form-control" name="guard_id" required>
                                                 <option value="">Select</option>
                                                 @foreach($guard as $g)
-                                                    <option value="{{$g->user_id}}">{{$g->guard_name}}</option>
+                                                    <option value="{{$g->id}}">{{$g->guard_name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>

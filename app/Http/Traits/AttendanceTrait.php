@@ -39,13 +39,13 @@ trait AttendanceTrait{
         return $attendance->total;
     }
 
-    public function showGuardAttendance($user_id,$from,$to){
-        $attendance = Attendance::whereHas('user', function ($query) use ($user_id) {
-            $query->where('status', 1)->where('id', $user_id);
-        })->with(array('user'))->whereBetween('date', [$from, $to])->paginate(5);
+    public function showGuardAttendance($guard_id,$from,$to){
+        $attendance = Attendance::whereHas('guards', function ($query) use ($guard_id) {
+            $query->where('id', $guard_id);
+        })->with(array('guards'))->whereBetween('date', [$from, $to])->paginate(5);
         return $attendance;
     }
-    public function showAllGuardAttendance($user_id){
+    public function showAllGuardAttendance(){
         $admin_id = $this->getAdminID(Auth::user()->id);
         $attendance = Attendance::whereHas('admin',function ($query) use ($admin_id){
             $query->where('admin_id',$admin_id);
