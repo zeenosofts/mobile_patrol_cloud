@@ -40,7 +40,7 @@
                             </div>
                             <div id="append_input">
                             </div>
-                            <button type="button" class="btn btn-success" @click="add_imput">Add</button>
+                            <button type="button" class="btn btn-success" @click="add_imput">Add Option</button>
                         </div>
                         <br>
                             <button type="button" class="btn btn-success" @click="send_updated_data_to_parent">Update</button>

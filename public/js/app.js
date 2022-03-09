@@ -17086,6 +17086,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -17151,6 +17159,18 @@ __webpack_require__.r(__webpack_exports__);
           id: 2,
           name: "option 2"
         }]
+      }, {
+        name: "file",
+        id: 6,
+        label: "Enter file",
+        required: "true",
+        placeholder: "Enter file"
+      }, {
+        name: "textarea",
+        id: 7,
+        label: "Enter text",
+        required: "true",
+        placeholder: "Enter text"
       }],
       form_element_list: []
     };
@@ -17459,6 +17479,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -17525,6 +17553,18 @@ __webpack_require__.r(__webpack_exports__);
           id: 2,
           name: "option 2"
         }]
+      }, {
+        name: "file",
+        id: 6,
+        label: "Enter file",
+        required: "true",
+        placeholder: "Enter file"
+      }, {
+        name: "textarea",
+        id: 7,
+        label: "Enter text",
+        required: "true",
+        placeholder: "Enter text"
       }],
       form_element_list: []
     };
@@ -18612,10 +18652,10 @@ vue__WEBPACK_IMPORTED_MODULE_0__.default.component('form-component', __webpack_r
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 //Axios URL
+// axios.defaults.baseURL="http://127.0.0.1:8000/";
+//Production AXios URL
 
-axios.defaults.baseURL = "http://127.0.0.1:8000/"; //Production AXios URL
-//axios.defaults.baseURL="https://guard.cybermeteors.com/";
-//Data Table
+axios.defaults.baseURL = "https://guard.cybermeteors.com/"; //Data Table
 
 
 
@@ -92766,6 +92806,28 @@ var render = function() {
                               ])
                             : _vm._e(),
                           _vm._v(" "),
+                          element.name == "file"
+                            ? _c("div", { staticClass: "col-md-11" }, [
+                                _c("label", [_vm._v(_vm._s(element.label))]),
+                                _vm._v(" "),
+                                _c("input", {
+                                  staticClass: "form-control",
+                                  attrs: {
+                                    type: "file",
+                                    placeholder: "Enter File"
+                                  }
+                                })
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          element.name == "textarea"
+                            ? _c("div", { staticClass: "col-md-11" }, [
+                                _c("label", [_vm._v(_vm._s(element.label))]),
+                                _vm._v(" "),
+                                _c("textarea", { staticClass: "form-control" })
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
                           element.name == "radio"
                             ? _c("div", { staticClass: "col-md-11" }, [
                                 _c("div", { staticClass: "form-group" }, [
@@ -93154,7 +93216,7 @@ var render = function() {
                               attrs: { type: "button" },
                               on: { click: _vm.add_imput }
                             },
-                            [_vm._v("Add")]
+                            [_vm._v("Add Option")]
                           )
                         ],
                         2
@@ -93374,6 +93436,28 @@ var render = function() {
                                     placeholder: "Enter Date"
                                   }
                                 })
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          element.name == "file"
+                            ? _c("div", { staticClass: "col-md-11" }, [
+                                _c("label", [_vm._v(_vm._s(element.label))]),
+                                _vm._v(" "),
+                                _c("input", {
+                                  staticClass: "form-control",
+                                  attrs: {
+                                    type: "file",
+                                    placeholder: "Enter File"
+                                  }
+                                })
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          element.name == "textarea"
+                            ? _c("div", { staticClass: "col-md-11" }, [
+                                _c("label", [_vm._v(_vm._s(element.label))]),
+                                _vm._v(" "),
+                                _c("textarea", { staticClass: "form-control" })
                               ])
                             : _vm._e(),
                           _vm._v(" "),

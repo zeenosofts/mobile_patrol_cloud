@@ -42,6 +42,14 @@
                             <label>{{element.label}}</label>
                             <input class="form-control" type="date" placeholder="Enter Date">
                         </div>
+                        <div class="col-md-11" v-if="element.name == 'file'">
+                            <label>{{element.label}}</label>
+                            <input class="form-control" type="file" placeholder="Enter File">
+                        </div>
+                        <div class="col-md-11" v-if="element.name == 'textarea'">
+                            <label>{{element.label}}</label>
+                            <textarea class="form-control"></textarea>
+                        </div>
                         <div class="col-md-11" v-if="element.name == 'radio'">
                             <div class="form-group">
                                 <label>{{element.label}}</label>
@@ -111,7 +119,9 @@
                     {name: "number", id: 2, label : "Enter Number" , required : "true" , placeholder : "Enter Number"},
                     {name: "date", id: 3 ,label : "Enter Date" , required : "true" , placeholder : "Enter Date"},
                     {name: "radio", id: 4 ,label : "Enter Text" , required : "true" , placeholder : "Enter Text" , option :[ {id :1 ,name: "option 1" },{id :2 , name: "option 2" }]},
-                    {name: "select", id: 5 ,label : "Enter Text" , required : "true" , placeholder : "Enter Text" , option :[ {id :1 ,name: "option 1" },{id :2 , name: "option 2" }]}
+                    {name: "select", id: 5 ,label : "Enter Text" , required : "true" , placeholder : "Enter Text" , option :[ {id :1 ,name: "option 1" },{id :2 , name: "option 2" }]},
+                    {name: "file", id: 6 ,label : "Enter file" , required : "true" , placeholder : "Enter file"},
+                    {name: "textarea", id: 7 ,label : "Enter text" , required : "true" , placeholder : "Enter text"},
                 ],
                 form_element_list: []
             };
