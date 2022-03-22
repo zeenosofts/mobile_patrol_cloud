@@ -33,5 +33,8 @@ Route::middleware(['auth:api','cors'])->group(function () {
         ->name('save_checkpoint_history');
     Route::post('get_checkpoint_history',[\App\Http\Controllers\Api\CheckpointController::class,'get_qrcode_history'])
         ->name('get_checkpoint_history');
+//    Daily Report
+    Route::post('save_daily_report',[\App\Http\Controllers\Api\DailyReportController::class,'save_daily_report'])
+        ->name('save_daily_report');
 
 });

@@ -15,7 +15,7 @@ class CreateDailyReportImagesTable extends Migration
     {
         Schema::create('daily_report_images', function (Blueprint $table) {
             $table->id();
-            $table->tinyInteger('daily_report_id');
+            $table->bigInteger('daily_report_id');
             $table->string('images');
             $table->timestamps();
         });

@@ -96,4 +96,9 @@ trait ScheduleTrait {
         $date=Carbon::parse($date)->format('m/d/Y');
         return $date;
     }
+
+    public function get_schedule_detail_by_id_trait($id){
+        $schedule = Schedule::where('id',$id)->first();
+        return $schedule;
+    }
 }

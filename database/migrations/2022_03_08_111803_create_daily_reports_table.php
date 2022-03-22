@@ -15,10 +15,10 @@ class CreateDailyReportsTable extends Migration
     {
         Schema::create('daily_reports', function (Blueprint $table) {
             $table->id();
-            $table->tinyInteger('admin_id');
-            $table->tinyInteger('guard_id');
-            $table->tinyInteger('client_id');
-            $table->tinyInteger('schedule_id')->nullable();
+            $table->bigInteger('admin_id');
+            $table->bigInteger('guard_id');
+            $table->bigInteger('client_id');
+            $table->bigInteger('schedule_id')->nullable();
             $table->string('description');
             $table->timestamps();
         });
