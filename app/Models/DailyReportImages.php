@@ -9,10 +9,12 @@ class DailyReportImages extends Model
 {
     use HasFactory;
 
-    public function getImagesAttribute($value){
-        if($value == null){
+    public $appends = ['image_url'];
+
+    public function getImageUrlAttribute(){
+        if($this->images == null){
             return "";
         }
-         echo env("IMAGE_PATH").$value;
+         echo "https://square.cybermeteors.com/root/".$this->images;
     }
 }
