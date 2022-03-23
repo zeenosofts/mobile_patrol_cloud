@@ -7,6 +7,7 @@ use App\Http\Traits\AccountsTrait;
 use App\Http\Traits\DailyReportTrait;
 use App\Http\Traits\ImageUplaodTrait;
 use App\Http\Traits\ResponseTrait;
+use App\Models\DailyReport;
 use Illuminate\Http\Request;
 
 class DailyReportController extends Controller
@@ -24,6 +25,17 @@ class DailyReportController extends Controller
             }
         }
         return $this->returnApiResponse(200, 'success', array('response' => 'Daily Report Saved Successfully'));
+        }catch(\Exception $e){
+            return $this->returnApiResponse(401,'danger',array('error'=>$e->getMessage()));
+        }
+    }
+
+    public function get_daily_reports_by_schedule(Request $request){
+        try{
+            $guard=$this->get_guard_table_row($request->user()->id);
+            $daily = DailyReport::where('schedule_id',$request->schedule_id)
+                ->with(array('daily_report_images','admin','guards','client'))->get();
+            return $this->returnApiResponse(200, 'success', array('response' => 'Daily Report fetched Successfully','reports' => $daily));
         }catch(\Exception $e){
             return $this->returnApiResponse(401,'danger',array('error'=>$e->getMessage()));
         }

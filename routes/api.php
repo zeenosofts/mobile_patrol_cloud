@@ -36,5 +36,7 @@ Route::middleware(['auth:api','cors'])->group(function () {
 //    Daily Report
     Route::post('save_daily_report',[\App\Http\Controllers\Api\DailyReportController::class,'save_daily_report'])
         ->name('save_daily_report');
+    Route::post('get_daily_reports_by_schedule',[\App\Http\Controllers\Api\DailyReportController::class,'get_daily_reports_by_schedule'])
+        ->name('get_daily_reports_by_schedule');
 
 });
