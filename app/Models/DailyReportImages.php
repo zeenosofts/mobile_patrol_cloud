@@ -13,6 +13,6 @@ class DailyReportImages extends Model
         if($value == null){
             return "";
         }
-        return env("IMAGE_PATH").$value;
+         echo env("IMAGE_PATH").$value;
     }
 }
