@@ -15,6 +15,6 @@ class DailyReportImages extends Model
         if($this->images == null){
             return "";
         }
-         echo "https://square.cybermeteors.com/root/".$this->images;
+         return "https://square.cybermeteors.com/root/".$this->images;
     }
 }
