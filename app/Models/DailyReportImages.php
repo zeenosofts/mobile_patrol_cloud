@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class DailyReportImages extends Model
 {
     use HasFactory;
+
+    public function getImagesAttribute($value){
+        if($value == null){
+            return "";
+        }
+        return env("IMAGE_PATH").$value;
+    }
 }
