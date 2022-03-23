@@ -15,7 +15,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/test', function () {
-   dd("2");
+    \Illuminate\Support\Facades\Artisan::call('cache:clear');
+    \Illuminate\Support\Facades\Artisan::call('clear-compiled');
+    \Illuminate\Support\Facades\Artisan::call('optimize');
+    \Illuminate\Support\Facades\Artisan::call('route:clear');
+    \Illuminate\Support\Facades\Artisan::call('view:clear');
+    \Illuminate\Support\Facades\Artisan::call('config:clear');
+    \Illuminate\Support\Facades\Artisan::call('config:cache');
 });
 
 Route::post('/login', [App\Http\Controllers\Api\LoginController::class, 'index'])->name('login');
