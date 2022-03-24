@@ -3,6 +3,7 @@
 namespace App\Http\Traits;
 
 use App\Models\Visitor;
+use App\Models\VisitorImages;
 
 trait VisitorTrait {
 
@@ -22,7 +23,7 @@ trait VisitorTrait {
     }
 
     public function save_visitor_report_images_trait($report_id,$image){
-        $save = new Visitor();
+        $save = new VisitorImages();
         $save->visitor_id = $report_id;
         $save->images = $image;
         $save->save();
