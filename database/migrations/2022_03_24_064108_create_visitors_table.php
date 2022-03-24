@@ -21,7 +21,7 @@ class CreateVisitorsTable extends Migration
             $table->bigInteger('schedule_id')->nullable();
             $table->string('visitor_name');
             $table->string('purpose');
-            $table->string('company_name')->nullable();
+            $table->string('company')->nullable();
             $table->string('time_in')->nullable();
             $table->string('time_out')->nullable();
             $table->timestamps();
