@@ -45,4 +45,10 @@ Route::middleware(['auth:api','cors'])->group(function () {
     Route::post('get_daily_reports_by_schedule',[\App\Http\Controllers\Api\DailyReportController::class,'get_daily_reports_by_schedule'])
         ->name('get_daily_reports_by_schedule');
 
+    //    Visitor Report
+    Route::post('save_visitor_report',[\App\Http\Controllers\Api\DailyReportController::class,'save_visitor_report'])
+        ->name('save_visitor_report');
+    Route::post('get_visitor_report_by_schedule',[\App\Http\Controllers\Api\DailyReportController::class,'get_visitor_report_by_schedule'])
+        ->name('get_visitor_report_by_schedule');
+
 });
