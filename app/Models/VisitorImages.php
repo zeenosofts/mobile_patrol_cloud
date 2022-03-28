@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class VisitorImages extends Model
 {
     use HasFactory;
+
+    public $appends = ['image_url'];
     public function getImageUrlAttribute(){
         if($this->images == null){
             return "";
