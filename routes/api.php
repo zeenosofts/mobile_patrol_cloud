@@ -50,5 +50,7 @@ Route::middleware(['auth:api','cors'])->group(function () {
         ->name('save_visitor_report');
     Route::post('get_visitor_report_by_schedule',[\App\Http\Controllers\Api\VisitorController::class,'get_visitor_report_by_schedule'])
         ->name('get_visitor_report_by_schedule');
+    Route::post('visitor_time_out',[\App\Http\Controllers\Api\VisitorController::class,'visitor_time_out'])
+        ->name('visitor_time_out');
 
 });

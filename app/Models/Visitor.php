@@ -13,7 +13,7 @@ class Visitor extends Model
 
     use HasFactory, AttendanceTrait, ScheduleTrait;
 
-    public $appends = ['local_time'];
+    public $appends = ['local_time','local_time_out'];
 
     public function visitor_report_images(){
         return $this->hasMany(VisitorImages::class);
@@ -32,6 +32,17 @@ class Visitor extends Model
     }
 
     public function getLocalTimeAttribute(){
-        return $this->convertDateTimeToDbFormat($this->convertWithRespectToTimeZone($this->created_at, $this->admin_id));
+        if($this->time_in != null) {
+            return $this->convertDateTimeToDbFormat($this->convertWithRespectToTimeZone($this->time_in, $this->admin_id));
+        }else{
+            return null;
+        }
+    }
+    public function getLocalTimeOutAttribute(){
+        if($this->time_out != null) {
+            return $this->convertDateTimeToDbFormat($this->convertWithRespectToTimeZone($this->time_out, $this->admin_id));
+        }else{
+            return null;
+        }
     }
 }

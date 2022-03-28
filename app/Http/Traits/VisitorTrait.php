@@ -29,4 +29,8 @@ trait VisitorTrait {
         $save->save();
     }
 
+    public function visitor_time_out_trait($id,$time_out){
+        $update = Visitor::where('id',$id)->update(['time_out' => $time_out]);
+    }
+
 }
