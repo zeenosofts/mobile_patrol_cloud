@@ -18,7 +18,7 @@ class DailyReportController extends Controller
         try{
         $guard=$this->get_guard_table_row($request->user()->id);
         $report = $this->save_daily_report_trait($guard->id,$request->client_id,$request->schedule_id,$guard->admin_id,$request->description);
-        if($request->has_photos == "true"){
+        if($request->has_photos == true){
             foreach ($request->photos as $photo){
                 $image = $this->uploadImage($photo);
                 $this->save_daily_report_images_trait($report->id,$image);

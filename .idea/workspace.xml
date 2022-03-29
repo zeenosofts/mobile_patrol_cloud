@@ -11,11 +11,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="DailyReportController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="DailyReportController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Api/DailyReportController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="238">
-              <caret line="20" column="41" lean-forward="false" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
+              <caret line="20" column="39" lean-forward="false" selection-start-line="20" selection-start-column="39" selection-end-line="20" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -46,8 +46,8 @@
       <file leaf-file-name="VisitorController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Api/VisitorController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="697">
-              <caret line="50" column="67" lean-forward="true" selection-start-line="50" selection-start-column="67" selection-end-line="50" selection-end-column="67" />
+            <state relative-caret-position="255">
+              <caret line="24" column="43" lean-forward="false" selection-start-line="24" selection-start-column="43" selection-end-line="24" selection-end-column="43" />
               <folding />
             </state>
           </provider>
@@ -73,7 +73,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Visitor.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Visitor.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Models/Visitor.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="595">
@@ -176,13 +176,13 @@
         <option value="$PROJECT_DIR$/app/Models/DailyReport.php" />
         <option value="$PROJECT_DIR$/app/Models/DailyReportImages.php" />
         <option value="$PROJECT_DIR$/database/migrations/2022_03_24_064203_create_visitor_images_table.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Api/DailyReportController.php" />
         <option value="$PROJECT_DIR$/database/migrations/2022_03_24_064108_create_visitors_table.php" />
         <option value="$PROJECT_DIR$/app/Models/VisitorImages.php" />
         <option value="$PROJECT_DIR$/routes/api.php" />
         <option value="$PROJECT_DIR$/app/Http/Traits/VisitorTrait.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Api/VisitorController.php" />
         <option value="$PROJECT_DIR$/app/Models/Visitor.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Api/VisitorController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Api/DailyReportController.php" />
       </list>
     </option>
   </component>
@@ -482,12 +482,12 @@
       <workItem from="1648117401471" duration="1608000" />
       <workItem from="1648126463653" duration="148000" />
       <workItem from="1648458250773" duration="2770000" />
-      <workItem from="1648539434711" duration="332000" />
+      <workItem from="1648539434711" duration="996000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="554766000" />
+    <option name="totallyTimeSpent" value="555430000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1358" y="-8" width="1936" height="1056" extended-state="6" />
@@ -853,14 +853,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Api/DailyReportController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="20" column="41" lean-forward="false" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Traits/VisitorTrait.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="527">
@@ -875,14 +867,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="691">
           <caret line="50" column="102" lean-forward="false" selection-start-line="50" selection-start-column="102" selection-end-line="50" selection-end-column="102" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Api/VisitorController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="50" column="67" lean-forward="true" selection-start-line="50" selection-start-column="67" selection-end-line="50" selection-end-column="67" />
           <folding />
         </state>
       </provider>
@@ -926,6 +910,22 @@
           <folding>
             <element signature="e#30#66#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Api/VisitorController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="24" column="43" lean-forward="false" selection-start-line="24" selection-start-column="43" selection-end-line="24" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Api/DailyReportController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="20" column="39" lean-forward="false" selection-start-line="20" selection-start-column="39" selection-end-line="20" selection-end-column="39" />
+          <folding />
         </state>
       </provider>
     </entry>
