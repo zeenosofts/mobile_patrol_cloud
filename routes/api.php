@@ -53,7 +53,7 @@ Route::middleware(['auth:api','cors'])->group(function () {
     Route::post('visitor_time_out',[\App\Http\Controllers\Api\VisitorController::class,'visitor_time_out'])
         ->name('visitor_time_out');
 //    Notifications
-    Route::post('get_all_notifications',[\App\Http\Controllers\Api\VisitorController::class,'get_all_notifications'])
+    Route::post('get_all_notifications',[\App\Http\Controllers\Api\NotificationController::class,'get_all_notifications'])
         ->name('get_all_notifications');
 
 });
