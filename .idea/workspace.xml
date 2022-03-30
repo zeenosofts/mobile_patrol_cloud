@@ -11,11 +11,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Notification.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Notification.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Models/Notification.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="31" lean-forward="false" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="31" />
+            <state relative-caret-position="680">
+              <caret line="40" column="21" lean-forward="false" selection-start-line="40" selection-start-column="21" selection-end-line="40" selection-end-column="21" />
               <folding>
                 <element signature="e#30#66#0#PHP" expanded="true" />
               </folding>
@@ -45,7 +45,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NotificationAttachment.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="NotificationAttachment.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Models/NotificationAttachment.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="238">
@@ -178,13 +178,13 @@
         <option value="$PROJECT_DIR$/app/Models/Visitor.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Api/DailyReportController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Api/VisitorController.php" />
-        <option value="$PROJECT_DIR$/app/Models/Notification.php" />
         <option value="$PROJECT_DIR$/database/migrations/2022_03_30_113828_create_notification_attachments_table.php" />
         <option value="$PROJECT_DIR$/app/Http/Traits/NotificationTrait.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Api/NotificationController.php" />
         <option value="$PROJECT_DIR$/routes/api.php" />
         <option value="$PROJECT_DIR$/database/migrations/2022_03_30_113523_create_notifications_table.php" />
         <option value="$PROJECT_DIR$/app/Models/NotificationAttachment.php" />
+        <option value="$PROJECT_DIR$/app/Models/Notification.php" />
       </list>
     </option>
   </component>
@@ -487,12 +487,12 @@
       <workItem from="1648539434711" duration="1590000" />
       <workItem from="1648624324740" duration="731000" />
       <workItem from="1648631344946" duration="5000" />
-      <workItem from="1648640102485" duration="1534000" />
+      <workItem from="1648640102485" duration="1696000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="558294000" />
+    <option name="totallyTimeSpent" value="558456000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1358" y="-8" width="1936" height="1056" extended-state="6" />
@@ -900,16 +900,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/Notification.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="31" lean-forward="false" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="31" />
-          <folding>
-            <element signature="e#30#66#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Api/NotificationController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -931,6 +921,16 @@
         <state relative-caret-position="238">
           <caret line="15" column="22" lean-forward="true" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/Notification.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="40" column="21" lean-forward="false" selection-start-line="40" selection-start-column="21" selection-end-line="40" selection-end-column="21" />
+          <folding>
+            <element signature="e#30#66#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

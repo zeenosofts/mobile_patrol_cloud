@@ -12,7 +12,7 @@ class Notification extends Model
 {
     use HasFactory, AttendanceTrait, ScheduleTrait;
 
-    public $appends = ['local_time'];
+    public $appends = ['local_time','has_attachment'];
 
     public function attachments(){
         return $this->hasOne(NotificationAttachment::class);
@@ -32,5 +32,12 @@ class Notification extends Model
         }else{
             return null;
         }
+    }
+    public function getHasAttachmentAttribute(){
+        $attachment = $this->attachments();
+        if($attachment){
+            return true;
+        }
+        return false;
     }
 }
