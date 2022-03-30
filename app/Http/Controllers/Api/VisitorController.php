@@ -50,7 +50,8 @@ class VisitorController extends Controller
             $guard=$this->get_guard_table_row($request->user()->id);
             $time_out = $this->convertHtmlDateTimeToDbFormat(Carbon::now(),Carbon::now()->timezone);
             $this->visitor_time_out_trait($request->id,$time_out);
-            return $this->returnApiResponse(200, 'success', array('response' => 'Visitor Timed-out Successfully'));
+            $visitor = Visitor::where('id',$request->id)->first();
+            return $this->returnApiResponse(200, 'success', array('response' => 'Visitor Timed-out Successfully','time_out' => $visitor->local_time_out));
         }catch(\Exception $e){
             return $this->returnApiResponse(401,'danger',array('error'=>$e->getMessage()));
         }
