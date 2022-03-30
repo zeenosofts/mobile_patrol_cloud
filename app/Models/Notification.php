@@ -35,7 +35,7 @@ class Notification extends Model
     }
     public function getHasAttachmentAttribute(){
         $attachment = $this->attachments();
-        if($attachment){
+        if($attachment != null){
             return true;
         }
         return false;
