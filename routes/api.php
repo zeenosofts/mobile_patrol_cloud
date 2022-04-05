@@ -55,5 +55,11 @@ Route::middleware(['auth:api','cors'])->group(function () {
 //    Notifications
     Route::post('get_all_notifications',[\App\Http\Controllers\Api\NotificationController::class,'get_all_notifications'])
         ->name('get_all_notifications');
+//    Mobril Patrols
+
+    Route::post('get_all_mobile_patrols',[\App\Http\Controllers\Api\MobilePatrolController::class,'get_all_mobile_patrols'])
+        ->name('get_all_mobile_patrols');
+    Route::post('get_all_mobile_patrols_reports_by_id',[\App\Http\Controllers\Api\MobilePatrolController::class,'get_all_mobile_patrols_reports_by_id'])
+        ->name('get_all_mobile_patrols_reports_by_id');
 
 });
