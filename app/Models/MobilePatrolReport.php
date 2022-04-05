@@ -16,7 +16,7 @@ class MobilePatrolReport extends Model
 
     public function getLocalTimeAttribute(){
         if($this->date != null) {
-            return $this->convertDateTimeToDbFormat($this->convertWithRespectToTimeZone(Carbon::parse($this->date." ".$this->time)->toDateTimeString(), $this->admin_id));
+            return $this->convertDateTimeToDbFormat($this->convertWithRespectToTimeZone(Carbon::parse($this->date)->toDateTimeString(), $this->admin_id));
         }else{
             return null;
         }

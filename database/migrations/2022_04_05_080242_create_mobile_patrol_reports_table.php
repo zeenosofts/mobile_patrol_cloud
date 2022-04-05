@@ -19,8 +19,7 @@ class CreateMobilePatrolReportsTable extends Migration
             $table->bigInteger('admin_id');
             $table->bigInteger('guard_id');
             $table->text('information');
-            $table->date('date');
-            $table->time('time');
+            $table->dateTime('date');
             $table->timestamps();
         });
     }
