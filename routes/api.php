@@ -59,7 +59,7 @@ Route::middleware(['auth:api','cors'])->group(function () {
 
     Route::post('get_all_mobile_patrols',[\App\Http\Controllers\Api\MobilePatrolController::class,'get_all_mobile_patrols'])
         ->name('get_all_mobile_patrols');
-    Route::post('get_all_mobile_patrols_reports_by_id',[\App\Http\Controllers\Api\MobilePatrolController::class,'get_all_mobile_patrols_reports_by_id'])
+    Route::post('  ',[\App\Http\Controllers\Api\MobilePatrolController::class,'get_all_mobile_patrols_reports_by_id'])
         ->name('get_all_mobile_patrols_reports_by_id');
 
 });
