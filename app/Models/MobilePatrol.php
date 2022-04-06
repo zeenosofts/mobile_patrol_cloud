@@ -27,7 +27,7 @@ class MobilePatrol extends Model
     }
 
     public function mobile_patrol_reports(){
-        return $this->hasMany(MobilePatrol::class);
+        return $this->hasMany(MobilePatrolReport::class);
     }
 
     public function getLocalTimeAttribute(){
