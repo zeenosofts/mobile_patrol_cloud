@@ -62,4 +62,7 @@ Route::middleware(['auth:api','cors'])->group(function () {
     Route::post('get_all_mobile_patrols_reports_by_id',[\App\Http\Controllers\Api\MobilePatrolController::class,'get_all_mobile_patrols_reports_by_id'])
         ->name('get_all_mobile_patrols_reports_by_id');
 
+    Route::post('save_mobile_patrol_report',[\App\Http\Controllers\Api\MobilePatrolController::class,'save_mobile_patrol_report'])
+        ->name('save_mobile_patrol_report');
+
 });
