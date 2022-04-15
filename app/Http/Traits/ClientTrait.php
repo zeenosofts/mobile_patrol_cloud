@@ -3,6 +3,7 @@
 namespace App\Http\Traits;
 
 use App\Models\Client;
+use Illuminate\Support\Facades\Auth;
 
 trait ClientTrait {
 
@@ -25,5 +26,13 @@ trait ClientTrait {
         'client_address'=> $client_address,
         'client_phone' => $client_phone,
         ]);
+    }
+
+    public function showAdminClient(){
+            $admin_id = $this->getAdminID(Auth::user()->id);
+            $clients = Client::whereHas('admin',function ($query) use ($admin_id){
+                $query->where('admin_id',$admin_id);
+            })->with(array('admin','user'))->paginate(15);
+            return $clients;
     }
 }

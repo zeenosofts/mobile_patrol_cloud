@@ -15,6 +15,10 @@ class Guard extends Model
         return $this->belongsTo(User::class);
     }
 
+//    public function mobilePatrol(){
+//        return $this->hasMany(MobilePatrol::class);
+//    }
+
     public function getDrivingLicenseImageAttribute($value){
         if($value == null){
             return "";

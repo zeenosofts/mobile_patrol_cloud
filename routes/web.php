@@ -112,14 +112,18 @@ Route::group(['middleware' => 'auth'], function () {
         ->name('edit_guard_attendance')->middleware('role:manager');
 
 
-
     #--------------------Manager Accounts --------------- Manage Reports ------------------------------#
     Route::get('manager/manage/report', [App\Http\Controllers\Manager\ReportController::class, 'index'])
         ->name('manage_report')->middleware('role:manager');
     Route::get('generate/pdf', [\App\Http\Controllers\Manager\ReportController::class, 'generatePDF'])->name('generate_attendance_pdf');
 
 
-
-
+    #--------------------Manager Accounts --------------- Manage Patrol ------------------------------#
+    Route::get('manager/mobile/patrol', [App\Http\Controllers\Manager\MobilePatrolController::class, 'index'])
+        ->name('mobile_patrol')->middleware('role:manager');
+    Route::post('manager/save/mobile/patrol', [App\Http\Controllers\Manager\MobilePatrolController::class, 'create_mobile_patrol'])
+        ->name('save_mobile_patrol')->middleware('role:manager');
+    Route::get('manager/manage/mobile/patrol', [App\Http\Controllers\Manager\MobilePatrolController::class, 'manage_mobile_patrol'])
+        ->name('manage_mobile_patrol')->middleware('role:manager');
 
 });
