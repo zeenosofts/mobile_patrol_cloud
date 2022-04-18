@@ -52,6 +52,11 @@ trait MobilePatrolTrait {
         $save->save();
     }
 
+    public function mobile_patrol_status_change($id){
+      $status=MobilePatrol::where('id',$id)->update(['status'=>"2"]);
+      return $status;
+    }
+
     public function showFilterMobilePatrol($client_id,$from_date,$to_date){
 //        ->whereBetween('created_at',[$from_date,$to_date])
        if ( $client_id != "" ) {

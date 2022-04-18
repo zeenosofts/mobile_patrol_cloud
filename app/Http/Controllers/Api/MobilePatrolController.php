@@ -55,4 +55,13 @@ class MobilePatrolController extends Controller
             return $this->returnApiResponse(401, 'danger', array('error' => $e->getMessage()));
         }
     }
+    public function change_mobile_patrol_status(Request $request)
+    {
+        try {
+            $this->mobile_patrol_status_change($request->id);
+            return $this->returnApiResponse(200, 'success', array('response' => 'Mobile Patrols Status Change Successfully'));
+        } catch (\Exception $e) {
+            return $this->returnApiResponse(401, 'danger', array('error' => $e->getMessage()));
+        }
+    }
 }
