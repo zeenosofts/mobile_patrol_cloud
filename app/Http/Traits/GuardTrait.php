@@ -103,4 +103,11 @@ trait GuardTrait {
         })->with(array('admin','user'))->paginate(15);
         return $guards;
     }
+
+    //Get admin guard without pagination.
+    public function getAdminGuard(){
+        $admin_id = $this->getAdminID(Auth::user()->id);
+        $guards = Guard::where('admin_id',$admin_id)->get();
+        return $guards;
+    }
 }

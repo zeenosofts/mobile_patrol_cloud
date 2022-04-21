@@ -35,4 +35,11 @@ trait ClientTrait {
             })->with(array('admin','user'))->paginate(15);
             return $clients;
     }
+
+    //Get admin clients without pagination.
+    public function getAdminClient(){
+        $admin_id = $this->getAdminID(Auth::user()->id);
+        $clients = Client::where('admin_id',$admin_id)->get();
+        return $clients;
+    }
 }

@@ -8,6 +8,7 @@ use App\Models\MobilePatrolReportImages;
 use App\Models\Notification;
 use App\Models\Visitor;
 use App\Models\VisitorImages;
+use Illuminate\Support\Facades\DB;
 
 trait MobilePatrolTrait {
 
@@ -52,19 +53,26 @@ trait MobilePatrolTrait {
         $save->save();
     }
 
+    public function update_mobile_guard_trait($mobile_patrol_id,$guard_id,$client_id,$instructions){
+         MobilePatrol::where('id',$mobile_patrol_id)->update([
+            "guard_id" => $guard_id,
+            "client_id" => $client_id,
+            "instructions" => $instructions,
+             ]);
+    }
+
     public function mobile_patrol_status_change($id){
       $status=MobilePatrol::where('id',$id)->update(['status'=>"2"]);
       return $status;
     }
 
     public function showFilterMobilePatrol($client_id,$from_date,$to_date){
-//        ->whereBetween('created_at',[$from_date,$to_date])
        if ( $client_id != "" ) {
-            $mobile_patrol=MobilePatrol::where('client_id',$client_id)->paginate("5");
-        }else{
-            $mobile_patrol=MobilePatrol::with('guards')->paginate("5");
-            dd($mobile_patrol);
-        }
+            $mobile_patrol=MobilePatrol::where('client_id',$client_id)->whereBetween(DB::raw('DATE(created_at)'), array($from_date, $to_date))
+                ->with(array('guards'))->with(array('client'))->paginate(5);
+       }else{
+            $mobile_patrol=MobilePatrol::with(array('guards'))->with(array('client'))->paginate(5);
+       }
         return $mobile_patrol;
     }
 

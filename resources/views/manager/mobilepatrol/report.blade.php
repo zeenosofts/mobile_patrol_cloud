@@ -113,7 +113,7 @@
                                                 <td>{{$p->client->client_name}}</td>
                                                 <td>{{$p->instructions}}</td>
                                                 @if($p->status == 1)
-                                                <td><button type="button" class="btn btn-warning">Pending</button></td>
+                                                    <td><button type="button" class="btn btn-warning">Pending</button></td>
                                                 @elseif($p->status == 2)
                                                     <td> <button type="button" class="btn btn-success">Completed</button></td>
                                                 @else

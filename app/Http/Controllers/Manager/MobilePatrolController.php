@@ -11,6 +11,7 @@ use App\Http\Traits\ResponseTrait;
 use App\Models\Client;
 use App\Models\Guard;
 use App\Models\MobilePatrol;
+use App\Models\MobilePatrolReport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -25,14 +26,9 @@ class MobilePatrolController extends Controller
     public function index()
     {
         $title="Mobile Patrol";
-        $admin_id = $this->getAdminID(Auth::user()->id);
-        $clients = Client::whereHas('admin',function ($query) use ($admin_id){
-            $query->where('admin_id',$admin_id);
-        })->with(array('admin','user'))->get();
-        $guards = Guard::whereHas('admin',function ($query) use ($admin_id){
-            $query->where('admin_id',$admin_id);
-        })->with(array('admin','user'))->get();
-        return view('manager.mobilepatrol.create',compact('clients','guards'))->with('title',$title);
+        $guards = $this->getAdminGuard();
+        $clients=$this->getAdminClient();
+        return view('manager.mobilepatrol.create',['guards'=>$guards,'clients'=>$clients])->with('title',$title);
     }
 
     /**
@@ -44,7 +40,7 @@ class MobilePatrolController extends Controller
     {
         try {
             $guard=Guard::where("id",$request->guard_id)->first();
-            $report = $this->save_mobile_patrol($guard->admin_id, $request->guard_id, $request->client_id, $request->instructions);
+            $this->save_mobile_patrol($guard->admin_id, $request->guard_id, $request->client_id, $request->instructions);
             return $this->returnWebResponse("Mobile Patrols saved Successfully", 'success');
         } catch (\Exception $e) {
             return $this->returnWebResponse($e->getMessage(),'danger');
@@ -72,9 +68,13 @@ class MobilePatrolController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function edit_mobile_patrol(Request $request)
     {
-        //
+        $title="Edit Mobile Patrol";
+        $guards = $this->getAdminGuard();
+        $clients= $this->getAdminClient();
+        $mobile_patrol=MobilePatrol::where('id',$request->mobile_patrol_id)->get();
+        return view('manager.mobilepatrol.edit',['mobile_patrol'=>$mobile_patrol,'guards'=>$guards,'clients'=>$clients])->with('title',$title);
     }
 
     /**
@@ -83,9 +83,14 @@ class MobilePatrolController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function update_mobile_patrol(Request $request)
     {
-        //
+       try{
+            $this->update_mobile_guard_trait($request->mobile_patrol_id,$request->guard_id,$request->client_id,$request->instructions);
+            return $this->returnWebResponse("Mobile Patrols Update Successfully", 'success');
+       } catch (\Exception $e) {
+            return $this->returnWebResponse($e->getMessage(),'danger');
+       }
     }
 
     /**
@@ -95,9 +100,10 @@ class MobilePatrolController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function delete_mobile_patrol(Request $request)
     {
-        //
+        MobilePatrol::where('id',$request->mobile_patrol_id)->update(['status'=>0]);
+        return back();
     }
 
     /**
@@ -106,8 +112,10 @@ class MobilePatrolController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function view_mobile_patrol_report(Request $request)
     {
-        //
+        $title="Mobile Petrol Report";
+        $mobile_patrol_report=MobilePatrolReport::where('mobile_patrol_id',$request->id)->get();
+        return view('manager.mobilepatrol.report',['mobile_patrol_report'=>$mobile_patrol_report])->with('title',$title);
     }
 }

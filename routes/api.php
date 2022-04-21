@@ -69,3 +69,5 @@ Route::middleware(['auth:api','cors'])->group(function () {
         ->name('change_mobile_patrol_status');
 
 });
+
+
