@@ -7,17 +7,17 @@ use App\Http\Traits\ClientTrait;
 use App\Http\Traits\CompanySettingTrait;
 use App\Http\Traits\GuardTrait;
 use App\Http\Traits\MobilePatrolTrait;
+use App\Http\Traits\PhpFunctionsTrait;
 use App\Http\Traits\ResponseTrait;
-use App\Models\Client;
 use App\Models\Guard;
 use App\Models\MobilePatrol;
 use App\Models\MobilePatrolReport;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class MobilePatrolController extends Controller
 {
-    use CompanySettingTrait,MobilePatrolTrait,ResponseTrait,GuardTrait,ClientTrait;
+    use CompanySettingTrait,MobilePatrolTrait,ResponseTrait,GuardTrait,ClientTrait,PhpFunctionsTrait;
     /**
      * Display a listing of the resource.
      *
@@ -88,7 +88,7 @@ class MobilePatrolController extends Controller
        try{
             $this->update_mobile_guard_trait($request->mobile_patrol_id,$request->guard_id,$request->client_id,$request->instructions);
             return $this->returnWebResponse("Mobile Patrols Update Successfully", 'success');
-       } catch (\Exception $e) {
+       }catch (\Exception $e){
             return $this->returnWebResponse($e->getMessage(),'danger');
        }
     }
@@ -114,8 +114,28 @@ class MobilePatrolController extends Controller
      */
     public function view_mobile_patrol_report(Request $request)
     {
-        $title="Mobile Petrol Report";
-        $mobile_patrol_report=MobilePatrolReport::where('mobile_patrol_id',$request->id)->get();
-        return view('manager.mobilepatrol.report',['mobile_patrol_report'=>$mobile_patrol_report])->with('title',$title);
+        $title="Manage Mobile Patrol Report";
+        $mobile_patrol_report=MobilePatrolReport::where('mobile_patrol_id',$request->mobile_patrol_id)->with(array('guards'))->paginate(5);
+        return view('manager.mobilepatrol.report',['mobile_patrol_report'=>$mobile_patrol_report,'mobile_patrol_id'=>$request->mobile_patrol_id])
+            ->with('title',$title);
+    }
+
+    public function create_mobile_patrol_report(Request $request){
+        $title="Mobile Patrol Report";
+        $guards = $this->getAdminGuard();
+        $time_zone = Session::get('timezone');
+        return view('manager.mobilepatrol.report.create',['guards'=>$guards,'timezone'=>$time_zone,'mobile_patrol_id'=>$request->mobile_patrol_id])->with('title',$title);
+    }
+
+    public function save_mobile_patrol_report(Request $request){
+        try {
+           $date= $this->convertHtmlDateTimeToDbFormat($request->date,$request->timezone);
+            $guard = Guard::where("id", $request->guard_id)->first();
+            $this->save_mobile_patrol_report_trait($guard->admin_id, $request->guard_id, $request->mobile_patrol_id,
+                $request->information, $date);
+            return $this->returnWebResponse("Mobile Patrols Report saved Successfully", 'success');
+        } catch (\Exception $e) {
+            return $this->returnWebResponse($e->getMessage(),'danger');
+        }
     }
 }

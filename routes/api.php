@@ -68,6 +68,9 @@ Route::middleware(['auth:api','cors'])->group(function () {
     Route::post('change_mobile_patrol_status',[\App\Http\Controllers\Api\MobilePatrolController::class,'change_mobile_patrol_status'])
         ->name('change_mobile_patrol_status');
 
+    Route::post('get_forms',[\App\Http\Controllers\Api\FormController::class,'index'])
+        ->name('get_forms');
+
 });
 
 

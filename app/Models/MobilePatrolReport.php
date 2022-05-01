@@ -25,6 +25,9 @@ class MobilePatrolReport extends Model
     public function mobile_patrol_report_images(){
         return $this->hasMany(MobilePatrolReportImages::class);
     }
+    public function guards(){
+        return $this->belongsTo(Guard::class,'guard_id','id');
+    }
 
     public function getHasImagesAttribute(){
         return count($this->mobile_patrol_report_images()->get()) > 0 ? true : false;

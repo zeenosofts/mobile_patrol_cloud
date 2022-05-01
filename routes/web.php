@@ -133,5 +133,9 @@ Route::group(['middleware' => 'auth'], function () {
         ->name('delete_mobile_patrol')->middleware('role:manager');
     Route::get('manager/view/mobile/patrol/report/{mobile_patrol_id}/{hash}', [App\Http\Controllers\Manager\MobilePatrolController::class, 'view_mobile_patrol_report'])
         ->name('view_mobile_patrol_reports')->middleware('role:manager');
+    Route::get('manager/create/mobile/patrol/report/{mobile_patrol_id}/{hash}', [App\Http\Controllers\Manager\MobilePatrolController::class, 'create_mobile_patrol_report'])
+        ->name('create_mobile_patrol_report')->middleware('role:manager');
+    Route::post('manager/save/mobile/patrol/report', [App\Http\Controllers\Manager\MobilePatrolController::class, 'save_mobile_patrol_report'])
+        ->name('save_mobile_patrol_report')->middleware('role:manager');
 
 });

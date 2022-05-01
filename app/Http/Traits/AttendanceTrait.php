@@ -25,7 +25,6 @@ trait AttendanceTrait{
         return back();
     }
     public function update_guard_attendance($id,$client_id, $time_in, $time_out, $date, $timezone){
-
         Attendance::where('id',$id)->update([
             "client_id"=>$client_id,
             "time_in"=>$this->convertHtmlDateTimeToDbFormat($time_in,$timezone),
