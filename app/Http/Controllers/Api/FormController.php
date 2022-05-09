@@ -19,11 +19,11 @@ class FormController extends Controller
     public function index()
     {
         try{
-        $form=Form::all();
-        return $this->returnApiResponse(200, 'success', array('response' => 'Form Fetched Successfully','form' => $form));
-    } catch (\Exception $e) {
-        return $this->returnApiResponse(401, 'danger', array('error' => $e->getMessage()));
-}
+            $form=Form::all();
+            return $this->returnApiResponse(200, 'success', array('response' => 'Form Fetched Successfully','form' => $form));
+        } catch (\Exception $e) {
+            return $this->returnApiResponse(401, 'danger', array('error' => $e->getMessage()));
+        }
     }
 
     /**

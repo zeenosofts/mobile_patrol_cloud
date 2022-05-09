@@ -25,7 +25,8 @@
     <link href="{{URL::asset('assets/css/themes/layout/brand/dark.css?v=7.0.3')}}" rel="stylesheet" type="text/css" />
     <link href="{{URL::asset('assets/css/themes/layout/aside/dark.css?v=7.0.3')}}" rel="stylesheet" type="text/css" />
     <!--end::Layout Themes-->
-    <link rel="shortcut icon" href="{{URL::asset('assets/media/logos/favicon.png')}}" />
+
+    <link rel="shortcut icon" href="{{ asset('assets/frontend/images/favicon.png') }}" type="image/png">
 </head>
 <!--end::Head-->
 <style>
