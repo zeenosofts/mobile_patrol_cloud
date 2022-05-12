@@ -37,7 +37,7 @@ class FormController extends Controller
      */
     public function save_forms_value(Request $request)
     {
-
+try{
         $save_form=new FormValue();
         $save_form->user_id=$request->user()->id;
         $save_form->form_id=$request->form_id;
@@ -52,6 +52,10 @@ class FormController extends Controller
                 $form_images->save();
             }
         }
+    return $this->returnApiResponse(200, 'success', array('response' => 'Form Value saved Successfully'));
+} catch (\Exception $e) {
+    return $this->returnApiResponse(401, 'danger', array('error' => $e->getMessage()));
+}
 
     }
 
