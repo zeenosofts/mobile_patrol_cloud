@@ -3,14 +3,18 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Traits\ImageUplaodTrait;
 use App\Http\Traits\PhpFunctionsTrait;
 use App\Http\Traits\ResponseTrait;
 use App\Models\Form;
+use App\Models\FormValue;
+use App\Models\FormValuePicture;
+use App\Models\SaveForm;
 use Illuminate\Http\Request;
 
 class FormController extends Controller
 {
-    use PhpFunctionsTrait,ResponseTrait;
+    use PhpFunctionsTrait,ResponseTrait,ImageUplaodTrait;
     /**
      * Display a listing of the resource.
      *
@@ -31,9 +35,24 @@ class FormController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function save_forms_value(Request $request)
     {
-        //
+
+        $save_form=new FormValue();
+        $save_form->user_id=$request->user()->id;
+        $save_form->form_id=$request->form_id;
+        $save_form->form_element=json_encode($request->form_element);
+        $save_form->save();
+        if($request->has_photos == true){
+            foreach ($request->photos as $photo){
+                $image = $this->uploadImage($photo);
+                $form_images=new FormValuePicture();
+                $form_images->form_value_id=$save_form->id;
+                $form_images->images=$image;
+                $form_images->save();
+            }
+        }
+
     }
 
     /**

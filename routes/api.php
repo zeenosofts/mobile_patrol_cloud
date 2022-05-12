@@ -71,6 +71,11 @@ Route::middleware(['auth:api','cors'])->group(function () {
     Route::post('get_forms',[\App\Http\Controllers\Api\FormController::class,'index'])
         ->name('get_forms');
 
+    Route::post('save_forms_value',[\App\Http\Controllers\Api\FormController::class,'save_forms_value'])
+        ->name('save_forms_value');
+
+
+
 });
 
 
