@@ -38,15 +38,10 @@ class FormController extends Controller
     public function save_forms_value(Request $request)
     {
         try{
-            $form_element_array = array();
-            for ($i = 0; $i < count($request->form_element); $i++) {
-                $decode_data = json_decode($request->form_element[$i]);
-                array_push($form_element_array, $decode_data);
-            }
         $save_form=new FormValue();
         $save_form->user_id=$request->user()->id;
         $save_form->form_id=$request->form_id;
-        $save_form->form_element=json_encode($form_element_array);
+        $save_form->form_element=$request->form_element;
         $save_form->save();
         if($request->has_photos == true){
             foreach ($request->photos as $photo){
