@@ -41,7 +41,7 @@ try{
         $save_form=new FormValue();
         $save_form->user_id=$request->user()->id;
         $save_form->form_id=$request->form_id;
-        $save_form->form_element=json_encode($request->form_element);
+        $save_form->form_element=$request->form_element;
         $save_form->save();
         if($request->has_photos == true){
             foreach ($request->photos as $photo){
