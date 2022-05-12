@@ -37,7 +37,8 @@ class FormController extends Controller
      */
     public function save_forms_value(Request $request)
     {
-try{
+        dd($request->all());
+        try{
         $save_form=new FormValue();
         $save_form->user_id=$request->user()->id;
         $save_form->form_id=$request->form_id;
