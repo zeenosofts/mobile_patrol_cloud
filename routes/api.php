@@ -32,9 +32,12 @@ Route::post('check_guard_time_out',[\App\Http\Controllers\Api\AttendanceControll
 
 Route::middleware(['auth:api','cors'])->group(function () {
    // Route::post('/form',[\App\Http\Controllers\Api\LoginController::class,'form'])->name('form');
-    Route::post('get_guard_schedules',[\App\Http\Controllers\Api\ScheduleController::class,'get_guard_schedules'])->name('get_guard_schedules');
-    Route::post('create_guard_attendance',[\App\Http\Controllers\Api\AttendanceController::class,'save_guard_attendance'])->name('create_guard_attendance');
-    Route::post('get_guard_attendance',[\App\Http\Controllers\Api\AttendanceController::class,'get_guard_attendance'])->name('get_guard_attendance');
+    Route::post('get_guard_schedules',[\App\Http\Controllers\Api\ScheduleController::class,'get_guard_schedules'])
+        ->name('get_guard_schedules');
+    Route::post('create_guard_attendance',[\App\Http\Controllers\Api\AttendanceController::class,'save_guard_attendance'])
+        ->name('create_guard_attendance');
+    Route::post('get_guard_attendance',[\App\Http\Controllers\Api\AttendanceController::class,'get_guard_attendance'])
+        ->name('get_guard_attendance');
     Route::post('save_checkpoint_history',[\App\Http\Controllers\Api\CheckpointController::class,'save_history_checkpoint'])
         ->name('save_checkpoint_history');
     Route::post('get_checkpoint_history',[\App\Http\Controllers\Api\CheckpointController::class,'get_qrcode_history'])
@@ -55,7 +58,7 @@ Route::middleware(['auth:api','cors'])->group(function () {
 //    Notifications
     Route::post('get_all_notifications',[\App\Http\Controllers\Api\NotificationController::class,'get_all_notifications'])
         ->name('get_all_notifications');
-//    Mobril Patrols
+//    Mobile Patrols
 
     Route::post('get_all_mobile_patrols',[\App\Http\Controllers\Api\MobilePatrolController::class,'get_all_mobile_patrols'])
         ->name('get_all_mobile_patrols');
@@ -74,6 +77,8 @@ Route::middleware(['auth:api','cors'])->group(function () {
     Route::post('save_forms_value',[\App\Http\Controllers\Api\FormController::class,'save_forms_value'])
         ->name('save_forms_value');
 
+    Route::post('get_admin_clients',[\App\Http\Controllers\Api\AttendanceController::class,'get_admin_clients'])
+        ->name('get_admin_clients');
 
 
 });

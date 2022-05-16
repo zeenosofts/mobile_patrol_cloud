@@ -9,6 +9,8 @@ use App\Http\Traits\AttendanceTrait;
 use App\Http\Traits\PhpFunctionsTrait;
 use App\Http\Traits\ResponseTrait;
 use App\Models\Attendance;
+use App\Models\Client;
+use App\Models\Guard;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -52,6 +54,18 @@ class AttendanceController extends Controller
             $attendance=$this->guard_attendance($guard->id,$date);
             //return $this->returnApiResponse(200, 'success', array('attendance' => $guard));
             return $this->returnApiResponse(200, 'success', array('attendance' => $attendance));
+        }catch(\Exception $e){
+            return $this->returnApiResponse('401','danger',array('error'=>$e->getMessage()));
+        }
+    }
+
+    public function get_admin_clients(Request $request){
+        try{
+            $admin_id=Guard::where('id',$request->user()->id)->first()->admin_id;
+            $clients = Client::whereHas('admin',function ($query) use ($admin_id){
+                $query->where('admin_id',$admin_id);
+            })->with(array('admin','user'))->get();
+            return $this->returnApiResponse(200, 'success', array('clients' => $clients));
         }catch(\Exception $e){
             return $this->returnApiResponse('401','danger',array('error'=>$e->getMessage()));
         }
