@@ -19,7 +19,6 @@ class FormController extends Controller
      */
     public function index()
     {
-        //dd("2");
         $clients=Client::all();
         return view('manager.form.index')->with('title','Create form');
     }
@@ -83,6 +82,7 @@ class FormController extends Controller
      */
     public function update_form(Request $request)
     {
+        dd($request->all());
         try {
             $form_element_array = array();
             for ($i = 0; $i < count($request->form_element); $i++) {
@@ -94,7 +94,6 @@ class FormController extends Controller
         } catch (\Exception $e) {
             return $this->returnApiResponse(404, 'error', array());
         }
-
     }
 
     /**
