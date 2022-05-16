@@ -71,7 +71,6 @@ class FormController extends Controller
     {
         $form=Form::where('id',$id)->first();
         return $form;
-
     }
 
     /**
@@ -82,8 +81,9 @@ class FormController extends Controller
      */
     public function update_form(Request $request)
     {
-        dd($request->all());
+
         try {
+            dd($request->all());
             $form_element_array = array();
             for ($i = 0; $i < count($request->form_element); $i++) {
                 $decode_data = json_decode($request->form_element[$i]);
