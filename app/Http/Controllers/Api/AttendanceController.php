@@ -61,6 +61,7 @@ class AttendanceController extends Controller
 
     public function get_admin_clients(Request $request){
         try{
+            dd($request->user()->id);
             $admin_id=Guard::where('id',$request->user()->id)->first()->admin_id;
             $clients = Client::whereHas('admin',function ($query) use ($admin_id){
                 $query->where('admin_id',$admin_id);
