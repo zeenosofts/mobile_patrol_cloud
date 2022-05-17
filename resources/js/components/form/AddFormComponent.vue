@@ -136,7 +136,7 @@
                 var params = {
                     form_name:self.form_name,
                     description:self.description,
-                    form_element:self.form_element_list,
+                    form_element:json_encode(self.form_element_list),
                 }
                 Promise.resolve(HelperController.sendPOSTRequest('save_form',params)).then( response => {
                     if(response.data.message == 'success'){

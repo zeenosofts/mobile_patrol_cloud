@@ -32,14 +32,14 @@ class FormController extends Controller
     {
 
         try {
-            $form_element_array = array();
-            for ($i = 0; $i < count($request->form_element); $i++) {
-                $decode_data = json_decode($request->form_element[$i]);
-                array_push($form_element_array, $decode_data);
-            }
+//            $form_element_array = array();
+//            for ($i = 0; $i < count($request->form_element); $i++) {
+//                $decode_data = json_decode($request->form_element[$i]);
+//                array_push($form_element_array, $decode_data);
+//            }
             $checkDuplication = $this->checkIfFormNameExists(Auth::user()->id,$request->form_name);
             if($checkDuplication == true) {
-            $this->create_form(Auth::user()->id, $request->form_name, $request->description, $form_element_array);
+            $this->create_form(Auth::user()->id, $request->form_name, $request->description, $request->form_element);
             return $this->returnApiResponse(200, 'success', array('response' => 'Form Created Successfully'));
             }else{
             return $this->returnApiResponse(200, 'warning', array('response' => 'Form Name Alrready Presenet.'));
@@ -82,12 +82,12 @@ class FormController extends Controller
     public function update_form(Request $request)
     {
         try {
-            $form_element_array = array();
-            for ($i = 0; $i < count($request->form_element); $i++) {
-                $decode_data = json_decode($request->form_element[$i]);
-                array_push($form_element_array, $decode_data);
-            }
-            $this->update_forms($request->id, $request->form_name, $request->description, $form_element_array);
+//            $form_element_array = array();
+//            for ($i = 0; $i < count($request->form_element); $i++) {
+//                $decode_data = json_decode($request->form_element[$i]);
+//                array_push($form_element_array, $decode_data);
+//            }
+            $this->update_forms($request->id, $request->form_name, $request->description, $request->form_element);
             return $this->returnApiResponse(200, 'success', array('response' => 'Form Updated Successfully'));
         } catch (\Exception $e) {
             return $this->returnApiResponse(404, 'error', array());

@@ -17205,7 +17205,7 @@ __webpack_require__.r(__webpack_exports__);
       var params = {
         form_name: self.form_name,
         description: self.description,
-        form_element: self.form_element_list
+        form_element: json_encode(self.form_element_list)
       };
       Promise.resolve(_controller_HelperController__WEBPACK_IMPORTED_MODULE_2__.default.sendPOSTRequest('save_form', params)).then(function (response) {
         if (response.data.message == 'success') {
@@ -17619,7 +17619,7 @@ __webpack_require__.r(__webpack_exports__);
       var params = {
         form_name: self.form_name,
         description: self.description,
-        form_element: self.form_element_list,
+        form_element: json_encode(self.form_element_list),
         id: self.id
       };
       console.log(params);
