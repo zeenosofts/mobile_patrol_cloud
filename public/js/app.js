@@ -17092,8 +17092,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 
 
@@ -17172,7 +17170,8 @@ __webpack_require__.r(__webpack_exports__);
         required: "true",
         placeholder: "Enter text"
       }],
-      form_element_list: []
+      form_element_list: [],
+      form_elements: []
     };
   },
   methods: {
@@ -17202,10 +17201,17 @@ __webpack_require__.r(__webpack_exports__);
         self.errors.form_element = false;
       }
 
+      for (var j = 0; j < this.form_element_list.length; j++) {
+        var object = self.form_element_list[j];
+        console.log(JSON.stringify(object));
+        self.form_elements.push(JSON.stringify(object));
+      }
+
+      console.log(self.form_elements);
       var params = {
         form_name: self.form_name,
         description: self.description,
-        form_element: self.form_element_list
+        form_element: self.form_elements
       };
       Promise.resolve(_controller_HelperController__WEBPACK_IMPORTED_MODULE_2__.default.sendPOSTRequest('save_form', params)).then(function (response) {
         if (response.data.message == 'success') {
@@ -92964,7 +92970,7 @@ var render = function() {
                   _vm._v(
                     "\n                " +
                       _vm._s(element.name) +
-                      "\n                "
+                      "\n            "
                   )
                 ]
               )

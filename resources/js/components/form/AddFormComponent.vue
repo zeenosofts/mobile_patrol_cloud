@@ -86,8 +86,6 @@
                        style="background-color: gainsboro; padding: 20px" @change="log">
                 <div class="list-group-item mb-2" v-for="element in element_list" :key="element.name">
                     {{ element.name }}
-                    <!--<label>Enter {{element.name}} Field</label>-->
-                    <!--<input :type="element.name" class="form-control"/>-->
                 </div>
             </draggable>
         </div>
@@ -123,7 +121,8 @@
                     {name: "file", id: 6 ,label : "Enter file" , required : "true" , placeholder : "Enter file"},
                     {name: "textarea", id: 7 ,label : "Enter text" , required : "true" , placeholder : "Enter text"},
                 ],
-                form_element_list: []
+                form_element_list: [],
+                form_elements: []
             };
         },
         methods: {
@@ -133,10 +132,17 @@
                 if (self.description.trim() == ''){self.errors.description = true;return false;}else {self.errors.description = false}
                 if (self.form_element_list.length == '0'){self.errors.form_element = true;return false;}else {self.errors.form_element = false}
 
+                for( var j = 0; j < this.form_element_list.length; j++ ){
+                    let object = self.form_element_list[j];
+                    console.log(JSON.stringify(object));
+                    self.form_elements.push(JSON.stringify(object));
+                }
+                console.log(self.form_elements);
+
                 var params = {
                     form_name:self.form_name,
                     description:self.description,
-                    form_element:self.form_element_list,
+                    form_element:self.form_elements,
                 }
 
                 Promise.resolve(HelperController.sendPOSTRequest('save_form',params)).then( response => {
