@@ -17207,6 +17207,7 @@ __webpack_require__.r(__webpack_exports__);
         description: self.description,
         form_element: json_encode(self.form_element_list)
       };
+      console.log("2");
       console.log(params);
       Promise.resolve(_controller_HelperController__WEBPACK_IMPORTED_MODULE_2__.default.sendPOSTRequest('save_form', params)).then(function (response) {
         if (response.data.message == 'success') {
