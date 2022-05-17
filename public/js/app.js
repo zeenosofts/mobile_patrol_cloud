@@ -17203,7 +17203,7 @@ __webpack_require__.r(__webpack_exports__);
       var params = {
         form_name: self.form_name,
         description: self.description,
-        form_element: self.form_element_list
+        form_element: self.form_element_list.valueOf()
       };
       console.log("2");
       console.log(params);
@@ -17214,8 +17214,7 @@ __webpack_require__.r(__webpack_exports__);
 
         if (response.data.message == 'warning') {
           Vue.$toast.warning(response.data.data.response);
-        } //   this.$emit('methodcreateScheduleButtonClicked')
-
+        }
       })["catch"](function (error) {
         console.log(error);
       });
@@ -18651,10 +18650,10 @@ vue__WEBPACK_IMPORTED_MODULE_0__.default.component('form-component', __webpack_r
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 //Axios URL
-//axios.defaults.baseURL="http://127.0.0.1:8000/";
-//Production AXios URL
 
-axios.defaults.baseURL = "https://guard.cybermeteors.com/"; //Data Table
+axios.defaults.baseURL = "http://127.0.0.1:8000/"; //Production AXios URL
+//axios.defaults.baseURL="https://guard.cybermeteors.com/";
+//Data Table
 
 
 
