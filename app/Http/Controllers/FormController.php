@@ -32,7 +32,7 @@ class FormController extends Controller
     {
 
         try {
-            dd($request->form_element);
+            dd($request->all());
             $form_element_array = array();
             for ($i = 0; $i < count($request->form_element); $i++) {
                 $decode_data = json_decode($request->form_element[$i]);
