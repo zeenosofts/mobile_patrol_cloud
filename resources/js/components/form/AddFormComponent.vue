@@ -140,20 +140,23 @@
                 }
                 console.log("2");
                 console.log(params);
-//                Promise.resolve(HelperController.sendPOSTRequest('save_form',params)).then( response => {
-//                    if(response.data.message == 'success'){
-//                        Vue.$toast.success(response.data.data.response);
-//                    }
-//                    if(response.data.message == 'warning'){
-//                        Vue.$toast.warning(response.data.data.response);
-//                    }
-//
-//
-//                    this.$emit('methodcreateScheduleButtonClicked')
-//
-//                }).catch(function(error){
-//                    console.log(error);
-//                });
+                Promise.resolve(HelperController.sendPOSTRequest('save_form',params)).then( response => {
+                    if(response.data.message == 'success'){
+                        Vue.$toast.success(response.data.data.response);
+                    }
+                    if(response.data.message == 'warning'){
+                        Vue.$toast.warning(response.data.data.response);
+                    }
+
+
+                    this.$emit('methodcreateScheduleButtonClicked')
+
+                }).catch(function(error){
+                    console.log(error);
+                });
+
+
+
             },
             removeAt(idx) {
                 let self = this;
