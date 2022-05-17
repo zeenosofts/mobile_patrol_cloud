@@ -81,9 +81,7 @@ class FormController extends Controller
      */
     public function update_form(Request $request)
     {
-
         try {
-            dd($request->all());
             $form_element_array = array();
             for ($i = 0; $i < count($request->form_element); $i++) {
                 $decode_data = json_decode($request->form_element[$i]);
