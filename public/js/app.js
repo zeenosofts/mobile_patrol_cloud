@@ -17177,8 +17177,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     created_at: function created_at() {
-      var _this = this;
-
       var self = this;
 
       if (self.form_name.trim() == '') {
@@ -17208,20 +17206,20 @@ __webpack_require__.r(__webpack_exports__);
         form_element: json_encode(self.form_element_list)
       };
       console.log("2");
-      console.log(params);
-      Promise.resolve(_controller_HelperController__WEBPACK_IMPORTED_MODULE_2__.default.sendPOSTRequest('save_form', params)).then(function (response) {
-        if (response.data.message == 'success') {
-          Vue.$toast.success(response.data.data.response);
-        }
-
-        if (response.data.message == 'warning') {
-          Vue.$toast.warning(response.data.data.response);
-        }
-
-        _this.$emit('methodcreateScheduleButtonClicked');
-      })["catch"](function (error) {
-        console.log(error);
-      });
+      console.log(params); //                Promise.resolve(HelperController.sendPOSTRequest('save_form',params)).then( response => {
+      //                    if(response.data.message == 'success'){
+      //                        Vue.$toast.success(response.data.data.response);
+      //                    }
+      //                    if(response.data.message == 'warning'){
+      //                        Vue.$toast.warning(response.data.data.response);
+      //                    }
+      //
+      //
+      //                    this.$emit('methodcreateScheduleButtonClicked')
+      //
+      //                }).catch(function(error){
+      //                    console.log(error);
+      //                });
     },
     removeAt: function removeAt(idx) {
       var self = this;
