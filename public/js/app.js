@@ -17177,6 +17177,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     created_at: function created_at() {
+      var _this = this;
+
       var self = this;
 
       if (self.form_name.trim() == '') {
@@ -17203,10 +17205,8 @@ __webpack_require__.r(__webpack_exports__);
       var params = {
         form_name: self.form_name,
         description: self.description,
-        form_element: self.form_element_list.valueOf()
+        form_element: self.form_element_list
       };
-      console.log("2");
-      console.log(params);
       Promise.resolve(_controller_HelperController__WEBPACK_IMPORTED_MODULE_2__.default.sendPOSTRequest('save_form', params)).then(function (response) {
         if (response.data.message == 'success') {
           Vue.$toast.success(response.data.data.response);
@@ -17214,8 +17214,9 @@ __webpack_require__.r(__webpack_exports__);
 
         if (response.data.message == 'warning') {
           Vue.$toast.warning(response.data.data.response);
-        } //   this.$emit('methodcreateScheduleButtonClicked')
+        }
 
+        _this.$emit('methodcreateScheduleButtonClicked');
       })["catch"](function (error) {
         console.log(error);
       });
@@ -18813,9 +18814,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             case 0:
               _context2.next = 2;
               return axios.get(request).then(function (response) {
+                // console.log(response.data);
+                // console.log(response.status);
+                // console.log(response.statusText);
+                // console.log(response.headers);
+                // console.log(response.config);
                 ReturnResponse = response;
               })["catch"](function (response) {
-                console.log("catch " + response);
+                // handle error
+                console.log("catch " + response); // Vue.$toast.error(response);
+                // resp= response.data;
               })["finally"](function () {// always executed
               });
 
