@@ -80,7 +80,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('manager/form/{any?}', [App\Http\Controllers\FormController::class, 'index'])
         ->name('form')->where('any', '[\/\w\.-]*')->middleware('role:manager');
     Route::post('save_form', [App\Http\Controllers\FormController::class, 'save_form'])
-        ->name('save_form')->middleware('role:manager');
+        ->name('save_form')->where('any', '[\/\w\.-]*')->middleware('role:manager');
     Route::get('manager/manage/form', [App\Http\Controllers\FormController::class, 'manage_form'])
         ->name('manage_form')->where('any', '[\/\w\.-]*')->middleware('role:manager');
     Route::get('manager/form/edit/{id}/{hash}', [App\Http\Controllers\FormController::class, 'index'])
@@ -88,7 +88,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('manager/get/form/{id}', [App\Http\Controllers\FormController::class, 'get_form'])
         ->name('get_form')->middleware('role:manager');
     Route::post('update_form', [App\Http\Controllers\FormController::class, 'update_form'])
-        ->name('update_form')->middleware('role:manager');
+        ->name('update_form')->where('any', '[\/\w\.-]*')->middleware('role:manager');
     Route::post('change/form/status', [App\Http\Controllers\FormController::class, 'change_status'])
         ->name('change_form_status')->middleware('role:manager');
 
