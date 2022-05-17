@@ -136,7 +136,7 @@
                 var params = {
                     form_name:self.form_name,
                     description:self.description,
-                    form_element:json_encode(self.form_element_list),
+                    form_element:self.form_element_list,
                 }
                 console.log("2");
                 console.log(params);
@@ -147,9 +147,7 @@
                     if(response.data.message == 'warning'){
                         Vue.$toast.warning(response.data.data.response);
                     }
-
-
-                    this.$emit('methodcreateScheduleButtonClicked')
+                 //   this.$emit('methodcreateScheduleButtonClicked')
 
                 }).catch(function(error){
                     console.log(error);

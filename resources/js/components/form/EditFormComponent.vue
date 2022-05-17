@@ -160,7 +160,7 @@
                 var params = {
                     form_name:self.form_name,
                     description:self.description,
-                    form_element:json_encode(self.form_element_list),
+                    form_element:self.form_element_list,
                     id:self.id,
                 }
                 console.log(params);
