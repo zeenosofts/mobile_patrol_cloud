@@ -18814,16 +18814,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             case 0:
               _context2.next = 2;
               return axios.get(request).then(function (response) {
-                // console.log(response.data);
-                // console.log(response.status);
-                // console.log(response.statusText);
-                // console.log(response.headers);
-                // console.log(response.config);
                 ReturnResponse = response;
               })["catch"](function (response) {
-                // handle error
-                console.log("catch " + response); // Vue.$toast.error(response);
-                // resp= response.data;
+                console.log("catch " + response);
               })["finally"](function () {// always executed
               });
 
