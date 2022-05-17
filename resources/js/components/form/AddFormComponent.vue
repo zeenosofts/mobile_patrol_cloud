@@ -118,8 +118,8 @@
                     {name: "text", id: 1, label : "Enter Text" , required : "true" , placeholder : "Enter Text" },
                     {name: "number", id: 2, label : "Enter Number" , required : "true" , placeholder : "Enter Number"},
                     {name: "date", id: 3 ,label : "Enter Date" , required : "true" , placeholder : "Enter Date"},
-                    {name: "radio", id: 4 ,label : "Enter Text" , required : "true" , placeholder : "Enter Text" , option :[ {id :1 ,name: "option 1" },{id :2 , name: "option 2" }]},
-                    {name: "select", id: 5 ,label : "Enter Text" , required : "true" , placeholder : "Enter Text" , option :[ {id :1 ,name: "option 1" },{id :2 , name: "option 2" }]},
+                    {name: "radio", id: 4 ,label : "Enter Text" , required : "true" , placeholder : "Enter Text" , option :[{id :1 ,name: "option 1"},{id :2 , name: "option 2" }]},
+                    {name: "select", id: 5 ,label : "Enter Text" , required : "true" , placeholder : "Enter Text" , option :[{id :1 ,name: "option 1"},{id :2 , name: "option 2" }]},
                     {name: "file", id: 6 ,label : "Enter file" , required : "true" , placeholder : "Enter file"},
                     {name: "textarea", id: 7 ,label : "Enter text" , required : "true" , placeholder : "Enter text"},
                 ],
@@ -138,7 +138,7 @@
                     description:self.description,
                     form_element:self.form_element_list,
                 }
-                //params = JSON.stringify(params);
+
                 Promise.resolve(HelperController.sendPOSTRequest('save_form',params)).then( response => {
                     if(response.data.message == 'success'){
                         Vue.$toast.success(response.data.data.response);

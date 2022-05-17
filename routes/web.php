@@ -18,7 +18,8 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-Route::group(['middleware' => 'auth'], function () {
+Route::middleware(['auth','cors'])->group(function () {
+//Route::group(['middleware' => 'auth','cors'], function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     #------------------------- Admin Accounts Methods ----------------#
     Route::get('/accounts/manager/create', [App\Http\Controllers\AccountsController::class, 'index'])

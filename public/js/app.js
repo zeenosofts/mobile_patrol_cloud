@@ -17206,8 +17206,7 @@ __webpack_require__.r(__webpack_exports__);
         form_name: self.form_name,
         description: self.description,
         form_element: self.form_element_list
-      }; //params = JSON.stringify(params);
-
+      };
       Promise.resolve(_controller_HelperController__WEBPACK_IMPORTED_MODULE_2__.default.sendPOSTRequest('save_form', params)).then(function (response) {
         if (response.data.message == 'success') {
           Vue.$toast.success(response.data.data.response);
@@ -18613,7 +18612,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 vue__WEBPACK_IMPORTED_MODULE_0__.default.use(vue_router__WEBPACK_IMPORTED_MODULE_1__.default);
-;
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
