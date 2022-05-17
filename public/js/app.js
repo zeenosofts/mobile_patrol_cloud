@@ -17144,26 +17144,9 @@ __webpack_require__.r(__webpack_exports__);
           id: 2,
           name: "option 2"
         }]
-      }, {
-        name: "select",
-        id: 5,
-        label: "Enter Text",
-        required: "true",
-        placeholder: "Enter Text",
-        option: [{
-          id: 1,
-          name: "option 1"
-        }, {
-          id: 2,
-          name: "option 2"
-        }]
-      }, {
-        name: "file",
-        id: 6,
-        label: "Enter file",
-        required: "true",
-        placeholder: "Enter file"
-      }, {
+      }, //                    {name: "select", id: 5 ,label : "Enter Text" , required : "true" , placeholder : "Enter Text" , option :[{id :1 ,name: "option 1"},{id :2 , name: "option 2" }]},
+      //                    {name: "file", id: 6 ,label : "Enter file" , required : "true" , placeholder : "Enter file"},
+      {
         name: "textarea",
         id: 7,
         label: "Enter text",
@@ -17176,8 +17159,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     created_at: function created_at() {
-      var _this = this;
-
       var self = this;
 
       if (self.form_name.trim() == '') {
@@ -17203,7 +17184,6 @@ __webpack_require__.r(__webpack_exports__);
 
       for (var j = 0; j < this.form_element_list.length; j++) {
         var object = self.form_element_list[j];
-        console.log(JSON.stringify(object));
         self.form_elements.push(JSON.stringify(object));
       }
 
@@ -17221,8 +17201,6 @@ __webpack_require__.r(__webpack_exports__);
         if (response.data.message == 'warning') {
           Vue.$toast.warning(response.data.data.response);
         }
-
-        _this.$emit('methodcreateScheduleButtonClicked');
       })["catch"](function (error) {
         console.log(error);
       });
@@ -17236,14 +17214,13 @@ __webpack_require__.r(__webpack_exports__);
       var form_element_list = this.form_element_list[index_id];
       form_element_list.label = data.label;
       form_element_list.placeholder = data.placeholder;
-      form_element_list.required = data.required;
-      console.log('child data', data);
+      form_element_list.required = data.required; //                console.log('child data',data);
     },
     editAt: function editAt(idx) {
       var self = this;
       self.showSlider = true;
-      var object = self.form_element_list[idx];
-      console.log(object);
+      var object = self.form_element_list[idx]; //                console.log(object);
+
       self.$refs.edit_element.view_edit_element(object, idx);
     },
     closeSlider: function closeSlider() {

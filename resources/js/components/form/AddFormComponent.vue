@@ -117,8 +117,8 @@
                     {name: "number", id: 2, label : "Enter Number" , required : "true" , placeholder : "Enter Number"},
                     {name: "date", id: 3 ,label : "Enter Date" , required : "true" , placeholder : "Enter Date"},
                     {name: "radio", id: 4 ,label : "Enter Text" , required : "true" , placeholder : "Enter Text" , option :[{id :1 ,name: "option 1"},{id :2 , name: "option 2" }]},
-                    {name: "select", id: 5 ,label : "Enter Text" , required : "true" , placeholder : "Enter Text" , option :[{id :1 ,name: "option 1"},{id :2 , name: "option 2" }]},
-                    {name: "file", id: 6 ,label : "Enter file" , required : "true" , placeholder : "Enter file"},
+//                    {name: "select", id: 5 ,label : "Enter Text" , required : "true" , placeholder : "Enter Text" , option :[{id :1 ,name: "option 1"},{id :2 , name: "option 2" }]},
+//                    {name: "file", id: 6 ,label : "Enter file" , required : "true" , placeholder : "Enter file"},
                     {name: "textarea", id: 7 ,label : "Enter text" , required : "true" , placeholder : "Enter text"},
                 ],
                 form_element_list: [],
@@ -134,7 +134,6 @@
 
                 for( var j = 0; j < this.form_element_list.length; j++ ){
                     let object = self.form_element_list[j];
-                    console.log(JSON.stringify(object));
                     self.form_elements.push(JSON.stringify(object));
                 }
                 console.log(self.form_elements);
@@ -154,8 +153,6 @@
                     }
 
 
-                    this.$emit('methodcreateScheduleButtonClicked')
-
                 }).catch(function(error){
                     console.log(error);
                 });
@@ -173,13 +170,13 @@
                 form_element_list.label = data.label;
                 form_element_list.placeholder = data.placeholder;
                 form_element_list.required = data.required;
-                console.log('child data',data);
+//                console.log('child data',data);
             },
             editAt(idx) {
                 let self = this;
                 self.showSlider = true;
                 var object = self.form_element_list[idx];
-                console.log(object);
+//                console.log(object);
                 self.$refs.edit_element.view_edit_element(object ,idx);
             },
             closeSlider(){
