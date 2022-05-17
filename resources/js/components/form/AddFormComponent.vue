@@ -138,6 +138,7 @@
                     description:self.description,
                     form_element:json_encode(self.form_element_list),
                 }
+                console.log(params);
                 Promise.resolve(HelperController.sendPOSTRequest('save_form',params)).then( response => {
                     if(response.data.message == 'success'){
                         Vue.$toast.success(response.data.data.response);
