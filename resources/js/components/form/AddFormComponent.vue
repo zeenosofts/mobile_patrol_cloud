@@ -133,11 +133,11 @@
                 if (self.description.trim() == ''){self.errors.description = true;return false;}else {self.errors.description = false}
                 if (self.form_element_list.length == '0'){self.errors.form_element = true;return false;}else {self.errors.form_element = false}
 
-                var params = {
-                    form_name:self.form_name,
-                    description:self.description,
-                    form_element:self.form_element_list,
-                }
+//                var params = {
+//                    form_name:self.form_name,
+//                    description:self.description,
+//                    form_element:self.form_element_list,
+//                }
                 console.log("2");
                 console.log(params);
                 let formData = new FormData();
@@ -159,7 +159,7 @@
                     } else {
                         self.$toast.error(response.message)
                     }
-//                    self.get_category()
+//
                 });
 
 //                Promise.resolve(HelperController.sendPOSTRequest('save_form',params)).then( response => {

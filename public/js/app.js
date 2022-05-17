@@ -17198,13 +17198,13 @@ __webpack_require__.r(__webpack_exports__);
         return false;
       } else {
         self.errors.form_element = false;
-      }
+      } //                var params = {
+      //                    form_name:self.form_name,
+      //                    description:self.description,
+      //                    form_element:self.form_element_list,
+      //                }
 
-      var params = {
-        form_name: self.form_name,
-        description: self.description,
-        form_element: self.form_element_list
-      };
+
       console.log("2");
       console.log(params);
       var formData = new FormData();
@@ -17222,7 +17222,7 @@ __webpack_require__.r(__webpack_exports__);
           self.$toast.warning(response.message);
         } else {
           self.$toast.error(response.message);
-        } //                    self.get_category()
+        } //
 
       }); //                Promise.resolve(HelperController.sendPOSTRequest('save_form',params)).then( response => {
       //                    if(response.data.message == 'success'){
