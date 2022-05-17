@@ -136,9 +136,10 @@
                 var params = {
                     form_name:self.form_name,
                     description:self.description,
-                    form_element:self.form_element_list,
+                    form_element:self.form_element_list.valueOf(),
                 }
-
+                console.log("2");
+                console.log(params);
                 Promise.resolve(HelperController.sendPOSTRequest('save_form',params)).then( response => {
                     if(response.data.message == 'success'){
                         Vue.$toast.success(response.data.data.response);
@@ -146,9 +147,14 @@
                     if(response.data.message == 'warning'){
                         Vue.$toast.warning(response.data.data.response);
                     }
+                 //   this.$emit('methodcreateScheduleButtonClicked')
+
                 }).catch(function(error){
                     console.log(error);
                 });
+
+
+
             },
             removeAt(idx) {
                 let self = this;
