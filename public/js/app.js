@@ -17198,43 +17198,25 @@ __webpack_require__.r(__webpack_exports__);
         return false;
       } else {
         self.errors.form_element = false;
-      } //                var params = {
-      //                    form_name:self.form_name,
-      //                    description:self.description,
-      //                    form_element:self.form_element_list,
-      //                }
+      }
 
-
-      console.log("2");
-      console.log(params);
-      var formData = new FormData();
-      var form_element_list = self.form_element_list;
-      formData.append('list', form_element_list);
-      Promise.resolve(axios.post('save_form', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      })).then(function (response) {
+      var params = {
+        form_name: self.form_name,
+        description: self.description,
+        form_element: self.form_element_list
+      };
+      var param = JSON.stringify(params);
+      Promise.resolve(_controller_HelperController__WEBPACK_IMPORTED_MODULE_2__.default.sendPOSTRequest('save_form', param)).then(function (response) {
         if (response.data.message == 'success') {
-          self.form_data.category_name = '';
-          self.$toast.success(response.data.message);
-        } else if (response.data.message == 'warning') {
-          self.$toast.warning(response.message);
-        } else {
-          self.$toast.error(response.message);
-        } //
+          Vue.$toast.success(response.data.data.response);
+        }
 
-      }); //                Promise.resolve(HelperController.sendPOSTRequest('save_form',params)).then( response => {
-      //                    if(response.data.message == 'success'){
-      //                        Vue.$toast.success(response.data.data.response);
-      //                    }
-      //                    if(response.data.message == 'warning'){
-      //                        Vue.$toast.warning(response.data.data.response);
-      //                    }
-      //
-      //                }).catch(function(error){
-      //                    console.log(error);
-      //                });
+        if (response.data.message == 'warning') {
+          Vue.$toast.warning(response.data.data.response);
+        }
+      })["catch"](function (error) {
+        console.log(error);
+      });
     },
     removeAt: function removeAt(idx) {
       var self = this;
