@@ -17131,9 +17131,10 @@ __webpack_require__.r(__webpack_exports__);
         label: "Enter Date",
         required: "true",
         placeholder: "Enter Date"
-      }, {
-        name: "radio",
-        id: 4,
+      }, // {name: "radio", id: 4 ,label : "Enter Text" , required : "true" , placeholder : "Enter Text" , option :[{id :1 ,name: "option 1"},{id :2 , name: "option 2" }]},
+      {
+        name: "select",
+        id: 5,
         label: "Enter Text",
         required: "true",
         placeholder: "Enter Text",
@@ -17144,8 +17145,7 @@ __webpack_require__.r(__webpack_exports__);
           id: 2,
           name: "option 2"
         }]
-      }, //                    {name: "select", id: 5 ,label : "Enter Text" , required : "true" , placeholder : "Enter Text" , option :[{id :1 ,name: "option 1"},{id :2 , name: "option 2" }]},
-      //                    {name: "file", id: 6 ,label : "Enter file" , required : "true" , placeholder : "Enter file"},
+      }, //                    {name: "file", id: 6 ,label : "Enter file" , required : "true" , placeholder : "Enter file"},
       {
         name: "textarea",
         id: 7,
