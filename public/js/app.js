@@ -17144,8 +17144,20 @@ __webpack_require__.r(__webpack_exports__);
           id: 2,
           name: "option 2"
         }]
-      }, //                    {name: "select", id: 5 ,label : "Enter Text" , required : "true" , placeholder : "Enter Text" , option :[{id :1 ,name: "option 1"},{id :2 , name: "option 2" }]},
-      //                    {name: "file", id: 6 ,label : "Enter file" , required : "true" , placeholder : "Enter file"},
+      }, {
+        name: "select",
+        id: 5,
+        label: "Enter Text",
+        required: "true",
+        placeholder: "Enter Text",
+        option: [{
+          id: 1,
+          name: "option 1"
+        }, {
+          id: 2,
+          name: "option 2"
+        }]
+      }, //                    {name: "file", id: 6 ,label : "Enter file" , required : "true" , placeholder : "Enter file"},
       {
         name: "textarea",
         id: 7,
@@ -17536,20 +17548,16 @@ __webpack_require__.r(__webpack_exports__);
           id: 2,
           name: "option 2"
         }]
-      }, {
-        name: "file",
-        id: 6,
-        label: "Enter file",
-        required: "true",
-        placeholder: "Enter file"
-      }, {
+      }, //                    {name: "file", id: 6 ,label : "Enter file" , required : "true" , placeholder : "Enter file"},
+      {
         name: "textarea",
         id: 7,
         label: "Enter text",
         required: "true",
         placeholder: "Enter text"
       }],
-      form_element_list: []
+      form_element_list: [],
+      form_elements: []
     };
   },
   mounted: function mounted() {
@@ -17599,10 +17607,16 @@ __webpack_require__.r(__webpack_exports__);
         self.errors.form_element = false;
       }
 
+      for (var j = 0; j < this.form_element_list.length; j++) {
+        var object = self.form_element_list[j];
+        self.form_elements.push(JSON.stringify(object));
+      }
+
+      console.log(self.form_elements);
       var params = {
         form_name: self.form_name,
         description: self.description,
-        form_element: self.form_element_list,
+        form_element: self.form_elements,
         id: self.id
       };
       console.log(params);
