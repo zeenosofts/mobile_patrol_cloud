@@ -52,9 +52,9 @@ Vue.component('form-component', require('./components/form/AddFormComponent.vue'
  */
 
 //Axios URL
-//axios.defaults.baseURL="http://127.0.0.1:8000/";
+axios.defaults.baseURL="http://127.0.0.1:8000/";
 //Production AXios URL
- axios.defaults.baseURL="https://guard.cybermeteors.com/";
+// axios.defaults.baseURL="https://guard.cybermeteors.com/";
 //Data Table
 
 import { VuejsDatatableFactory} from 'vuejs-datatable';
