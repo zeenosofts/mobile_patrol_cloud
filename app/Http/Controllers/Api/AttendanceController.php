@@ -20,6 +20,7 @@ class AttendanceController extends Controller
 
     public function save_guard_attendance(Request $request){
         try{
+            dd($request->schedule_id);
             if ($request->schedule_id == ""){
                 $client_id="";
                 $schedule_id="";
