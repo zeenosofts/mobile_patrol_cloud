@@ -20,6 +20,7 @@ class AttendanceController extends Controller
 
     public function save_guard_attendance(Request $request){
         try{
+            dd("@");
             if ($request->schedule_id == null){
                 $attendance=$this->check_time_out($request->user()->id);
                 if (count($attendance) > 0){
