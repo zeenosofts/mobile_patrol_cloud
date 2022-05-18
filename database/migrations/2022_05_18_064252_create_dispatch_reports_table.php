@@ -15,6 +15,15 @@ class CreateDispatchReportsTable extends Migration
     {
         Schema::create('dispatch_reports', function (Blueprint $table) {
             $table->id();
+            $table->string('inspection');
+            $table->string('incident');
+            $table->string('person_on_site');
+            $table->string('site_secure');
+            $table->string('inspection_note');
+            $table->string('incident_note');
+            $table->string('person_on_site_note');
+            $table->string('site_secure_note');
+            $table->string('dispatch_report_note');
             $table->timestamps();
         });
     }

@@ -81,7 +81,7 @@ Route::middleware(['auth:api','cors'])->group(function () {
     Route::post('get_admin_clients',[\App\Http\Controllers\Api\AttendanceController::class,'get_admin_clients'])
         ->name('get_admin_clients');
 
-    Route::post('save_dispatch_report',[\App\Http\Controllers\Api\AttendanceController::class,'save_dispatch_report'])
+    Route::post('save_dispatch_report',[\App\Http\Controllers\Api\DispatchController::class,'save_dispatch_report'])
         ->name('save_dispatch_report');
 
 

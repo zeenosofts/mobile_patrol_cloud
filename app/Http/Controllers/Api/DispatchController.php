@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Traits\ResponseTrait;
 use Illuminate\Http\Request;
 
 class DispatchController extends Controller
 {
+    use ResponseTrait;
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +16,12 @@ class DispatchController extends Controller
      */
     public function index()
     {
-        //
+        try{
+//            $this->create_dispatch_report($re)
+
+        }catch(\Exception $e){
+        return $this->returnApiResponse('401','danger',array('error'=>$e->getMessage()));
+        }
     }
 
     /**

@@ -21,19 +21,21 @@ class AttendanceController extends Controller
     public function save_guard_attendance(Request $request){
         try{
             if ($request->schedule_id == null){
-                $client_id="";
-                $schedule_id="";
-                $admin_id="";
-                $time_in=Carbon::now();
-                $time_out="";
-                $date=Carbon::now();
-                $timezone=Carbon::now()->timezone;
-                $this->create_guard_attendance($request->user()->id,$client_id,$schedule_id,$admin_id,$time_in,$time_out,$date,$timezone);
-                return $this->returnApiResponse(200, 'success', array('response' => 'Guard Time In Successfully'));
-            }else{
-                $attendance=$this->check_time_out($request->schedule_id);
+                $attendance=$this->check_time_out($request->user()->id);
                 if (count($attendance) > 0){
-                    $attendance_id=$this->get_attendance_id($request->schedule_id);
+                    $attendance_id=$this->get_attendance_id($request->user()->id);
+                    $this->edit_guard_attendance_api($attendance_id);
+                    return $this->returnApiResponse(201, 'success', array('response' => 'Guard Time Out Successfully'));
+                }else {
+                    $client_id = "";$schedule_id = "";$admin_id = "";$time_in = Carbon::now();$time_out = "";$date = Carbon::now();
+                    $timezone = Carbon::now()->timezone;
+                    $this->create_guard_attendance($request->user()->id, $client_id, $schedule_id, $admin_id, $time_in, $time_out, $date, $timezone);
+                    return $this->returnApiResponse(200, 'success', array('response' => 'Guard Time In Successfully'));
+                }
+            }else{
+                $attendance=$this->check_time_out($request->user()->id);
+                if (count($attendance) > 0){
+                    $attendance_id=$this->get_attendance_id($request->user()->id);
                     $this->edit_guard_attendance_api($attendance_id);
                     return $this->returnApiResponse(201, 'success', array('response' => 'Guard Time Out Successfully'));
                 }else{
