@@ -703,6 +703,8 @@ class ComposerStaticInit98ae86f1bb53d1b671014e94cab28b46
         'App\\Models\\CompanySetting' => __DIR__ . '/../..' . '/app/Models/CompanySetting.php',
         'App\\Models\\DailyReport' => __DIR__ . '/../..' . '/app/Models/DailyReport.php',
         'App\\Models\\DailyReportImages' => __DIR__ . '/../..' . '/app/Models/DailyReportImages.php',
+        'App\\Models\\DispatchReport' => __DIR__ . '/../..' . '/app/Models/DispatchReport.php',
+        'App\\Models\\DispatchReportImages' => __DIR__ . '/../..' . '/app/Models/DispatchReportImages.php',
         'App\\Models\\Form' => __DIR__ . '/../..' . '/app/Models/Form.php',
         'App\\Models\\FormValue' => __DIR__ . '/../..' . '/app/Models/FormValue.php',
         'App\\Models\\FormValuePicture' => __DIR__ . '/../..' . '/app/Models/FormValuePicture.php',

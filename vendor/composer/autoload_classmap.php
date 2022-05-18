@@ -70,6 +70,8 @@ return array(
     'App\\Models\\CompanySetting' => $baseDir . '/app/Models/CompanySetting.php',
     'App\\Models\\DailyReport' => $baseDir . '/app/Models/DailyReport.php',
     'App\\Models\\DailyReportImages' => $baseDir . '/app/Models/DailyReportImages.php',
+    'App\\Models\\DispatchReport' => $baseDir . '/app/Models/DispatchReport.php',
+    'App\\Models\\DispatchReportImages' => $baseDir . '/app/Models/DispatchReportImages.php',
     'App\\Models\\Form' => $baseDir . '/app/Models/Form.php',
     'App\\Models\\FormValue' => $baseDir . '/app/Models/FormValue.php',
     'App\\Models\\FormValuePicture' => $baseDir . '/app/Models/FormValuePicture.php',

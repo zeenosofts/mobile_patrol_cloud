@@ -59,7 +59,6 @@ Route::middleware(['auth:api','cors'])->group(function () {
     Route::post('get_all_notifications',[\App\Http\Controllers\Api\NotificationController::class,'get_all_notifications'])
         ->name('get_all_notifications');
 //    Mobile Patrols
-
     Route::post('get_all_mobile_patrols',[\App\Http\Controllers\Api\MobilePatrolController::class,'get_all_mobile_patrols'])
         ->name('get_all_mobile_patrols');
     Route::post('get_all_mobile_patrols_reports_by_id',[\App\Http\Controllers\Api\MobilePatrolController::class,'get_all_mobile_patrols_reports_by_id'])
@@ -79,6 +78,9 @@ Route::middleware(['auth:api','cors'])->group(function () {
 
     Route::post('get_admin_clients',[\App\Http\Controllers\Api\AttendanceController::class,'get_admin_clients'])
         ->name('get_admin_clients');
+
+    Route::post('save_dispatch_report',[\App\Http\Controllers\Api\AttendanceController::class,'save_dispatch_report'])
+        ->name('save_dispatch_report');
 
 
 });

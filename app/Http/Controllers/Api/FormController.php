@@ -43,6 +43,7 @@ class FormController extends Controller
         $save_form->form_id=$request->form_id;
         $save_form->form_element=$request->form_element;
         $save_form->save();
+        dd($request->photos);
         if($request->photos != ""){
             foreach ($request->photos as $photo){
                 $image = $this->uploadImage($photo);

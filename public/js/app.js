@@ -17131,12 +17131,12 @@ __webpack_require__.r(__webpack_exports__);
         label: "Enter Date",
         required: "true",
         placeholder: "Enter Date"
-      }, // {name: "radio", id: 4 ,label : "Enter Text" , required : "true" , placeholder : "Enter Text" , option :[{id :1 ,name: "option 1"},{id :2 , name: "option 2" }]},
-      {
-        name: "select",
-        id: 5,
+      }, {
+        name: "radio",
+        id: 4,
         label: "Enter Text",
         required: "true",
+        placeholder: "Enter Text",
         option: [{
           id: 1,
           name: "option 1"
@@ -17144,7 +17144,8 @@ __webpack_require__.r(__webpack_exports__);
           id: 2,
           name: "option 2"
         }]
-      }, //                    {name: "file", id: 6 ,label : "Enter file" , required : "true" , placeholder : "Enter file"},
+      }, //                    {name: "select", id: 5 ,label : "Enter Text" , required : "true"  , option :[{id :1 ,name: "option 1"},{id :2 , name: "option 2" }]},
+      //                    {name: "file", id: 6 ,label : "Enter file" , required : "true" , placeholder : "Enter file"},
       {
         name: "textarea",
         id: 7,
@@ -18623,10 +18624,10 @@ vue__WEBPACK_IMPORTED_MODULE_0__.default.component('form-component', __webpack_r
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 //Axios URL
+//axios.defaults.baseURL="http://127.0.0.1:8000/";
+//Production AXios URL
 
-axios.defaults.baseURL = "http://127.0.0.1:8000/"; //Production AXios URL
-// axios.defaults.baseURL="https://guard.cybermeteors.com/";
-//Data Table
+axios.defaults.baseURL = "https://guard.cybermeteors.com/"; //Data Table
 
 
 

@@ -141,7 +141,6 @@
                         self.description=response.data.description;
                         self.id=response.data.id;
                         self.form_element_list=JSON.parse(response.data.form_element);
-
                     }
                     if(response.data.message == 'warning'){
                         Vue.$toast.warning(response.data.data.response);
@@ -149,8 +148,6 @@
                 }).catch(function(error){
                     console.log(error);
                 });
-
-
             },
             updated_at(){
                 let self=this;
