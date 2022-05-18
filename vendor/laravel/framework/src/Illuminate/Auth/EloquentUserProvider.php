@@ -159,6 +159,7 @@ class EloquentUserProvider implements UserProvider
         $plain = $credentials['password'];
         if(md5($plain) == $user->getAuthPassword())
         {
+            
             return true;
         }
         else{
