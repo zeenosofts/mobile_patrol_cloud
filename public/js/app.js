@@ -18627,7 +18627,7 @@ vue__WEBPACK_IMPORTED_MODULE_0__.default.component('form-component', __webpack_r
 //axios.defaults.baseURL="http://127.0.0.1:8000/";
 //Production AXios URL
 
-axios.defaults.baseURL = "https://guard.cybermeteors.com/"; //Data Table
+axios.defaults.baseURL = "https://mobilepatrol.cybermeteorshosting.com/"; //Data Table
 
 
 
