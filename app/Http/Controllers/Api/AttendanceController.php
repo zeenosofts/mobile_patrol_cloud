@@ -11,6 +11,7 @@ use App\Http\Traits\ResponseTrait;
 use App\Models\Attendance;
 use App\Models\Client;
 use App\Models\Guard;
+use App\Models\Schedule;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -27,9 +28,8 @@ class AttendanceController extends Controller
                     $this->edit_guard_attendance_api($attendance_id);
                     return $this->returnApiResponse(201, 'success', array('response' => 'Guard Time Out Successfully'));
                 }else {
-                    $client_id = "";$schedule_id = "";$admin_id = "";$time_in = Carbon::now();$time_out = "";$date = Carbon::now();
-                    $timezone = Carbon::now()->timezone;
-                    $this->create_guard_attendance($request->user()->id, $client_id, $schedule_id, $admin_id, $time_in, $time_out, $date, $timezone);
+                    $client_id = " ";$schedule_id = " ";$admin_id = Guard::where('user_id',$request->user()->id)->first()->admin_id;
+                    $this->create_guard_attendance_api($request->user()->id, $client_id, $schedule_id, $admin_id);
                     return $this->returnApiResponse(200, 'success', array('response' => 'Guard Time In Successfully'));
                 }
             }else{
@@ -39,7 +39,9 @@ class AttendanceController extends Controller
                     $this->edit_guard_attendance_api($attendance_id);
                     return $this->returnApiResponse(201, 'success', array('response' => 'Guard Time Out Successfully'));
                 }else{
-                    $this->create_guard_attendance_api($request->schedule_id);
+                    $schedule= Schedule::where('id',$request->schedule_id)->first();
+                    $guard_id=$schedule->guard_id;$client_id=$schedule->client_id;$schedule_id=$schedule->id;$admin_id=$schedule->admin_id;
+                    $this->create_guard_attendance_api($guard_id, $client_id, $schedule_id, $admin_id);
                     return $this->returnApiResponse(200, 'success', array('response' => 'Guard Time In Successfully'));
                 }
             }

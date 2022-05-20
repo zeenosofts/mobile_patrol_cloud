@@ -63,13 +63,12 @@ trait AttendanceTrait{
        return $attendance->id;
     }
 
-    public function create_guard_attendance_api($schedule_id){
-        $schedule= Schedule::where('id',$schedule_id)->first();
+    public function create_guard_attendance_api($guard_id, $client_id, $schedule_id, $admin_id){
         $attendance=new Attendance();
-        $attendance->guard_id=$schedule->guard_id;
-        $attendance->client_id=$schedule->client_id;
-        $attendance->schedule_id=$schedule->id;
-        $attendance->admin_id=$schedule->admin_id;
+        $attendance->guard_id=$guard_id;
+        $attendance->client_id=$client_id;
+        $attendance->schedule_id=$schedule_id;
+        $attendance->admin_id=$admin_id;
         $attendance->time_in=$this->convertHtmlDateTimeToDbFormat(Carbon::now(),Carbon::now()->timezone);
         $attendance->date=$this->convertDateToDbFormat(Carbon::now());
         $attendance->save();
